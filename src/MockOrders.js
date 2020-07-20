@@ -8,8 +8,9 @@ export default [
         "tax": 100.00,
         "shipping": 99.00,
         "total": 4767.00,
-        "addresses": {
-            "billing": {
+        "addresses": [
+            {
+                "addressType": "billing",
                 "fname": "Michael",
                 "lname": "Owens",
                 "street1": "2305 Vineyard Court",
@@ -18,7 +19,8 @@ export default [
                 "state": "GA",
                 "postalcode": "30180"
             },
-            "shipping": {
+            {
+                "addressType": "shipping", 
                 "fname": "Michael",
                 "lname": "Owens",
                 "street1": "2305 Vineyard Court",
@@ -27,7 +29,7 @@ export default [
                 "state": "GA",
                 "postalcode": "30180"
             }
-        },
+        ],
         "sourcing": {
             "25478": {
                 "name": "Fort Payne",
@@ -66,8 +68,9 @@ export default [
         "tax": 100.00,
         "shipping": 99.00,
         "total": 4767.00,
-        "addresses": {
-            "billing": {
+        "addresses": [
+            {
+                "addressType": "billing",
                 "fname": "Michael",
                 "lname": "Owens",
                 "street1": "2305 Vineyard Court",
@@ -76,7 +79,8 @@ export default [
                 "state": "GA",
                 "postalcode": "30180"
             },
-            "shipping": {
+            {
+                "addressType": "shipping",
                 "fname": "Michael",
                 "lname": "Owens",
                 "street1": "2305 Vineyard Court",
@@ -85,7 +89,7 @@ export default [
                 "state": "GA",
                 "postalcode": "30180"
             }
-        },
+        ],
         "sourcing": {
             "25478": {
                 "name": "Fort Payne",
@@ -111,8 +115,9 @@ export default [
         "tax": 100.00,
         "shipping": 99.00,
         "total": 4767.00,
-        "addresses": {
-            "billing": {
+        "addresses": [
+            {
+                "addressType": "billing",
                 "fname": "Michael",
                 "lname": "Owens",
                 "street1": "2305 Vineyard Court",
@@ -121,7 +126,8 @@ export default [
                 "state": "GA",
                 "postalcode": "30180"
             },
-            "shipping": {
+            {
+                "addressType": "shipping",
                 "fname": "Michael",
                 "lname": "Owens",
                 "street1": "2305 Vineyard Court",
@@ -130,7 +136,7 @@ export default [
                 "state": "GA",
                 "postalcode": "30180"
             }
-        },
+        ],
         "sourcing": {
             "65547": {
                 "name": "WhatyaDoin",
