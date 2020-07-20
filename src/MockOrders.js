@@ -30,34 +30,40 @@ export default [
                 "postalcode": "30180"
             }
         ],
-        "sourcing": {
-            "25478": {
+        "sourcing": [
+            {
+                "sourceId": "25478",
                 "name": "Fort Payne",
-                "items": {
-                    "3249817": {
+                "items": [
+                    {
+                        "itemId": "3249817",
                         "qty": 4,
                         "eachprice": 200.00
                     },
-                    "23547": {
+                    {
+                        "itemId": "23547",
                         "qty": 4,
                         "eachprice": 200.00
                     }
-                }
+                ]
             },
-            "846567": {
+            {
+                "sourceId": "846567",
                 "name": "Parris",
-                "items": {
-                    "3524485": {
+                "items": [
+                    {
+                        "itemId": "3524485",
                         "qty": 4,
                         "eachprice": 400.00
                     },
-                    "21448": {
+                    {
+                        "itemId": "21448",
                         "qty": 4,
                         "eachprice": 50.00
                     }
-                }
+                ]
             }
-        }
+        ]
     },
     {
         "ordernum": "78946",
@@ -90,21 +96,24 @@ export default [
                 "postalcode": "30180"
             }
         ],
-        "sourcing": {
-            "25478": {
+        "sourcing": [
+            {
+                "sourceId": "25478",
                 "name": "Fort Payne",
-                "items": {
-                    "3249817": {
+                "items": [
+                    {
+                        "itemId": "3249817",
                         "qty": 4,
                         "eachprice": 200.00
                     },
-                    "23547": {
+                    {
+                        "itemId": "23547",
                         "qty": 4,
                         "eachprice": 200.00
                     }
-                }
+                ]
             }
-        }
+        ]
     },
     {
         "ordernum": "897435",
@@ -137,43 +146,51 @@ export default [
                 "postalcode": "30180"
             }
         ],
-        "sourcing": {
-            "65547": {
+        "sourcing": [
+            {
+                "soureId": "65547",
                 "name": "WhatyaDoin",
-                "items": {
-                    "132457": {
+                "items": [
+                    {
+                        "itemId": "132457",
                         "qty": 1,
                         "eachprice": 150.00
                     }
-                }
+                ]
             },
-            "6224786": {
+            {
+                "sourceId": "6224786",
                 "name": "Atlanta",
-                "items": {
-                    "6548465": {
+                "items": [
+                    {
+                        "itemId": "6548465",
                         "qty": 1,
                         "eachprice": 50.00
                     }
-                }
+                ]
             },
-            "58876": {
+            {
+                "sourceId": "58876",
                 "name": "WhatyaDoin",
-                "items": {
-                    "132457": {
+                "items": [
+                    {
+                        "itemId": "132457",
                         "qty": 1,
                         "eachprice": 150.00
                     }
-                }
+                ]
             },
-            "9645673": {
+            {
+                "sourceId": "9645673",
                 "name": "Atlanta",
-                "items": {
-                    "6548465": {
+                "items": [
+                    {
+                        "itemId": "6548465",
                         "qty": 1,
                         "eachprice": 50.00
                     }
-                }
+                ]
             }
-        }
+        ]
     }
 ]
