@@ -21,7 +21,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit">
-            Sourcing App
+             Sourcing App
           </Typography>
         </Toolbar>
       </AppBar>

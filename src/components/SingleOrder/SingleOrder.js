@@ -7,7 +7,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import MockOrders from '../../MockOrders';
+import OrderList from '../OrderList/OrderList';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -31,6 +34,15 @@ const useStyles = makeStyles((theme) => ({
   },
   row: {
     display: 'flex'
+  },
+  marginTop :{
+    marginTop:20
+  },
+  upperCase : {
+    textTransform:'uppercase'
+  },
+  italics : {
+    fontStyle: 'italics'
   }
 }));
 
@@ -56,7 +68,7 @@ export default function SingleOrder(props) {
       <Button className={classes.triggerStyle} variant="outlined" color="primary" onClick={handleClickOpen}>
           <div className={classes.column}>
             <span>
-              Order # {order.ordernum}
+              <strong>Order # {order.ordernum}</strong>
             </span>
             <span> 
               Number of Sources: {order.numsources}
@@ -65,19 +77,21 @@ export default function SingleOrder(props) {
           <span>Expedited: <b>NEED</b></span>
           <span>Total Order Value: {order.total}</span>
       </Button>
+
+
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
-          <Toolbar>
+          <Toolbar>           
+            <Typography variant="h6" className={classes.title}>
+            Order # {order.ordernum}
+            </Typography>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
               X
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              LOGO
-            </Typography>
           </Toolbar>
         </AppBar>
+        <Container fixed className={classes.marginTop}>
         <div className={classes.column}>
-          <h1>Order # {order.ordernum}</h1>
           <span>Customer # <b>NEED</b></span>
 
           <h3>Order Details</h3>
@@ -85,24 +99,47 @@ export default function SingleOrder(props) {
           <span>Number of Sources: {order.numsources}</span>
 
 
-          <h3>Order Addresses</h3>
+          <h3 className={classes.upperCase}>Order Addresses</h3>
+          
           <div className={classes.row}>
+          <Grid container spacing={8}>
             {order.addresses.map(addresses => (
+              <Grid item>
+              <h4 className={classes.upperCase}>{addresses.addressType} Address</h4>
               <div className={classes.column}>
-                <span>{addresses.addressType} Address</span>
                 <span>{addresses.fname} {addresses.lname}</span>
                 <span>{addresses.street1}</span>
                 <span>{addresses.street2}</span>
                 <span>{addresses.city}, {addresses.state} {addresses.postalcode}</span>
               </div>
+              </Grid>
             ))}
+            </Grid>
           </div>
 
 
-          <h3>Sourcing</h3>
-          <span>Source from ID <b>NEED</b></span>
-          <span>Source From: <b>NEED</b></span>
+          <h3 className={classes.upperCase}>Sourcing</h3>
+
+         
+          {order.sourcing.map(sourcing =>( 
+            <div>                
+                <div>
+                  <span>Source from ID <b>{sourcing.sourceId}</b></span><br />
+                  <span>Source From: <b>{sourcing.name}</b></span>
+                </div>
+                <div>
+                  {sourcing.items.map(item => (
+                    <div>
+                        <span>Item ID: {item.itemId}</span><br />
+                        <span>Qty: {item.qty}</span><br />
+                        <span>Each Price: {item.eachprice}</span>
+                    </div>
+                  ))}
+                </div>
+             </div>
+          ))}          
         </div>
+        </Container>
       </Dialog>
     </div>
   );

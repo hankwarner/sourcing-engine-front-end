@@ -9,7 +9,7 @@ export default function MainContent() {
     <React.Fragment>
       <CssBaseline />
       <Container maxwidth="lg">
-        <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }}>
+        <Typography component="div" style={{ height: '100vh' }}>
             <OrderList />
         </Typography>
       </Container>
