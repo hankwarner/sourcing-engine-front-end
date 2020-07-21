@@ -15,11 +15,13 @@ const useStyles = makeStyles({
   column: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'start',
+    alignItems: 'flex-start',
   },
   row: {
       display: 'flex',
-      alignItems: 'space-between',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      width: '100%'
   }
 });
 
