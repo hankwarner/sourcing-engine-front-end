@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import MockOrders from '../../MockOrders';
+import SourcingTable from '../SourcingTable/SourcingTable'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -81,8 +82,18 @@ export default function SingleOrder(props) {
           <span>Customer # <b>NEED</b></span>
 
           <h3>Order Details</h3>
-          <span>Expedited: <b>NEED</b></span>
-          <span>Number of Sources: {order.numsources}</span>
+          <div className={classes.row}>
+            <div className={classes.column}>
+              <span>Expedited: <b>NEED</b></span>
+              <span>Number of Sources: {order.numsources}</span>
+            </div>
+            <div className={classes.column}>
+              <span>Sub Total: {order.subtotal}</span>
+              <span>Tax: {order.tax}</span>
+              <span>Shipping: {order.shipping}</span>
+              <span>Total: {order.total}</span>
+            </div>
+          </div>
 
 
           <h3>Order Addresses</h3>
@@ -98,10 +109,8 @@ export default function SingleOrder(props) {
             ))}
           </div>
 
-
-          <h3>Sourcing</h3>
-          <span>Source from ID <b>NEED</b></span>
-          <span>Source From: <b>NEED</b></span>
+          <SourcingTable sources={order.sourcing} />   
+          
         </div>
       </Dialog>
     </div>
