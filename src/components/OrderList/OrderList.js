@@ -1,5 +1,6 @@
 import React from 'react'
-import MockOrders from '../../MockOrders'
+//import MockOrders from '../../MockOrders'
+import MockOrders2 from '../../MockOrders_2'
 import { makeStyles } from '@material-ui/core/styles';
 import SingleOrder from '../SingleOrder/SingleOrder'
 
@@ -19,11 +20,11 @@ export default function OrderList() {
 
     return (
         <div className={classes.orderList}>
-            {MockOrders.map(order => (
+            {MockOrders2.map(order => (
                 <div>
                     <SingleOrder order={order} />
                 </div>
-            ))}
+            ))}            
         </div>
     )
 }

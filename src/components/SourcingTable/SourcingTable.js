@@ -10,7 +10,11 @@ import SourceCheckbox from '../SourceCheckbox/SourceCheckbox'
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 800,
+    verticalAlign:'top'
+  },
+  tablecell: {
+    verticalAlign:'top'
   },
   column: {
     display: 'flex',
@@ -27,44 +31,28 @@ const useStyles = makeStyles({
 
 export default function SourcingTable(props) {
   const classes = useStyles();
-
+  const order = props.order
   return (
     <div className={classes.column}>
-        <h3>Sourcing</h3>
-        {props.sources.map(source => (
-            <div className={classes.column}>
-                <div className={classes.row}>
-                    <div className={classes.column}>
-                        <span>Source from ID: {source.sourceId}</span>
-                        <span>Source From: {source.name}</span>
-                    </div>
-
-                    <div>
-                        <SourceCheckbox />
-                    </div>
-                </div>
-
                 <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableBody>
-                    {source.items.map((item) => (
-                        <TableRow key={item.itemId}>
-                        <TableCell component="th" scope="row">
-                            NPM: {item.itemId}
+                    {order.items.map((item) => (
+                        <TableRow key={item.masterProdId}>
+                        <TableCell className={classes.tablecell} scope="row">
+                            Product Id:<strong> {item.masterProdId}</strong><br />
+                            Description: <strong>{item.description}</strong><br />
+                            Ship From:  <strong>{item.shipFrom}</strong>
                         </TableCell>
-                        <TableCell align="right">QTY: {item.qty}</TableCell>
-                        <TableCell align="right">Each Price: {item.eachprice}</TableCell>
+                        <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
+                        <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
+                        <TableCell className={classes.tablecell} align="right"><SourceCheckbox /></TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
                 </Table>
 
-                </TableContainer>
-
-                <hr width="100%"/>
-                
-            </div>
-        ))}
+                </TableContainer>                
     </div>
   );
 }

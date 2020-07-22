@@ -27,14 +27,9 @@ export default function OrderDetails(props) {
             <h3>Order Details</h3>
             <div className={classes.row}>
               <div className={classes.column}>
-                <span>Expedited: <b>NEED</b></span>
-                <span>Number of Sources: {order.numsources}</span>
-              </div>
-              <div className={classes.leftColumn}>
-                <span>Sub Total: ${order.subtotal}</span>
-                <span>Tax: ${order.tax}</span>
-                <span>Shipping: ${order.shipping}</span>
-                <span>Total: ${order.total}</span>
+              <span>Order Submitted On : <strong>{order.orderSubmitDate}</strong></span>
+              <span>Requested Delivery : <strong>{order.orderRequiredDate}</strong></span>
+              <span>Ship Via Code : <strong>{order.shipping.shipViaCode}</strong></span> 
               </div>
             </div>
         </div>
