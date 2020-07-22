@@ -7,10 +7,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  }
 }));
 
 export default function Header() {
@@ -21,7 +18,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit">
-             Sourcing App
+            Sourcing App
           </Typography>
         </Toolbar>
       </AppBar>
