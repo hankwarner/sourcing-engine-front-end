@@ -37,7 +37,6 @@ export default function SourcingTable(props) {
   const order = props.order
   return (
     <div className={classes.column}>
-<<<<<<< HEAD
                 <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableBody>
@@ -57,27 +56,6 @@ export default function SourcingTable(props) {
                 </Table>
 
                 </TableContainer>                
-=======
-      <h3 className={classes.upperCase}>Items</h3>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-            <TableBody>
-            {order.items.map((item) => (
-                <TableRow key={item.masterProdId}>
-                  <TableCell className={classes.tablecell} scope="row">
-                      Product Id:<strong> {item.masterProdId}</strong><br />
-                      Description: <strong>{item.description}</strong><br />
-                      Ship From:  <strong>{item.shipFrom}</strong>
-                  </TableCell>
-                  <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
-                  <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
-                  <TableCell className={classes.tablecell} align="right"><SourceCheckbox /></TableCell>
-                </TableRow>
-            ))}
-            </TableBody>
-        </Table>
-      </TableContainer>                
->>>>>>> 311b2f34732027a19822fcc64e6d3c712ac6a98c
     </div>
   );
 }

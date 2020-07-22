@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'fixed',
   },
-<<<<<<< HEAD
   box:{
     width: 225,
     maxWidth:225,
@@ -32,8 +31,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight:20,
     paddingRight:20
   },
-=======
->>>>>>> 311b2f34732027a19822fcc64e6d3c712ac6a98c
   title: {
     marginLeft: theme.spacing(2),
     flex: 1,
@@ -46,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
   marginForDetailBody: {
     marginTop: "84px"
   },
-<<<<<<< HEAD
   table: {
     borderBottom:0,
     verticalAlign:'top'
@@ -67,8 +63,6 @@ const useStyles = makeStyles((theme) => ({
     background: "transparent"
   }
 
-=======
->>>>>>> 311b2f34732027a19822fcc64e6d3c712ac6a98c
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -90,46 +84,7 @@ export default function SingleOrder(props) {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Button className={classes.triggerStyle} variant="outlined" color="primary" onClick={handleClickOpen}>
-              <Box className={classes.box}>
-                <h2><strong>Order #<br /> {order.atgOrderId}</strong></h2>
-              </Box>
-              <TableContainer >
-                <Table  aria-label="simple table">
-                    <TableBody >
-                        <TableRow >
-                        <TableCell className={classes.table}>
-                          <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Customer Name:</span><br />{order.customerName}<br />
-                          </div>
-                          <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Customer Account ID:</span><br />{order.custAccountId}
-                          </div>
-                          <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Customer ID:</span><br />{order.customerId}
-                          </div>
-                        </TableCell>
-                        <TableCell className={classes.table} align="right">
-                          <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Submitted:</span><br />{order.orderSubmitDate}
-                          </div>
-                          <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Req Delivery:</span><br />{order.orderRequiredDate}
-                          </div>                    
-                        </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-
-                </TableContainer>
-
-          
-      </Button>
-
-=======
       <SingleOrderTrigger order={props.order} handleClickOpen={handleClickOpen} />
->>>>>>> 311b2f34732027a19822fcc64e6d3c712ac6a98c
 
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} position="fixed">
