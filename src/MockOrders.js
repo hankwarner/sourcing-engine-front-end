@@ -1,196 +1,226 @@
 export default [
-    {
-        "ordernum": "123456",
-        "numsources": "12",
-        "status": "open",
-        "claimedby": "",
-        "subtotal": 4568.00,
-        "tax": 100.00,
-        "shipping": 99.00,
-        "total": 4767.00,
-        "addresses": [
-            {
-                "addressType": "billing",
-                "fname": "Michael",
-                "lname": "Owens",
-                "street1": "2305 Vineyard Court",
-                "street2": "",
-                "city": "Villa Rica",
-                "state": "GA",
-                "postalcode": "30180"
-            },
-            {
-                "addressType": "shipping", 
-                "fname": "Michael",
-                "lname": "Owens",
-                "street1": "2305 Vineyard Court",
-                "street2": "",
-                "city": "Villa Rica",
-                "state": "GA",
-                "postalcode": "30180"
-            }
-        ],
-        "sourcing": [
-            {
-                "sourceId": "25478",
-                "name": "Fort Payne",
-                "items": [
-                    {
-                        "itemId": "3249817",
-                        "qty": 4,
-                        "eachprice": 200.00
-                    },
-                    {
-                        "itemId": "23547",
-                        "qty": 4,
-                        "eachprice": 200.00
-                    }
-                ]
-            },
-            {
-                "sourceId": "846567",
-                "name": "Parris",
-                "items": [
-                    {
-                        "itemId": "3524485",
-                        "qty": 4,
-                        "eachprice": 400.00
-                    },
-                    {
-                        "itemId": "21448",
-                        "qty": 4,
-                        "eachprice": 50.00
-                    }
-                ]
-            }
-        ]
+{
+    "atgOrderId": "W639300633", 
+    "custAccountId": "POLLARDWTR", 
+    "customerId": "69986", 
+    "customerName": "CHRIS TALCOTT", 
+    "orderSubmitDate": "2020-07-09 08:16:58", 
+    "orderRequiredDate": "2020-07-09", 
+    "sellWhse": "3326", 
+    "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
+    "shipFrom":"",
+    "claimed":false,
+    "paymentOnAccount": {
+        "payment": {
+            "cardType": "VI",
+            "address1": "1995 Poplar Ridge Road",
+            "address2": "Aurora",
+            "city": "Aurora",
+            "state": "NY",
+            "zip": "13026",
+        }
     },
-    {
-        "ordernum": "78946",
-        "numsources": "1",
-        "status": "claimed",
-        "claimedby": "Michael Owens",
-        "subtotal": 4568.00,
-        "tax": 100.00,
-        "shipping": 99.00,
-        "total": 4767.00,
-        "addresses": [
-            {
-                "addressType": "billing",
-                "fname": "Michael",
-                "lname": "Owens",
-                "street1": "2305 Vineyard Court",
-                "street2": "",
-                "city": "Villa Rica",
-                "state": "GA",
-                "postalcode": "30180"
-            },
-            {
-                "addressType": "shipping",
-                "fname": "Michael",
-                "lname": "Owens",
-                "street1": "2305 Vineyard Court",
-                "street2": "",
-                "city": "Villa Rica",
-                "state": "GA",
-                "postalcode": "30180"
-            }
-        ],
-        "sourcing": [
-            {
-                "sourceId": "25478",
-                "name": "Fort Payne",
-                "items": [
-                    {
-                        "itemId": "3249817",
-                        "qty": 4,
-                        "eachprice": 200.00
-                    },
-                    {
-                        "itemId": "23547",
-                        "qty": 4,
-                        "eachprice": 200.00
-                    }
-                ]
-            }
-        ]
+    "shipping": {
+        "shipViaCode": "OT",
+        "price": "0.0", 
+        "shipTo": {
+            "name": "Chris Talcott", 
+            "address1": "1995 Poplar Ridge Rd",
+            "address2": "Aurora",  
+            "city": "Aurora", 
+            "country": "US", 
+            "state": "NY", 
+            "zip": "130269718", 
+            "shipInstructionsPhoneNumberAreaDialing": "315",
+            "shipInstructionsPhoneNumberDialNumber": "7295356"
+        }
     },
-    {
-        "ordernum": "897435",
-        "numsources": "4",
-        "status": "open",
-        "claimedby": "",
-        "subtotal": 4568.00,
-        "tax": 100.00,
-        "shipping": 99.00,
-        "total": 4767.00,
-        "addresses": [
-            {
-                "addressType": "billing",
-                "fname": "Michael",
-                "lname": "Owens",
-                "street1": "2305 Vineyard Court",
-                "street2": "",
-                "city": "Villa Rica",
-                "state": "GA",
-                "postalcode": "30180"
-            },
-            {
-                "addressType": "shipping",
-                "fname": "Michael",
-                "lname": "Owens",
-                "street1": "2305 Vineyard Court",
-                "street2": "",
-                "city": "Villa Rica",
-                "state": "GA",
-                "postalcode": "30180"
-            }
-        ],
-        "sourcing": [
-            {
-                "soureId": "65547",
-                "name": "WhatyaDoin",
-                "items": [
-                    {
-                        "itemId": "132457",
-                        "qty": 1,
-                        "eachprice": 150.00
-                    }
-                ]
-            },
-            {
-                "sourceId": "6224786",
-                "name": "Atlanta",
-                "items": [
-                    {
-                        "itemId": "6548465",
-                        "qty": 1,
-                        "eachprice": 50.00
-                    }
-                ]
-            },
-            {
-                "sourceId": "58876",
-                "name": "WhatyaDoin",
-                "items": [
-                    {
-                        "itemId": "132457",
-                        "qty": 1,
-                        "eachprice": 150.00
-                    }
-                ]
-            },
-            {
-                "sourceId": "9645673",
-                "name": "Atlanta",
-                "items": [
-                    {
-                        "itemId": "6548465",
-                        "qty": 1,
-                        "eachprice": 50.00
-                    }
-                ]
-            }
-        ]
-    }
+    "items": [
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        },
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        }
+    ],
+    "sourceSystem": "POL"
+},
+{
+    "atgOrderId": "1654adaew", 
+    "custAccountId": "POLLARDWTR", 
+    "customerId": "69986", 
+    "customerName": "CHRIS TALCOTT", 
+    "orderSubmitDate": "2020-07-09 08:16:58", 
+    "orderRequiredDate": "2020-07-09", 
+    "sellWhse": "3326", 
+    "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
+    "shipFrom":"",
+    "claimed":false,
+    "paymentOnAccount": {
+        "payment": {
+            "cardType": "VI",
+            "address1": "1995 Poplar Ridge Road",
+            "address2": "Aurora",
+            "city": "Aurora",
+            "state": "NY",
+            "zip": "13026",
+        }
+    },
+    "shipping": {
+        "shipViaCode": "OT",
+        "price": "0.0", 
+        "shipTo": {
+            "name": "Chris Talcott", 
+            "address1": "1995 Poplar Ridge Rd",
+            "address2": "Aurora",  
+            "city": "Aurora", 
+            "country": "US", 
+            "state": "NY", 
+            "zip": "130269718", 
+            "shipInstructionsPhoneNumberAreaDialing": "315",
+            "shipInstructionsPhoneNumberDialNumber": "7295356"
+        }
+    },
+    "items": [
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        },
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        }
+    ],
+    "sourceSystem": "POL"
+},
+{
+    "atgOrderId": "WERADFAE654", 
+    "custAccountId": "POLLARDWTR", 
+    "customerId": "69986", 
+    "customerName": "CHRIS TALCOTT", 
+    "orderSubmitDate": "2020-07-09 08:16:58", 
+    "orderRequiredDate": "2020-07-09", 
+    "sellWhse": "3326", 
+    "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
+    "shipFrom":"",
+    "claimed":false,
+    "paymentOnAccount": {
+        "payment": {
+            "cardType": "VI",
+            "address1": "1995 Poplar Ridge Road",
+            "address2": "Aurora",
+            "city": "Aurora",
+            "state": "NY",
+            "zip": "13026",
+        }
+    },
+    "shipping": {
+        "shipViaCode": "OT",
+        "price": "0.0", 
+        "shipTo": {
+            "name": "Chris Talcott", 
+            "address1": "1995 Poplar Ridge Rd",
+            "address2": "Aurora",  
+            "city": "Aurora", 
+            "country": "US", 
+            "state": "NY", 
+            "zip": "130269718", 
+            "shipInstructionsPhoneNumberAreaDialing": "315",
+            "shipInstructionsPhoneNumberDialNumber": "7295356"
+        }
+    },
+    "items": [
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        },
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        }
+    ],
+    "sourceSystem": "POL"
+},
+{
+    "atgOrderId": "poiqerqda225", 
+    "custAccountId": "POLLARDWTR", 
+    "customerId": "69986", 
+    "customerName": "CHRIS TALCOTT", 
+    "orderSubmitDate": "2020-07-09 08:16:58", 
+    "orderRequiredDate": "2020-07-09", 
+    "sellWhse": "3326", 
+    "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
+    "shipFrom":"",
+    "claimed":false,
+    "paymentOnAccount": {
+        "payment": {
+            "cardType": "VI",
+            "address1": "1995 Poplar Ridge Road",
+            "address2": "Aurora",
+            "city": "Aurora",
+            "state": "NY",
+            "zip": "13026",
+        }
+    },
+    "shipping": {
+        "shipViaCode": "OT",
+        "price": "0.0", 
+        "shipTo": {
+            "name": "Chris Talcott", 
+            "address1": "1995 Poplar Ridge Rd",
+            "address2": "Aurora",  
+            "city": "Aurora", 
+            "country": "US", 
+            "state": "NY", 
+            "zip": "130269718", 
+            "shipInstructionsPhoneNumberAreaDialing": "315",
+            "shipInstructionsPhoneNumberDialNumber": "7295356"
+        }
+    },
+    "items": [
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        },
+        {
+            "shipFrom":"",
+            "unitPriceCode": "EA",
+            "description": "ci8318000259",
+            "quantity": "1", 
+            "sourcingMessage": "THIS LINE IS SOURCED, YO", 
+            "masterProdId": "5123328" 
+        }
+    ],
+    "sourceSystem": "POL"
+}
 ]

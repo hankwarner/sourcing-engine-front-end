@@ -7,11 +7,6 @@ const useStyles = makeStyles(() => ({
       flexDirection: 'column',
       alignItems: 'flex-start'
     },
-    leftColumn: {
-        display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-end'
-    },
     row: {
       display: 'flex',
       justifyContent: 'space-between'
