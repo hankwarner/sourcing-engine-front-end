@@ -32,27 +32,55 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function SourcingTable(props) {
   const classes = useStyles();
-  const order = props.order
+
+  const checkForComplete = () => {
+    if(props.selectedItems.length === props.order.items.length){
+      props.setCompleteReady(true)
+    } else {
+      props.setCompleteReady(false)}
+    } 
+
+  const sourcingTableBody = props.order.items.map((item, key) => {
+    const localIsChecked = props.selectedItems.includes(item.masterProdId);
+	  const onChange = () => {
+			if (props.selectedItems.includes(item.masterProdId)) {
+				const copiedItems = [...props.selectedItems];
+				const index = copiedItems.indexOf(item.masterProdId);
+				copiedItems.splice(index, 1);
+        props.setSelectedItems(copiedItems);
+        checkForComplete()
+			} else {
+        props.setSelectedItems(props.selectedItems.concat(item.masterProdId));
+        checkForComplete()
+			}
+    };
+
+    return (  
+      <TableRow key={key}>
+        <TableCell className={classes.tablecell} scope="row">
+            Product Id:<strong> {item.masterProdId}</strong><br />
+            Description: <strong>{item.description}</strong><br />
+            Ship From:  <strong>{item.shipFrom}</strong>
+        </TableCell>
+        <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
+        <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
+        <TableCell className={classes.tablecell} align="right"><SourceCheckbox onChange={onChange} checked={localIsChecked} /></TableCell>
+      </TableRow>
+    )
+  })
+  
+  
+
   return (
     <div className={classes.column}>
       <h3 className={classes.upperCase}>Items</h3>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
             <TableBody>
-            {order.items.map((item) => (
-                <TableRow key={item.masterProdId}>
-                  <TableCell className={classes.tablecell} scope="row">
-                      Product Id:<strong> {item.masterProdId}</strong><br />
-                      Description: <strong>{item.description}</strong><br />
-                      Ship From:  <strong>{item.shipFrom}</strong>
-                  </TableCell>
-                  <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
-                  <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
-                  <TableCell className={classes.tablecell} align="right"><SourceCheckbox /></TableCell>
-                </TableRow>
-            ))}
+              {sourcingTableBody}
             </TableBody>
         </Table>
       </TableContainer>                

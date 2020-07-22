@@ -42,7 +42,7 @@ export default [
             "description": "ci8318000259",
             "quantity": "1", 
             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
-            "masterProdId": "5123328" 
+            "masterProdId": "5123428" 
         },
         {
             "shipFrom":"",
@@ -50,7 +50,7 @@ export default [
             "description": "ci8318000259",
             "quantity": "1", 
             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
-            "masterProdId": "5123328" 
+            "masterProdId": "5173328" 
         }
     ],
     "sourceSystem": "POL"
@@ -98,7 +98,7 @@ export default [
             "description": "ci8318000259",
             "quantity": "1", 
             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
-            "masterProdId": "5123328" 
+            "masterProdId": "5123828" 
         },
         {
             "shipFrom":"",
@@ -154,7 +154,7 @@ export default [
             "description": "ci8318000259",
             "quantity": "1", 
             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
-            "masterProdId": "5123328" 
+            "masterProdId": "5123428" 
         },
         {
             "shipFrom":"",
@@ -162,7 +162,7 @@ export default [
             "description": "ci8318000259",
             "quantity": "1", 
             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
-            "masterProdId": "5123328" 
+            "masterProdId": "5123928" 
         }
     ],
     "sourceSystem": "POL"
@@ -210,7 +210,7 @@ export default [
             "description": "ci8318000259",
             "quantity": "1", 
             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
-            "masterProdId": "5123328" 
+            "masterProdId": "5121328" 
         },
         {
             "shipFrom":"",
@@ -218,7 +218,7 @@ export default [
             "description": "ci8318000259",
             "quantity": "1", 
             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
-            "masterProdId": "5123328" 
+            "masterProdId": "5123628" 
         }
     ],
     "sourceSystem": "POL"
