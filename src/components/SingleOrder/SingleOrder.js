@@ -43,17 +43,6 @@ const useStyles = makeStyles((theme) => ({
   marginForDetailBody: {
     marginTop: "84px"
   },
-  table: {
-    borderBottom:0,
-    verticalAlign:'top'
-  },
-  tableDataCont: {
-    marginBottom:10
-  },
-  tableLabel: {
-    textTransform:'uppercase',
-    fontWeight:700
-  },
   textField: {
     padding: 0,
     border: 0,
