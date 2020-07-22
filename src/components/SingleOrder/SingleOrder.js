@@ -19,10 +19,21 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'fixed',
+  },
+  box:{
+    width: 225,
+    maxWidth:225,
+    overflow:'hidden',
+    height: 200,
+    color:"#00446b",
+    borderRight:"1px solid #00446b",
+    marginRight:20,
+    paddingRight:20
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -66,6 +77,16 @@ const useStyles = makeStyles((theme) => ({
   marginForDetailBody: {
     marginTop: "84px"
   },
+  table: {
+    borderBottom:0
+  },
+  tableDataCont: {
+    marginBottom:10
+  },
+  tableLabel: {
+    textTransform:'uppercase',
+    fontWeight:700
+  }
 
 }));
 
@@ -78,6 +99,7 @@ export default function SingleOrder(props) {
   const [open, setOpen] = React.useState(false);
   const order = props.order
   const shipping = props.order.shipping;
+  const shipto = shipping.shipTo;
   const payment = props.order.paymentOnAccount.payment;
 
   const handleClickOpen = () => {
@@ -91,21 +113,34 @@ export default function SingleOrder(props) {
   return (
     <div>
       <Button className={classes.triggerStyle} variant="outlined" color="primary" onClick={handleClickOpen}>
-
-              <h2>Order #<br /> {order.atgOrderId}</h2>
-              <TableContainer>
-                <Table className={classes.table} aria-label="simple table">
-                    <TableBody>
-                        <TableRow>
-                        <TableCell>
-                            Customer Name:<br /><strong>{order.customerName}</strong><br />
-                            Customer Account ID:<br /><strong>{order.custAccountId}</strong><br />
-                            Customer ID:<br /><b>{order.customerId}</b>  
-                        </TableCell>                        
-                        <TableCell align="right">
-                            Submitted:<br /><strong>{order.orderSubmitDate}</strong><br />
-                            Req Delivery:<br /><strong>{order.orderRequiredDate}</strong><br />
-                            Ship From:<br /><strong>{order.shipFrom}</strong>                        
+              <Box className={classes.box}>
+                <h2>Order #<br /> {order.atgOrderId}</h2>
+              </Box>
+              <TableContainer >
+                <Table  aria-label="simple table">
+                    <TableBody >
+                        <TableRow >
+                        <TableCell className={classes.table}>
+                          <div className={classes.tableDataCont}>
+                            <span className={classes.tableLabel}>Customer Name:</span><br />{order.customerName}<br />
+                          </div>
+                          <div className={classes.tableDataCont}>
+                            <span className={classes.tableLabel}>Customer Account ID:</span><br />{order.custAccountId}
+                          </div>
+                          <div className={classes.tableDataCont}>
+                            <span className={classes.tableLabel}>Customer ID:</span><br />{order.customerId}
+                          </div>
+                        </TableCell>
+                        <TableCell className={classes.table} align="right">
+                          <div className={classes.tableDataCont}>
+                            <span className={classes.tableLabel}>Submitted:</span><br />{order.orderSubmitDate}
+                          </div>
+                          <div className={classes.tableDataCont}>
+                            <span className={classes.tableLabel}>Req Delivery:</span><br />{order.orderRequiredDate}
+                          </div>
+                          <div className={classes.tableDataCont}>
+                            <span className={classes.tableLabel}>Ship From:</span><br />{order.shipFrom}
+                          </div>                     
                         </TableCell>
                         </TableRow>
                     </TableBody>
@@ -139,27 +174,28 @@ export default function SingleOrder(props) {
           <h3 className={classes.upperCase}>Order Addresses</h3>
           
           <div className={classes.row}>
-          {/* <Grid container spacing={8}>              
+          <Grid container spacing={8}>              
               <Grid item>
               <h4 className={classes.upperCase}>Shipping Address Information</h4>
               <div className={classes.column}>
-                <span> {addresses.lname}</span>
-                <span>{addresses.street1}</span>
-                <span>{addresses.street2}</span>
-                <span>{addresses.city}, {addresses.state} {addresses.postalcode}</span>
+                <span> {shipto.name}</span>
+                <span>{shipto.address1}</span>
+                <span>{shipto.address2}</span>
+                <span>{shipto.city}, {shipto.state} {shipto.zip}</span>
+                <span>({shipto.shipInstructionsPhoneNumberAreaDialing}) {shipto.shipInstructionsPhoneNumberDialNumber}</span>
               </div>
               </Grid>
               <Grid item>
               <h4 className={classes.upperCase}>Billing Address Information</h4>
               <div className={classes.column}>
-                <span>{addresses.fname} {addresses.lname}</span>
-                <span>{addresses.street1}</span>
-                <span>{addresses.street2}</span>
-                <span>{addresses.city}, {addresses.state} {addresses.postalcode}</span>
+                <span>Card Type: {payment.cardType}</span>
+                <span>{payment.address1}</span>
+                <span>{payment.address2}</span>
+                <span>{payment.city}, {payment.state} {payment.zip}</span>
               </div>
               </Grid>
         
-            </Grid> */}
+            </Grid>
           </div>
 
 

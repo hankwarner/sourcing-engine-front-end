@@ -2,7 +2,7 @@ import { createMuiTheme }  from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
   palette: {
-    primary: { 500: '#222223' }    
+    primary: { 500: '#00446b' }    
   },
   shape: {
     borderRadius:0
