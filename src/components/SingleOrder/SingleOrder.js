@@ -88,7 +88,7 @@ export default function SingleOrder(props) {
         </AppBar>
         <Container fixed className={classes.marginForDetailBody}>
         <div className={classes.column}>
-          <span>Customer # <b>{order.customerId}</b></span>
+         
           <OrderDetails order={order} />
           <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
           <SourcingTable order={order} />

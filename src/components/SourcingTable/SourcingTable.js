@@ -36,6 +36,8 @@ export default function SourcingTable(props) {
   const classes = useStyles();
   const order = props.order
   return (
+    <>
+    <h4 className={classes.upperCase}>Items</h4>
     <div className={classes.column}>
                 <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
@@ -57,5 +59,6 @@ export default function SourcingTable(props) {
 
                 </TableContainer>                
     </div>
+    </>
   );
 }

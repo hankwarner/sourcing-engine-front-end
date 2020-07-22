@@ -5,6 +5,9 @@ import Grid from '@material-ui/core/Grid';
 
 
 const useStyles = makeStyles(() => ({
+    addressContainer : {
+        marginBottom:20
+    },
     upperCase : {
         textTransform:'uppercase'
     },
@@ -24,9 +27,7 @@ export default function OrderAddresses(props) {
     const payment = props.payment
 
     return (
-        <div>
-            <h3 className={classes.upperCase}>Order Addresses</h3>
-
+        <div className={classes.addressContainer}>
             <div className={classes.row}>
                 <Grid container spacing={8}>              
                 <Grid item>
@@ -41,11 +42,11 @@ export default function OrderAddresses(props) {
                 </Grid>
                 <Grid item>
                 <h4 className={classes.upperCase}>Billing Address Information</h4>
-                <div className={classes.column}>
-                    <span>Card Type: {payment.cardType}</span>
+                <div className={classes.column}>                    
                     <span>{payment.address1}</span>
                     <span>{payment.address2}</span>
                     <span>{payment.city}, {payment.state} {payment.zip}</span>
+                    <span>Card Type: {payment.cardType}</span>
                 </div>
                 </Grid>
                 </Grid>

@@ -22,9 +22,10 @@ export default function OrderDetails(props) {
             <h3>Order Details</h3>
             <div className={classes.row}>
               <div className={classes.column}>
-              <span>Order Submitted On : <strong>{order.orderSubmitDate}</strong></span>
-              <span>Requested Delivery : <strong>{order.orderRequiredDate}</strong></span>
-              <span>Ship Via Code : <strong>{order.shipping.shipViaCode}</strong></span> 
+              <span><strong>Customer #</strong> {order.customerId}</span>
+              <span><strong>Order Submitted On:</strong> {order.orderSubmitDate}</span>
+              <span><strong>Requested Delivery:</strong>{order.orderRequiredDate}</span>
+              <span><strong>Ship Via Code:</strong>{order.shipping.shipViaCode}</span> 
               </div>
             </div>
         </div>
