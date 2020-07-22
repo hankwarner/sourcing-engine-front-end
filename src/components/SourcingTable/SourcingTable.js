@@ -40,12 +40,12 @@ export default function SourcingTable(props) {
                     {order.items.map((item) => (
                         <TableRow key={item.masterProdId}>
                         <TableCell className={classes.tablecell} scope="row">
-                            Product Id:<strong> {item.masterProdId}</strong><br />
-                            Description: <strong>{item.description}</strong><br />
-                            Ship From:  <strong>{item.shipFrom}</strong>
+                        <strong>MPID:</strong>{item.masterProdId}<br />
+                        <strong>Description:</strong>{item.description}<br />
+                        <strong>Ship From:</strong> {item.shipFrom}
                         </TableCell>
-                        <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
-                        <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
+                        <TableCell className={classes.tablecell} align="left"><strong>Qty:</strong> {item.quantity}</TableCell>
+                        <TableCell className={classes.tablecell} align="left"><strong>Sourcing Message:</strong><br />{item.sourcingMessage}</TableCell>
                         <TableCell className={classes.tablecell} align="right"><SourceCheckbox /></TableCell>
                         </TableRow>
                     ))}

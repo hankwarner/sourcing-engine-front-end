@@ -12,7 +12,7 @@ export default function SourceCheckbox() {
         <FormControlLabel
           value="completed"
           control={<Checkbox color="primary" />}
-          label="Completed"
+          label="Item Completed"
           labelPlacement="start"
         />
       </FormGroup>

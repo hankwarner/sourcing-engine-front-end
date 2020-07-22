@@ -8,16 +8,15 @@ export default [
     "orderRequiredDate": "2020-07-09", 
     "sellWhse": "3326", 
     "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
-    "shipFrom":"",
     "claimed":false,
     "paymentOnAccount": {
         "payment": {
             "cardType": "VI",
-            "address1": "1995 Poplar Ridge Road",
-            "address2": "Aurora",
-            "city": "Aurora",
+            "address1": "2305 Fake Road",
+            "address2": "ste 343",
+            "city": "Fakerston",
             "state": "NY",
-            "zip": "13026",
+            "zip": "68847",
         }
     },
     "shipping": {
@@ -25,12 +24,12 @@ export default [
         "price": "0.0", 
         "shipTo": {
             "name": "Chris Talcott", 
-            "address1": "1995 Poplar Ridge Rd",
-            "address2": "Aurora",  
-            "city": "Aurora", 
+            "address1": "2305 Fake Road",
+            "address2": "ste 343",  
+            "city": "Fakerston", 
             "country": "US", 
             "state": "NY", 
-            "zip": "130269718", 
+            "zip": "68847", 
             "shipInstructionsPhoneNumberAreaDialing": "315",
             "shipInstructionsPhoneNumberDialNumber": "7295356"
         }
@@ -64,7 +63,6 @@ export default [
     "orderRequiredDate": "2020-07-09", 
     "sellWhse": "3326", 
     "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
-    "shipFrom":"",
     "claimed":false,
     "paymentOnAccount": {
         "payment": {
@@ -120,7 +118,6 @@ export default [
     "orderRequiredDate": "2020-07-09", 
     "sellWhse": "3326", 
     "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
-    "shipFrom":"",
     "claimed":false,
     "paymentOnAccount": {
         "payment": {
@@ -176,7 +173,6 @@ export default [
     "orderRequiredDate": "2020-07-09", 
     "sellWhse": "3326", 
     "sourcingMessage": "YOU JUST GOT SOURCED, SON", 
-    "shipFrom":"",
     "claimed":false,
     "paymentOnAccount": {
         "payment": {

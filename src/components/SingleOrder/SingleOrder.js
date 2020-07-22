@@ -21,6 +21,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 
+import TextField from '@material-ui/core/TextField';
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'fixed',
@@ -29,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: 225,
     maxWidth:225,
     overflow:'hidden',
-    height: 200,
+    height: 170,
     color:"#00446b",
     borderRight:"1px solid #00446b",
     marginRight:20,
@@ -78,7 +80,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "84px"
   },
   table: {
-    borderBottom:0
+    borderBottom:0,
+    verticalAlign:'top'
   },
   tableDataCont: {
     marginBottom:10
@@ -86,6 +89,14 @@ const useStyles = makeStyles((theme) => ({
   tableLabel: {
     textTransform:'uppercase',
     fontWeight:700
+  },
+  textField: {
+    padding: 0,
+    border: 0,
+    color: "#fff",
+    fontSize: "40px",
+    fontWeight: 700,
+    background: "transparent"
   }
 
 }));
@@ -114,7 +125,7 @@ export default function SingleOrder(props) {
     <div>
       <Button className={classes.triggerStyle} variant="outlined" color="primary" onClick={handleClickOpen}>
               <Box className={classes.box}>
-                <h2>Order #<br /> {order.atgOrderId}</h2>
+                <h2><strong>Order #<br /> {order.atgOrderId}</strong></h2>
               </Box>
               <TableContainer >
                 <Table  aria-label="simple table">
@@ -137,10 +148,7 @@ export default function SingleOrder(props) {
                           </div>
                           <div className={classes.tableDataCont}>
                             <span className={classes.tableLabel}>Req Delivery:</span><br />{order.orderRequiredDate}
-                          </div>
-                          <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Ship From:</span><br />{order.shipFrom}
-                          </div>                     
+                          </div>                    
                         </TableCell>
                         </TableRow>
                     </TableBody>
@@ -155,8 +163,8 @@ export default function SingleOrder(props) {
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar>           
-            <Typography variant="h6" className={classes.title}>
-            Order # {order.atgOrderId}
+            <Typography className={classes.title}>
+              <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" />              
             </Typography>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
               X
