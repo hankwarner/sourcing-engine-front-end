@@ -17,9 +17,11 @@ const useStyles = makeStyles(() => ({
 export default function OrderList() {
     const classes = useStyles();
 
+    const openOrders = MockOrders.filter(order => order.claimed === false)
+
     return (
         <div className={classes.orderList}>
-            {MockOrders.map(order => (
+            {openOrders.map(order => (
                 <div>
                     <SingleOrder order={order} />
                 </div>
