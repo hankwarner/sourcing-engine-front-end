@@ -15,9 +15,21 @@ import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
 
+import TextField from '@material-ui/core/TextField';
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'fixed',
+  },
+  box:{
+    width: 225,
+    maxWidth:225,
+    overflow:'hidden',
+    height: 170,
+    color:"#00446b",
+    borderRight:"1px solid #00446b",
+    marginRight:20,
+    paddingRight:20
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -31,6 +43,15 @@ const useStyles = makeStyles((theme) => ({
   marginForDetailBody: {
     marginTop: "84px"
   },
+  textField: {
+    padding: 0,
+    border: 0,
+    color: "#fff",
+    fontSize: "40px",
+    fontWeight: 700,
+    background: "transparent"
+  }
+
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -59,8 +80,8 @@ export default function SingleOrder(props) {
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar>           
-            <Typography variant="h6" className={classes.title}>
-            Order # {order.atgOrderId}
+            <Typography className={classes.title}>
+              <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" />              
             </Typography>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
               X
@@ -69,7 +90,7 @@ export default function SingleOrder(props) {
         </AppBar>
         <Container fixed className={classes.marginForDetailBody}>
         <div className={classes.column}>
-          <span>Customer # <b>{order.customerId}</b></span>
+         
           <OrderDetails order={order} />
           <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
           <SourcingTable 

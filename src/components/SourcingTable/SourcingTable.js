@@ -60,9 +60,9 @@ export default function SourcingTable(props) {
     return (  
       <TableRow key={key}>
         <TableCell className={classes.tablecell} scope="row">
-            Product Id:<strong> {item.masterProdId}</strong><br />
-            Description: <strong>{item.description}</strong><br />
-            Ship From:  <strong>{item.shipFrom}</strong>
+          <strong>MPID:</strong> {item.masterProdId}<br />
+          <strong>Description:</strong> {item.description}<br />
+          <strong>Ship From: </strong> {item.shipFrom}
         </TableCell>
         <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
         <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
@@ -74,6 +74,8 @@ export default function SourcingTable(props) {
   
 
   return (
+    <>
+    <h4 className={classes.upperCase}>Items</h4>
     <div className={classes.column}>
       <h3 className={classes.upperCase}>Items</h3>
       <TableContainer component={Paper}>
@@ -84,5 +86,6 @@ export default function SourcingTable(props) {
         </Table>
       </TableContainer>                
     </div>
+    </>
   );
 }

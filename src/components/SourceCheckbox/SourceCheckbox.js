@@ -11,7 +11,7 @@ export default function SourceCheckbox(props) {
         <FormControlLabel
           value="completed"
           control={<Checkbox color="primary" onChange={props.onChange} checked={props.checked} />}
-          label="Completed"
+          label="Item Completed"
           labelPlacement="start"
         />
       </FormGroup>
