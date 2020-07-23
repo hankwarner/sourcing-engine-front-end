@@ -44,6 +44,7 @@ export default function SourcingTable(props) {
     } 
 
   const sourcingTableBody = props.order.items.map((item, key) => {
+    checkForComplete()
     const localIsChecked = props.selectedItems.includes(item.masterProdId);
 	  const onChange = () => {
 			if (props.selectedItems.includes(item.masterProdId)) {
@@ -51,10 +52,8 @@ export default function SourcingTable(props) {
 				const index = copiedItems.indexOf(item.masterProdId);
 				copiedItems.splice(index, 1);
         props.setSelectedItems(copiedItems);
-        checkForComplete()
 			} else {
         props.setSelectedItems(props.selectedItems.concat(item.masterProdId));
-        checkForComplete()
 			}
     };
 
