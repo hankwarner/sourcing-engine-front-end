@@ -32,32 +32,59 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function SourcingTable(props) {
   const classes = useStyles();
-  const order = props.order
+
+  const checkForComplete = () => {
+    if(props.selectedItems.length === props.order.items.length){
+      props.setCompleteReady(true)
+    } else {
+      props.setCompleteReady(false)}
+    } 
+
+  const sourcingTableBody = props.order.items.map((item, key) => {
+    checkForComplete()
+    const localIsChecked = props.selectedItems.includes(item.masterProdId);
+	  const onChange = () => {
+			if (props.selectedItems.includes(item.masterProdId)) {
+				const copiedItems = [...props.selectedItems];
+				const index = copiedItems.indexOf(item.masterProdId);
+				copiedItems.splice(index, 1);
+        props.setSelectedItems(copiedItems);
+			} else {
+        props.setSelectedItems(props.selectedItems.concat(item.masterProdId));
+			}
+    };
+
+    return (  
+      <TableRow key={key}>
+        <TableCell className={classes.tablecell} scope="row">
+          <strong>MPID:</strong> {item.masterProdId}<br />
+          <strong>Description:</strong> {item.description}<br />
+          <strong>Ship From: </strong> {item.shipFrom}
+        </TableCell>
+        <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
+        <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
+        <TableCell className={classes.tablecell} align="right"><SourceCheckbox onChange={onChange} checked={localIsChecked} /></TableCell>
+      </TableRow>
+    )
+  })
+  
+  
+
   return (
     <>
     <h4 className={classes.upperCase}>Items</h4>
     <div className={classes.column}>
-                <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="simple table">
-                    <TableBody>
-                    {order.items.map((item) => (
-                        <TableRow key={item.masterProdId}>
-                        <TableCell className={classes.tablecell} scope="row">
-                        <strong>MPID:</strong>{item.masterProdId}<br />
-                        <strong>Description:</strong>{item.description}<br />
-                        <strong>Ship From:</strong> {item.shipFrom}
-                        </TableCell>
-                        <TableCell className={classes.tablecell} align="left"><strong>Qty:</strong> {item.quantity}</TableCell>
-                        <TableCell className={classes.tablecell} align="left"><strong>Sourcing Message:</strong><br />{item.sourcingMessage}</TableCell>
-                        <TableCell className={classes.tablecell} align="right"><SourceCheckbox /></TableCell>
-                        </TableRow>
-                    ))}
-                    </TableBody>
-                </Table>
-
-                </TableContainer>                
+      <h3 className={classes.upperCase}>Items</h3>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+            <TableBody>
+              {sourcingTableBody}
+            </TableBody>
+        </Table>
+      </TableContainer>                
     </div>
     </>
   );
