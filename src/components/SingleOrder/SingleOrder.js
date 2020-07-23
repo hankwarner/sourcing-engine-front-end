@@ -61,6 +61,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function SingleOrder(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [completeReady, setCompleteReady] = React.useState(false);
+  const [selectedItems, setSelectedItems] = React.useState([])
   const order = props.order
 
   const handleClickOpen = () => {
@@ -91,8 +93,12 @@ export default function SingleOrder(props) {
          
           <OrderDetails order={order} />
           <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
-          <SourcingTable order={order} />
-          <CompleteOrderButton />
+          <SourcingTable 
+            order={order}
+            selectedItems={selectedItems}
+            setSelectedItems={setSelectedItems}
+            setCompleteReady={setCompleteReady} />
+          <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} />
         </div>
         </Container>
       </Dialog>

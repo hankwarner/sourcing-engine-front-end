@@ -11,12 +11,19 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function CompleteOrderButton() {
+
+export default function CompleteOrderButton(props) {
   const classes = useStyles();
+  
+  const handleClick = () => props.completeReady ? props.handleClose() : undefined
 
   return (
     <div className={classes.button}>
-      <Button variant="contained" color="primary">
+      <Button 
+        variant="contained"
+        color={props.completeReady ? "primary" : "secondary"}
+        onClick={handleClick}
+      >
         Complete Order
       </Button>
     </div>
