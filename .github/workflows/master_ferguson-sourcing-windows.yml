@@ -34,3 +34,4 @@ jobs:
         app-name: 'ferguson-sourcing-windows'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_a97930787d304a509c2c10a182b42333 }}
+        package: 'client/build/'
