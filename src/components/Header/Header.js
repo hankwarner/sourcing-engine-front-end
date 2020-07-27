@@ -29,7 +29,7 @@ export default function Header() {
       <AppBar className={classes.navbar} position="static">
         <Toolbar variant="dense">
           <Typography variant="p" color="inherit">
-          <img className={classes.logoImage} src={FergLogo} alt="Ferguson Logo" /> Sourcing App
+          <img className={classes.logoImage} src={FergLogo} alt="Ferguson Logo" /> Sourcing App of the Future
           </Typography>
         </Toolbar>
       </AppBar>
