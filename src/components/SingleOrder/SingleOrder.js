@@ -15,8 +15,6 @@ import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
 
-import TextField from '@material-ui/core/TextField';
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'fixed',
