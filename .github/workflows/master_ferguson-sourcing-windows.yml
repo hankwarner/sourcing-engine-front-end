@@ -20,11 +20,13 @@ jobs:
       with:
         node-version: '12.13.0'
 
-    - name: npm install, build, and test
+    - name: npminstall
+      run: 
+        npm install
+
+    - name: npm build
       run: |
         npm install
-        npm run build --if-present
-        npm run test --if-present
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v1
@@ -32,4 +34,3 @@ jobs:
         app-name: 'ferguson-sourcing-windows'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_a97930787d304a509c2c10a182b42333 }}
-        package: .
