@@ -26,7 +26,7 @@ jobs:
 
     - name: npm build
       run: |
-        npm build
+        npm run-script build
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v1
