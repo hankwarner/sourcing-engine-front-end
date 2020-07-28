@@ -26,10 +26,15 @@ const useStyles = makeStyles({
       justifyContent: 'space-between',
       alignItems: 'flex-start',
       width: '100%',
+      fontSize: '2em',
   },
   upperCase : {
     textTransform:'uppercase'
   },
+  sourceContainer : {
+    marginBottom: '15px',
+    paddingBottom: '15px',
+  }
 });
 
 
@@ -59,12 +64,14 @@ export default function SourcingTable(props) {
   }; 
 
   return (
-  <div>
+  <div className={classes.sourceContainer}>
     <div className={classes.row}>
-      <span>Source From ID: {source.shipFrom}</span>
+      <span className={classes.upperCase}><strong>Source From ID:</strong> {source.shipFrom}</span>
       <SourceCheckbox onChange={onChange} checked={localIsChecked} />
     </div>
-
+    <TableContainer component={Paper}>
+    <Table className={classes.table} aria-label="simple table">
+            <TableBody>
     {source.items.map((item, key) => {
       checkForComplete()
 
@@ -81,6 +88,10 @@ export default function SourcingTable(props) {
       )
     })}
 
+</TableBody>
+        </Table>
+      </TableContainer>
+
   </div>
   )})
   
@@ -88,16 +99,12 @@ export default function SourcingTable(props) {
 
   return (
     <>
-    <h4 className={classes.upperCase}>Items</h4>
     <div className={classes.column}>
       <h3 className={classes.upperCase}>Items</h3>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-            <TableBody>
+     
+        
               {sourcingTableBody}
-            </TableBody>
-        </Table>
-      </TableContainer>                
+                            
     </div>
     </>
   );
