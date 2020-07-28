@@ -37,13 +37,15 @@ export default function SourcingTable(props) {
   const classes = useStyles();
 
   const checkForComplete = () => {
-    if(props.selectedItems.length === props.order.items.length){
+    if(props.selectedItems.length === props.order.sourcing.length){
       props.setCompleteReady(true)
     } else {
       props.setCompleteReady(false)}
     } 
 
-  const sourcingTableBody = props.order.items.map((item, key) => {
+  const sourcingTableBody = props.order.sourcing.map(source => {
+  return(
+  source.items.map((item, key) => {
     checkForComplete()
     const localIsChecked = props.selectedItems.includes(item.masterProdId);
 	  const onChange = () => {
@@ -62,7 +64,7 @@ export default function SourcingTable(props) {
         <TableCell className={classes.tablecell} scope="row">
           <strong>MPID:</strong> {item.masterProdId}<br />
           <strong>Description:</strong> {item.description}<br />
-          <strong>Ship From: </strong> {item.shipFrom}
+          <strong>Ship From: </strong> {source.shipFrom}
         </TableCell>
         <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
         <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
@@ -70,6 +72,7 @@ export default function SourcingTable(props) {
       </TableRow>
     )
   })
+  )})
   
   
 

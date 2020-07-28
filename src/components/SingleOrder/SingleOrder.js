@@ -89,10 +89,10 @@ export default function SingleOrder(props) {
         <Container fixed className={classes.marginForDetailBody}>
         <div className={classes.column}>
          
-          <OrderDetails order={order} />
+          <OrderDetails order={props.order} />
           <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
           <SourcingTable 
-            order={order}
+            order={props.order}
             selectedItems={selectedItems}
             setSelectedItems={setSelectedItems}
             setCompleteReady={setCompleteReady} />
