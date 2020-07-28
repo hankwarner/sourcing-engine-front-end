@@ -25,7 +25,7 @@ const useStyles = makeStyles({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      width: '100%'
+      width: '100%',
   },
   upperCase : {
     textTransform:'uppercase'
@@ -44,34 +44,44 @@ export default function SourcingTable(props) {
     } 
 
   const sourcingTableBody = props.order.sourcing.map(source => {
-  return(
-  source.items.map((item, key) => {
-    checkForComplete()
-    const localIsChecked = props.selectedItems.includes(item.masterProdId);
-	  const onChange = () => {
-			if (props.selectedItems.includes(item.masterProdId)) {
-				const copiedItems = [...props.selectedItems];
-				const index = copiedItems.indexOf(item.masterProdId);
-				copiedItems.splice(index, 1);
-        props.setSelectedItems(copiedItems);
-			} else {
-        props.setSelectedItems(props.selectedItems.concat(item.masterProdId));
-			}
-    };
+  
+  const localIsChecked = props.selectedItems.includes(source.shipFrom);
+  
+  const onChange = () => {
+    if (props.selectedItems.includes(source.shipFrom)) {
+      const copiedItems = [...props.selectedItems];
+      const index = copiedItems.indexOf(source.shipFrom);
+      copiedItems.splice(index, 1);
+      props.setSelectedItems(copiedItems);
+    } else {
+      props.setSelectedItems(props.selectedItems.concat(source.shipFrom));
+    }
+  }; 
 
-    return (  
-      <TableRow key={key}>
-        <TableCell className={classes.tablecell} scope="row">
-          <strong>MPID:</strong> {item.masterProdId}<br />
-          <strong>Description:</strong> {item.description}<br />
-          <strong>Ship From: </strong> {source.shipFrom}
-        </TableCell>
-        <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
-        <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
-        <TableCell className={classes.tablecell} align="right"><SourceCheckbox onChange={onChange} checked={localIsChecked} /></TableCell>
-      </TableRow>
-    )
-  })
+  return (
+  <div>
+    <div className={classes.row}>
+      <span>Source From ID: {source.shipFrom}</span>
+      <SourceCheckbox onChange={onChange} checked={localIsChecked} />
+    </div>
+
+    {source.items.map((item, key) => {
+      checkForComplete()
+
+      return (  
+        <TableRow key={key}>
+          <TableCell className={classes.tablecell} scope="row">
+            <strong>MPID:</strong> {item.masterProdId}<br />
+            <strong>Description:</strong> {item.description}<br />
+            <strong>Ship From: </strong> {source.shipFrom}
+          </TableCell>
+          <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
+          <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
+        </TableRow>
+      )
+    })}
+
+  </div>
   )})
   
   
