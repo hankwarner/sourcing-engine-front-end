@@ -60,6 +60,7 @@ export default function SingleOrder(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [completeReady, setCompleteReady] = React.useState(false);
+  const [showError, setShowError] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState([])
   const order = props.order
 
@@ -95,8 +96,9 @@ export default function SingleOrder(props) {
             order={props.order}
             selectedItems={selectedItems}
             setSelectedItems={setSelectedItems}
-            setCompleteReady={setCompleteReady} />
-          <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} />
+            setCompleteReady={setCompleteReady} 
+            setShowError={setShowError} />
+          <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} />
         </div>
         </Container>
       </Dialog>

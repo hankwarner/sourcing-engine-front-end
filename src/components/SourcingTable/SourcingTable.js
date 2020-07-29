@@ -44,6 +44,7 @@ export default function SourcingTable(props) {
   const checkForComplete = () => {
     if(props.selectedItems.length === props.order.sourcing.length){
       props.setCompleteReady(true)
+      props.setShowError(false)
     } else {
       props.setCompleteReady(false)}
     } 
