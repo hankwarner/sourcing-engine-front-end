@@ -26,7 +26,7 @@ const useStyles = makeStyles({
       justifyContent: 'space-between',
       alignItems: 'flex-start',
       width: '100%',
-      fontSize: '2em',
+      fontSize: '1.5em',
   },
   upperCase : {
     textTransform:'uppercase'
@@ -63,6 +63,7 @@ export default function SourcingTable(props) {
     }
   }; 
 
+ 
   return (
   <div className={classes.sourceContainer}>
     <div className={classes.row}>
@@ -100,7 +101,7 @@ export default function SourcingTable(props) {
   return (
     <>
     <div className={classes.column}>
-      <h3 className={classes.upperCase}>Items</h3>
+      <h3 className={classes.upperCase}>Sourcing</h3>
      
         
               {sourcingTableBody}

@@ -9,7 +9,8 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 30
+        paddingTop: 30,
+        marginBottom:40
     }
   }));
 

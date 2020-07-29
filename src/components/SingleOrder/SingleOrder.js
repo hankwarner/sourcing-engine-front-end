@@ -15,6 +15,7 @@ import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
 
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'fixed',
@@ -48,8 +49,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "40px",
     fontWeight: 700,
     background: "transparent"
+  },
+  orderDialog: {
+    marginBottom:40
   }
-
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -62,20 +65,31 @@ export default function SingleOrder(props) {
   const [completeReady, setCompleteReady] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState([])
   const order = props.order
-
+  const orderNumber = order.atgOrderId;
+  
   const handleClickOpen = () => {
     setOpen(true);
+    const title = "Order # " + orderNumber;
+    const url = orderNumber;
+    window.history.pushState('',title,url);
   };
 
+  window.addEventListener('popstate', function(e) {
+    e.preventDefault();
+      handleClose();
+  });
+  
   const handleClose = () => {
     setOpen(false);
+    window.history.pushState('','List','/');
   };
+  
 
   return (
-    <div>
+    <div >
       <SingleOrderTrigger order={props.order} handleClickOpen={handleClickOpen} />
 
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog className={classes.orderDialog} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar>           
             <Typography className={classes.title}>

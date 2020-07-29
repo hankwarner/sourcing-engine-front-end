@@ -7,7 +7,8 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       justifyContent: 'flex-end',
       width: "800px",
-      marginTop: "10px",
+      marginTop: 10,
+      marginBottom:40
   },
 }));
 
