@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
@@ -26,19 +26,20 @@ export default function CompleteOrderButton(props) {
   const handleComplete = () => {
     props.handleClose()
     const headers = {
-      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Type': 'charset=utf-8',
       'code': '9cs9ToHl8eWGhKttxxosn0dLLIdqLZofJem1D4RASPW8o/7S9BIkeQ=='
     }
-    // useEffect(function effectFunction() {
       async function completeOrder() {
         await axios({
+          params: {
+            code: '9cs9ToHl8eWGhKttxxosn0dLLIdqLZofJem1D4RASPW8o/7S9BIkeQ=='
+          },
           method:'post',
-          url: `fergusonsourcingengine.azurewebsites.net/api/order/complete/${props.id}`,
+          url: `https://fergusonsourcingengine.azurewebsites.net/api/order/complete/${props.id}`,
           headers: headers
-        });        
+        });
       }
       completeOrder();
-    // }, []);
   }
   
   const handleClick = () => props.completeReady ? handleComplete() : props.setShowError(true)

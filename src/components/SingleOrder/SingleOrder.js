@@ -15,6 +15,8 @@ import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
 
+import axios from 'axios'
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -69,6 +71,17 @@ export default function SingleOrder(props) {
   const orderNumber = order.atgOrderId;
   
   const handleClickOpen = () => {
+    async function handleClaim() {
+      await axios({
+        params: {
+          code: 'hmYQxSz505g1dPCNFtaBPhhjeMFQRNxlYAh91owaJGVDcbnpQ4b4hw=='
+        },
+        method:'post',
+        url: `https://fergusonsourcingengine.azurewebsites.net/api/order/claim/${order.atgOrderId}`
+      });        
+    }
+    handleClaim();
+
     setOpen(true);
     const title = "Order # " + orderNumber;
     const url = orderNumber;
@@ -81,6 +94,17 @@ export default function SingleOrder(props) {
   });
   
   const handleClose = () => {
+    async function handleRelease() {
+      await axios({
+        params: {
+          code: 'O94pZJNzX07aaGJaAfLayaSPl96XF9qRaAajP41Az5wiofHFD4C7zw=='
+        },
+        method:'post',
+        url: `https://fergusonsourcingengine.azurewebsites.net/api/order/release/${order.atgOrderId}`
+      });        
+    }
+    handleRelease();
+
     setOpen(false);
     window.history.pushState('','List','/');
   };
