@@ -67,7 +67,6 @@ export default function SingleOrder(props) {
   const [completeReady, setCompleteReady] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState([])
-  const [orderClaimed, setOrderClaimed] = React.useState(false)
   const order = props.order
   const orderNumber = order.atgOrderId;
   
@@ -98,11 +97,9 @@ export default function SingleOrder(props) {
         method:'get',
         url: `https://fergusonsourcingengine.azurewebsites.net/api/order/is-claimed/${order.atgOrderId}`
       });        
-      setOrderClaimed(response.data)
+      response.data ? props.fetchOrders() : handleClickOpen()
     }
     checkClaim();
-
-    orderClaimed ? props.fetchOrders() : handleClickOpen()
   }
 
   window.addEventListener('popstate', function(e) {
