@@ -107,6 +107,7 @@ export default function SingleOrder(props) {
 
     setOpen(false);
     window.history.pushState('','List','/');
+    props.fetchOrders()
   };
   
   

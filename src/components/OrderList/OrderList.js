@@ -28,7 +28,7 @@ export default function OrderList(props) {
         <div className={classes.orderList}>
             {openOrders.map(order => (
                 <div>
-                    <SingleOrder order={order} />
+                    <SingleOrder order={order} fetchOrders={props.fetchOrders} />
                 </div>
             ))}            
         </div>
