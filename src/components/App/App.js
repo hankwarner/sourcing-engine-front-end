@@ -5,6 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from './theme'
 import axios from 'axios'
+// import sourcingAppLoader from '../../svg'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <div className="App">
         <Header fetchOrders={fetchOrders} />
         <MainContent orderData={orderData} fetchOrders={fetchOrders} />
+        {/* sourcingAppLoader */}
       </div>
       </ThemeProvider>
   ); 

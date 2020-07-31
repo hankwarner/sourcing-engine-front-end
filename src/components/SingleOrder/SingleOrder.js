@@ -67,6 +67,7 @@ export default function SingleOrder(props) {
   const [completeReady, setCompleteReady] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState([])
+  const [orderClaimed, setOrderClaimed] = React.useState(false)
   const order = props.order
   const orderNumber = order.atgOrderId;
   
@@ -87,6 +88,22 @@ export default function SingleOrder(props) {
     const url = orderNumber;
     window.history.pushState('',title,url);
   };
+
+  const checkForClaim = () => {
+    async function checkClaim() {
+      const response = await axios({
+        params: {
+          code: 'akU/NdJzya8EPdFGYD/NJtJ/VJRYDgGGI/nco5ujNyDdcrCHQAhWWg=='
+        },
+        method:'get',
+        url: `https://fergusonsourcingengine.azurewebsites.net/api/order/is-claimed/${order.atgOrderId}`
+      });        
+      setOrderClaimed(response.data)
+    }
+    checkClaim();
+
+    orderClaimed ? props.fetchOrders() : handleClickOpen()
+  }
 
   window.addEventListener('popstate', function(e) {
     e.preventDefault();
@@ -114,7 +131,7 @@ export default function SingleOrder(props) {
   return (
     <div >     
 
-      <SingleOrderTrigger order={props.order} handleClickOpen={handleClickOpen} />
+      <SingleOrderTrigger order={props.order} handleClickOpen={checkForClaim} />
 
       <Dialog className={classes.orderDialog} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} position="fixed">
