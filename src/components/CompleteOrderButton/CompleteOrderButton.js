@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import axios from 'axios'
 
 const useStyles = makeStyles(() => ({
   button: {
@@ -21,8 +22,23 @@ const useStyles = makeStyles(() => ({
 
 export default function CompleteOrderButton(props) {
   const classes = useStyles();
+
+  const handleComplete = () => {
+    props.handleClose()
+    async function completeOrder() {
+      await axios({
+        params: {
+          code: '9cs9ToHl8eWGhKttxxosn0dLLIdqLZofJem1D4RASPW8o/7S9BIkeQ=='
+        },
+        method:'put',
+        url: `fergusonsourcingengine.azurewebsites.net/api/order/complete/${props.id}?`,
+        headers: { 'Content-Type': 'application/json; charset=utf-8' }
+      });        
+    }
+    completeOrder()
+  }
   
-  const handleClick = () => props.completeReady ? props.handleClose() : props.setShowError(true)
+  const handleClick = () => props.completeReady ? handleComplete() : props.setShowError(true)
 
   return (
     <div className={classes.button}>
