@@ -85,9 +85,10 @@ export default function SingleOrder(props) {
     window.history.pushState('','List','/');
   };
   
-
+  
   return (
-    <div >
+    <div >     
+
       <SingleOrderTrigger order={props.order} handleClickOpen={handleClickOpen} />
 
       <Dialog className={classes.orderDialog} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
