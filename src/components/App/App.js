@@ -23,6 +23,7 @@ function App() {
         setOrderData(response.data)  
     }
     fetchOrders();
+    console.log(orderData)
 }, []);
  
   return (   
