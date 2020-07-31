@@ -84,8 +84,8 @@ export default function SourcingTable(props) {
             <strong>Description:</strong> {item.description}<br />
             <strong>Ship From: </strong> {source.shipfrom}
           </TableCell>
-          <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
-          <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
+          <TableCell className={classes.tablecell} align="left"><strong>Qty:</strong> {item.quantity}</TableCell>
+          <TableCell className={classes.tablecell} align="left"><strong>Sourcing Message:</strong><br />{item.sourcingMessage}</TableCell>
         </TableRow>
       )
     })}
