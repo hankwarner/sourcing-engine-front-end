@@ -4,13 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import OrderList from '../OrderList/OrderList';
 
-export default function MainContent() {
+export default function MainContent(props) {
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxwidth="lg">
         <Typography component="div" style={{ height: '100vh' }}>
-            <OrderList />
+            <OrderList orderData={props.orderData} />
         </Typography>
       </Container>
     </React.Fragment>

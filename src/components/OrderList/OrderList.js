@@ -1,5 +1,4 @@
 import React from 'react'
-import MockOrders from '../../MockOrders'
 import { makeStyles } from '@material-ui/core/styles';
 import SingleOrder from '../SingleOrder/SingleOrder'
 
@@ -19,11 +18,11 @@ const useStyles = makeStyles(() => ({
 
 
 
-export default function OrderList() {
+export default function OrderList(props) {
 
     const classes = useStyles();
 
-    const openOrders = MockOrders.filter(order => order.claimed === false)
+    const openOrders = props.orderData.filter(order => order.claimed === false)
 
     return (
         <div className={classes.orderList}>

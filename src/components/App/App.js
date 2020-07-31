@@ -8,7 +8,7 @@ import axios from 'axios'
 
 function App() {
 
-  const [orderData, setOrderData] = useState({}); 
+  const [orderData, setOrderData] = useState([]); 
 
   useEffect(function effectFunction() {
     async function fetchOrders() {
@@ -23,16 +23,15 @@ function App() {
         setOrderData(response.data)  
     }
     fetchOrders();
-    console.log(orderData)
-}, []);
- 
+  }, []);
+  
   return (   
- 
+    
     <ThemeProvider theme={theme}>       
     <CssBaseline />      
       <div className="App">
         <Header />
-        <MainContent />
+        <MainContent orderData={orderData} />
       </div>
       </ThemeProvider>      
   ); 
