@@ -48,7 +48,7 @@ export default function SingleOrderTrigger(props) {
     return (
         <Button className={classes.triggerStyle} variant="outlined" color="primary" onClick={props.handleClickOpen}>
             <Box className={classes.box}>
-                <h2>Order #<br /> {order.atgOrderId}</h2>
+                <h2>Web Order #<br /> {order.atgOrderId}</h2>
             </Box>
             <TableContainer >
                 <Table  aria-label="simple table">
