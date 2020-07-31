@@ -51,16 +51,16 @@ export default function SourcingTable(props) {
 
   const sourcingTableBody = props.order.sourcing.map(source => {
   
-  const localIsChecked = props.selectedItems.includes(source.shipFrom);
+  const localIsChecked = props.selectedItems.includes(source.shipfrom);
   
   const onChange = () => {
-    if (props.selectedItems.includes(source.shipFrom)) {
+    if (props.selectedItems.includes(source.shipfrom)) {
       const copiedItems = [...props.selectedItems];
-      const index = copiedItems.indexOf(source.shipFrom);
+      const index = copiedItems.indexOf(source.shipfrom);
       copiedItems.splice(index, 1);
       props.setSelectedItems(copiedItems);
     } else {
-      props.setSelectedItems(props.selectedItems.concat(source.shipFrom));
+      props.setSelectedItems(props.selectedItems.concat(source.shipfrom));
     }
   }; 
 
@@ -68,7 +68,7 @@ export default function SourcingTable(props) {
   return (
   <div className={classes.sourceContainer}>
     <div className={classes.row}>
-      <span className={classes.upperCase}><strong>Source From ID:</strong> {source.shipFrom}</span>
+      <span className={classes.upperCase}><strong>Source From ID:</strong> {source.shipfrom}</span>
       <SourceCheckbox onChange={onChange} checked={localIsChecked} />
     </div>
     <TableContainer component={Paper}>
@@ -82,7 +82,7 @@ export default function SourcingTable(props) {
           <TableCell className={classes.tablecell} scope="row">
             <strong>MPID:</strong> {item.masterProdId}<br />
             <strong>Description:</strong> {item.description}<br />
-            <strong>Ship From: </strong> {source.shipFrom}
+            <strong>Ship From: </strong> {source.shipfrom}
           </TableCell>
           <TableCell className={classes.tablecell} align="left">Qty: <strong>{item.quantity}</strong></TableCell>
           <TableCell className={classes.tablecell} align="left">Sourcing Message:<br /><strong>{item.sourcingMessage}</strong></TableCell>
