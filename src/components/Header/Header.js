@@ -18,10 +18,14 @@ const useStyles = makeStyles((theme) => ({
   navbar: {
     paddingTop:10,
     fontWeight:700
+  },
+  link: {
+    cursor: 'pointer',
+    marginLeft: '15px'
   }
 }));
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
 
   return (
@@ -29,7 +33,8 @@ export default function Header() {
       <AppBar className={classes.navbar} position="static">
         <Toolbar variant="dense">
           <Typography variant="p" color="inherit">
-          <img className={classes.logoImage} src={FergLogo} alt="Ferguson Logo" /> Sourcing App
+            <img className={classes.logoImage} src={FergLogo} alt="Ferguson Logo" />Sourcing App
+            <span className={classes.link} onClick={props.fetchOrders}>Refresh</span>
           </Typography>
         </Toolbar>
       </AppBar>

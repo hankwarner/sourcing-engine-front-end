@@ -30,7 +30,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <CssBaseline />
       <div className="App">
-        <Header />
+        <Header fetchOrders={fetchOrders} />
         <MainContent orderData={orderData} fetchOrders={fetchOrders} />
       </div>
       </ThemeProvider>
