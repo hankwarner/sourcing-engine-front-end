@@ -113,7 +113,7 @@ export default function SingleOrder(props) {
             setSelectedItems={setSelectedItems}
             setCompleteReady={setCompleteReady} 
             setShowError={setShowError} />
-          <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} />
+          <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} id={props.order.atgOrderId} />
         </div>
         </Container>
       </Dialog>
