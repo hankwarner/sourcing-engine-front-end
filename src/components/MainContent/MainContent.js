@@ -8,7 +8,7 @@ export default function MainContent(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxwidth="lg">
+      <Container maxwidth="sm">
         <Typography component="div" style={{ height: '100vh' }}>
             <OrderList orderData={props.orderData} fetchOrders={props.fetchOrders} />
         </Typography>

@@ -15,6 +15,8 @@ import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 import axios from 'axios'
 
 
@@ -132,10 +134,13 @@ export default function SingleOrder(props) {
 
       <Dialog className={classes.orderDialog} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} position="fixed">
-          <Toolbar>           
+          <Toolbar>       
+          <CssBaseline />
+          <Container maxwidth="lg">    
             <Typography className={classes.title}>
               <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" />              
-            </Typography>
+            </Typography>            
+            </Container>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
               X
             </IconButton>
