@@ -8,9 +8,9 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-end',
-      width: "800px",
       marginTop: 10,
-      marginBottom:40
+      marginBottom:40,
+      marginLeft: '15px'
   },
   errorMessage: {
     color: '#FF0000',
