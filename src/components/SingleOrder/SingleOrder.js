@@ -14,7 +14,6 @@ import OrderDetails from '../OrderDetails/OrderDetails';
 import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
-import CancelOrderButton from '../CancelOrderButton/CancelOrderButton'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
