@@ -14,7 +14,6 @@ import OrderDetails from '../OrderDetails/OrderDetails';
 import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
-import CancelOrderButton from '../CancelOrderButton/CancelOrderButton'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -177,9 +176,6 @@ export default function SingleOrder(props) {
             setCompleteReady={setCompleteReady} 
             setShowError={setShowError} />
             <div className={classes.buttonContainer}>  
-              <div>          
-                {/* <CancelOrderButton  handleClose={handleClose} /> */}
-              </div>
               <div  className={classes.rightButtons} >
                 <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} id={props.order.atgOrderId} />
               </div>
