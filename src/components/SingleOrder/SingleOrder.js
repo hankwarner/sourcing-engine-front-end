@@ -16,6 +16,7 @@ import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { Beforeunload } from 'react-beforeunload';
 
 import axios from 'axios'
 
@@ -142,7 +143,7 @@ export default function SingleOrder(props) {
   
   return (
     <div >     
-
+      <Beforeunload onBeforeunload={() => "Please do not refresh this page, use the cancel button to go back."} />
       <SingleOrderTrigger order={props.order} handleClickOpen={checkForClaim} />
 
       <Dialog className={classes.orderDialog} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
