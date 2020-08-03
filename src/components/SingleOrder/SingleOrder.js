@@ -14,6 +14,7 @@ import OrderDetails from '../OrderDetails/OrderDetails';
 import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
+import CancelOrderButton from '../CancelOrderButton/CancelOrderButton';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -42,6 +43,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start'
+  },
+  buttonRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '800px'
   },
   marginForDetailBody: {
     marginTop: "84px"
@@ -147,7 +154,7 @@ export default function SingleOrder(props) {
         </AppBar>
         <Container fixed className={classes.marginForDetailBody}>
         <div className={classes.column}>
-         
+
           <OrderDetails order={props.order} />
           <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
           <SourcingTable 
@@ -156,7 +163,15 @@ export default function SingleOrder(props) {
             setSelectedItems={setSelectedItems}
             setCompleteReady={setCompleteReady} 
             setShowError={setShowError} />
-          <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} id={props.order.atgOrderId} />
+          <div className={classes.buttonRow}>
+            <CancelOrderButton handleClose={handleClose}  />
+            <CompleteOrderButton
+              handleClose={handleClose}
+              completeReady={completeReady}
+              showError={showError}
+              setShowError={setShowError}
+              id={props.order.atgOrderId} />
+          </div>
         </div>
         </Container>
       </Dialog>
