@@ -119,11 +119,10 @@ export default function SingleOrder(props) {
         url: `https://fergusonsourcingengine.azurewebsites.net/api/order/release/${order.atgOrderId}`
       });        
     }
-    handleRelease();
+    handleRelease().then(() => props.fetchOrders());
 
     setOpen(false);
     window.history.pushState('','List','/');
-    props.fetchOrders()
   };
   
   
