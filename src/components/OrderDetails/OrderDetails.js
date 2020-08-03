@@ -11,6 +11,13 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       justifyContent: 'space-between'
     },
+    pageExposition: {
+        border:'1px solid #F0E68C',
+        backgroundColor:'#C0C0C0',
+        color:'#F0E68C',
+        padding:'10px'
+    }
+    
   }));
 
 export default function OrderDetails(props) {
@@ -19,6 +26,9 @@ export default function OrderDetails(props) {
 
     return (
         <div>
+          <div className={classes.pageExposition}>
+                Please do not hit refresh button or the back button while on this page.
+            </div>
             <h3>Order Details</h3>
             <div className={classes.row}>
               <div className={classes.column}>

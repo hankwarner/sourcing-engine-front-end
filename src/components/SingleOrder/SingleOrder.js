@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginLeft: theme.spacing(2),
     flex: 1,
+    position:'relative'
   },
   column: {
     display: 'flex',
@@ -56,6 +57,11 @@ const useStyles = makeStyles((theme) => ({
   },
   orderDialog: {
     marginBottom:40
+  },
+  cancelButton: {
+    display:'inline-block',
+    right:100,
+    position:'absolute'
   }
 }));
 
@@ -135,14 +141,19 @@ export default function SingleOrder(props) {
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar>       
           <CssBaseline />
-          <Container maxwidth="lg">    
-            <Typography className={classes.title}>
-              <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" />              
-            </Typography>            
+          <Container maxwidth="lg"> 
+
+              <Typography className={classes.title}>
+                <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" /> 
+                <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                x CANCEL
+              </IconButton>  
+            
+              </Typography>   
+
+              
             </Container>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              X
-            </IconButton>
+            
           </Toolbar>
         </AppBar>
         <Container fixed className={classes.marginForDetailBody}>
