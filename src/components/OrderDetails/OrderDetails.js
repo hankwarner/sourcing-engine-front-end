@@ -27,9 +27,6 @@ export default function OrderDetails(props) {
 
     return (
         <div>
-          <div className={classes.pageExposition}>
-                Please do not hit refresh button or the back button while on this page.
-            </div>
             <h3>Order Details</h3>
             <div className={classes.row}>
               <div className={classes.column}>
