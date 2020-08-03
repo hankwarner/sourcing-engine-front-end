@@ -176,9 +176,6 @@ export default function SingleOrder(props) {
             setCompleteReady={setCompleteReady} 
             setShowError={setShowError} />
             <div className={classes.buttonContainer}>  
-              <div>          
-                {/* <CancelOrderButton  handleClose={handleClose} /> */}
-              </div>
               <div  className={classes.rightButtons} >
                 <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} id={props.order.atgOrderId} />
               </div>
