@@ -7,8 +7,6 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-end',
-        marginTop: 30,
-        marginBottom:40
     }
   }));
 

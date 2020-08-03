@@ -14,7 +14,7 @@ import OrderDetails from '../OrderDetails/OrderDetails';
 import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
-import CancelOrderButton from '../CancelOrderButton/CancelOrderButton';
+import CancelOrderButton from '../CancelOrderButton/CancelOrderButton'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -45,12 +45,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start'
   },
-  buttonRow: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    width: '800px'
-  },
   marginForDetailBody: {
     marginTop: "84px"
   },
@@ -65,10 +59,18 @@ const useStyles = makeStyles((theme) => ({
   orderDialog: {
     marginBottom:40
   },
-  cancelButton: {
-    display:'inline-block',
-    right:100,
-    position:'absolute'
+  buttonContainer: {
+     position:'relative',
+     width:'100%'
+  },
+  rightButtons: {
+    position:'absolute',
+    width:280,
+    right:0,
+    marginBottom:60
+  },
+  button: {
+    margin:'0px!important'
   }
 }));
 
@@ -153,7 +155,7 @@ export default function SingleOrder(props) {
               <Typography className={classes.title}>
                 <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" /> 
                 <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-                x CANCEL
+                x cancel
               </IconButton>  
             
               </Typography>   
@@ -165,7 +167,7 @@ export default function SingleOrder(props) {
         </AppBar>
         <Container fixed className={classes.marginForDetailBody}>
         <div className={classes.column}>
-
+         
           <OrderDetails order={props.order} />
           <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
           <SourcingTable 
@@ -174,15 +176,15 @@ export default function SingleOrder(props) {
             setSelectedItems={setSelectedItems}
             setCompleteReady={setCompleteReady} 
             setShowError={setShowError} />
-          <div className={classes.buttonRow}>
-            <CancelOrderButton handleClose={handleClose}  />
-            <CompleteOrderButton
-              handleClose={handleClose}
-              completeReady={completeReady}
-              showError={showError}
-              setShowError={setShowError}
-              id={props.order.atgOrderId} />
-          </div>
+            <div className={classes.buttonContainer}>  
+              <div className={classes.rightButtons}>          
+                <CancelOrderButton  handleClose={handleClose} id={props.order.atgOrderId} />
+              </div>
+              <div  className={classes.rightButtons} >
+                <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} id={props.order.atgOrderId} />
+              </div>
+            </div>
+
         </div>
         </Container>
       </Dialog>

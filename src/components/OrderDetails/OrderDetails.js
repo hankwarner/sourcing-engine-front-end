@@ -12,10 +12,11 @@ const useStyles = makeStyles(() => ({
       justifyContent: 'space-between'
     },
     pageExposition: {
-        border:'1px solid #F0E68C',
+        border:'3px solid #F0E68C',
         backgroundColor:'#C0C0C0',
-        color:'#F0E68C',
-        padding:'10px'
+        color:'#00446b',
+        padding:'10px',
+        fontWeight:'700'
     }
     
   }));
