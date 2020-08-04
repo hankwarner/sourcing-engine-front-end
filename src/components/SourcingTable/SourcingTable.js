@@ -82,8 +82,7 @@ export default function SourcingTable(props) {
         <TableRow key={key}>
           <TableCell className={classes.tablecell} scope="row">
             <strong>MPID:</strong> {item.masterProdId}<br />
-            <strong>Description:</strong> {item.description}<br />
-            <strong>Ship From: </strong> {source.shipfrom}
+            <strong>Description:</strong> {item.description}
           </TableCell>
           <TableCell className={classes.tablecell} align="left"><strong>Qty:</strong> {item.quantity}</TableCell>
           <TableCell className={classes.tablecell} align="left"><strong>Sourcing Message:</strong><br />{item.sourcingMessage}</TableCell>
