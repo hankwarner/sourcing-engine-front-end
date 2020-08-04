@@ -68,7 +68,7 @@ export default function SourcingTable(props) {
   return (
   <div className={classes.sourceContainer}>
     <div className={classes.row}>
-      <span className={classes.upperCase}><strong>Source From ID:</strong>&nbsp;{source.shipFrom}<br /><strong>Ship From Logon:&nbsp;{source.shipFromLogon}</strong></span>
+      <span className={classes.upperCase}><strong>Source From ID:</strong>&nbsp;{source.shipFrom}<br />Ship From Logon:&nbsp;{source.shipFromLogon}</span>
 
       <SourceCheckbox onChange={onChange} checked={localIsChecked} />
     </div>
