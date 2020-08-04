@@ -51,16 +51,16 @@ export default function SourcingTable(props) {
 
   const sourcingTableBody = props.order.sourcing.map(source => {
   
-  const localIsChecked = props.selectedItems.includes(source.shipfrom);
+  const localIsChecked = props.selectedItems.includes(source.shipFrom);
   
   const onChange = () => {
-    if (props.selectedItems.includes(source.shipfrom)) {
+    if (props.selectedItems.includes(source.shipFrom)) {
       const copiedItems = [...props.selectedItems];
-      const index = copiedItems.indexOf(source.shipfrom);
+      const index = copiedItems.indexOf(source.shipFrom);
       copiedItems.splice(index, 1);
       props.setSelectedItems(copiedItems);
     } else {
-      props.setSelectedItems(props.selectedItems.concat(source.shipfrom));
+      props.setSelectedItems(props.selectedItems.concat(source.shipFrom));
     }
   }; 
 

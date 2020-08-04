@@ -10,11 +10,11 @@ const useStyles = makeStyles(() => ({
       alignItems: 'flex-end',
       marginLeft: '15px'
   },
-  errorMessage: {
-    color: '#FF0000',
-    fontSize: '14px',
-    marginBottom: '5px'
-  }
+  // errorMessage: {
+  //   color: '#FF0000',
+  //   fontSize: '14px',
+  //   marginBottom: '5px'
+  // }
 }));
 
 
@@ -44,14 +44,14 @@ export default function CompleteOrderButton(props) {
 
   return (
     <div className={classes.button}>
-      {props.showError ? <span className={classes.errorMessage}>You must complete each source before completing</span> : null}
       <Button 
         variant="contained"
         color={props.completeReady ? "primary" : "secondary"}
         onClick={handleClick}
-      >
+        >
         Complete Order
       </Button>
+      {/* {props.showError ? <span className={classes.errorMessage}>You must complete each source before completing</span> : null} */}
     </div>
   );
 }
