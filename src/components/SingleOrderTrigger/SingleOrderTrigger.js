@@ -74,7 +74,7 @@ export default function SingleOrderTrigger(props) {
                             <span className={classes.tableLabel}>Req Delivery:</span><br />{order.orderRequiredDate}
                             </div>
                             <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Ship From:</span><br />{order.shipFrom}
+                            <span className={classes.tableLabel}>Sell Warehouse ID:</span><br />{order.sellWhse}
                             </div>                     
                         </TableCell>
                         </TableRow>
