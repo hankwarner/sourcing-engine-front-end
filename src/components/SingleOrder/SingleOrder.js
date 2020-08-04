@@ -65,6 +65,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     width:'800px',
     marginBottom: '40px'
+  },
+  errorMessage: {
+    color: '#FF0000',
+    fontSize: '14px',
+    marginBottom: '5px'
   }
 }));
 
@@ -80,7 +85,7 @@ export default function SingleOrder(props) {
   const [selectedItems, setSelectedItems] = React.useState([])
   const order = props.order
   const orderNumber = order.atgOrderId;
-  
+
   const handleClickOpen = () => {
     async function handleClaim() {
       await axios({
@@ -173,7 +178,8 @@ export default function SingleOrder(props) {
             setSelectedItems={setSelectedItems}
             setCompleteReady={setCompleteReady} 
             setShowError={setShowError} />
-
+          
+          {showError ? <span className={classes.errorMessage}>You must complete each source before completing</span> : null}
           <div className={classes.buttonContainer}> 
             <div>
               <CancelOrderButton handleClose={handleClose} />
