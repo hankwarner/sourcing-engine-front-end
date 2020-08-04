@@ -10,12 +10,14 @@ import Loading from '../Loading/Loading'
 function App() {
 
   const [orderData, setOrderData] = useState([]); 
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(function effectFunction() {
       fetchOrders();
   }, []);
 
   async function fetchOrders() {
+      setIsLoading(true)
       const response =  await axios({
         params: {
           code: 'mnYhnVWLaPFZk4WsoC1tCHqANea0XlCdisYa5roo0FZaC/jX6E72Cw=='
@@ -24,7 +26,8 @@ function App() {
         url: 'https://fergusonsourcingengine.azurewebsites.net/api/manual-orders',
         headers: { 'Content-Type': 'application/json; charset=utf-8' }
       });        
-      setOrderData(response.data)  
+      setOrderData(response.data)
+      setIsLoading(false)
   }
 
   return (
@@ -33,7 +36,7 @@ function App() {
       <div className="App">
         <Header fetchOrders={fetchOrders} />
 
-        {orderData.length === 0 ?
+        {isLoading ?
         <Loading /> :
         <MainContent orderData={orderData} fetchOrders={fetchOrders} />}
       </div>
