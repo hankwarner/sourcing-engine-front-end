@@ -67,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '40px'
   },
   errorMessage: {
+    display: 'flex',
+    justifyContent: 'flex-end',
     color: '#FF0000',
     fontSize: '14px',
     marginBottom: '5px'
@@ -97,7 +99,6 @@ export default function SingleOrder(props) {
       });        
     }
     handleClaim();
-
     setOpen(true);
     const title = "Order # " + orderNumber;
     const url = orderNumber;
@@ -134,66 +135,54 @@ export default function SingleOrder(props) {
       });        
     }
     handleRelease().then(() => props.fetchOrders());
-
     setOpen(false);
     window.history.pushState('','List','/');
   };
   
-  useBeforeunload(event => {
-      handleClose();
-  });
+  useBeforeunload(() => {handleClose()});
 
   return (
     <div >     
-     
       <SingleOrderTrigger order={props.order} handleClickOpen={checkForClaim} />
-
       <Dialog className={classes.orderDialog} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar>       
           <CssBaseline />
-          <Container maxwidth="lg"> 
-
+            <Container maxwidth="lg"> 
               <Typography className={classes.title}>
                 <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" /> 
                 <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-                x cancel
-              </IconButton>  
-            
-              </Typography>   
-
-              
+                  x cancel
+                </IconButton>
+              </Typography>
             </Container>
-            
           </Toolbar>
         </AppBar>
         <Container fixed className={classes.marginForDetailBody}>
-        <div className={classes.column}>
-
-          <OrderDetails order={props.order} />
-          <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
-          <SourcingTable 
-            order={props.order}
-            selectedItems={selectedItems}
-            setSelectedItems={setSelectedItems}
-            setCompleteReady={setCompleteReady} 
-            setShowError={setShowError} />
-          
-          {showError ? <span className={classes.errorMessage}>You must complete each source before completing</span> : null}
-          <div className={classes.buttonContainer}> 
-            <div>
-              <CancelOrderButton handleClose={handleClose} />
-            </div>
-            <div>
-              <CompleteOrderButton
-                handleClose={handleClose}
-                completeReady={completeReady}
-                showError={showError}
-                setShowError={setShowError}
-                id={props.order.atgOrderId} />
+          <div className={classes.column}>
+            <OrderDetails order={props.order} />
+            <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
+            <SourcingTable 
+              order={props.order}
+              selectedItems={selectedItems}
+              setSelectedItems={setSelectedItems}
+              setCompleteReady={setCompleteReady} 
+              setShowError={setShowError} />
+            {showError ? <span className={classes.errorMessage}>You must complete each source before completing</span> : null}
+            <div className={classes.buttonContainer}>
+              <div>
+                <CancelOrderButton handleClose={handleClose} />
+              </div>
+              <div>
+                <CompleteOrderButton
+                  handleClose={handleClose}
+                  completeReady={completeReady}
+                  showError={showError}
+                  setShowError={setShowError}
+                  id={props.order.atgOrderId} />
+              </div>
             </div>
           </div>
-        </div>
         </Container>
       </Dialog>
     </div>

@@ -9,14 +9,8 @@ const useStyles = makeStyles(() => ({
       flexDirection: 'column',
       alignItems: 'flex-end',
       marginLeft: '15px'
-  },
-  // errorMessage: {
-  //   color: '#FF0000',
-  //   fontSize: '14px',
-  //   marginBottom: '5px'
-  // }
+  }
 }));
-
 
 export default function CompleteOrderButton(props) {
   const classes = useStyles();
@@ -51,7 +45,6 @@ export default function CompleteOrderButton(props) {
         >
         Complete Order
       </Button>
-      {/* {props.showError ? <span className={classes.errorMessage}>You must complete each source before completing</span> : null} */}
     </div>
   );
 }

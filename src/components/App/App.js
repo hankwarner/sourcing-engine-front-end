@@ -35,7 +35,6 @@ function App() {
     <CssBaseline />
       <div className="App">
         <Header fetchOrders={fetchOrders} />
-
         {isLoading ?
         <Loading /> :
         <MainContent orderData={orderData} fetchOrders={fetchOrders} />}

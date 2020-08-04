@@ -47,7 +47,6 @@ export default function SingleOrderTrigger(props) {
 
     return (
         <Button className={classes.triggerStyle} variant="outlined" color="primary" onClick={props.handleClickOpen}>
-            
             <Box className={classes.box}>
                 <h2>Web Order #<br /> {order.atgOrderId}</h2>
             </Box>
@@ -55,28 +54,28 @@ export default function SingleOrderTrigger(props) {
                 <Table  aria-label="simple table">
                     <TableBody >
                         <TableRow >
-                        <TableCell className={classes.table}>
-                            <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Customer Name:</span><br />{order.customerName}<br />
-                            </div>
-                            <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Customer Account ID:</span><br />{order.custAccountId}
-                            </div>
-                            <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Customer ID:</span><br />{order.customerId}
-                            </div>
-                        </TableCell>
-                        <TableCell className={classes.table} align="right">
-                            <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Submitted:</span><br />{order.orderSubmitDate}
-                            </div>
-                            <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Req Delivery:</span><br />{order.orderRequiredDate}
-                            </div>
-                            <div className={classes.tableDataCont}>
-                            <span className={classes.tableLabel}>Sell Warehouse ID:</span><br />{order.sellWhse}
-                            </div>                     
-                        </TableCell>
+                            <TableCell className={classes.table}>
+                                <div className={classes.tableDataCont}>
+                                    <span className={classes.tableLabel}>Customer Name:</span><br />{order.customerName}<br />
+                                </div>
+                                <div className={classes.tableDataCont}>
+                                    <span className={classes.tableLabel}>Customer Account ID:</span><br />{order.custAccountId}
+                                </div>
+                                <div className={classes.tableDataCont}>
+                                    <span className={classes.tableLabel}>Customer ID:</span><br />{order.customerId}
+                                </div>
+                            </TableCell>
+                            <TableCell className={classes.table} align="right">
+                                <div className={classes.tableDataCont}>
+                                    <span className={classes.tableLabel}>Submitted:</span><br />{order.orderSubmitDate}
+                                </div>
+                                <div className={classes.tableDataCont}>
+                                    <span className={classes.tableLabel}>Req Delivery:</span><br />{order.orderRequiredDate}
+                                </div>
+                                <div className={classes.tableDataCont}>
+                                    <span className={classes.tableLabel}>Sell Warehouse ID:</span><br />{order.sellWhse}
+                                </div>                     
+                            </TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
