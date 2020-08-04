@@ -121,7 +121,7 @@ export default function SingleOrder(props) {
 
   window.addEventListener('popstate', function(e) {
     e.preventDefault();
-      handleClose();
+      //handleClose();
   });
   
   const handleClose = () => {
