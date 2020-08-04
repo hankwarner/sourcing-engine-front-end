@@ -14,6 +14,7 @@ import OrderDetails from '../OrderDetails/OrderDetails';
 import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
+import CancelOrderButton from '../CancelOrderButton/CancelOrderButton'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useBeforeunload } from 'react-beforeunload';
@@ -60,17 +61,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom:40
   },
   buttonContainer: {
-     position:'relative',
-     width:'100%'
-  },
-  rightButtons: {
-    position:'absolute',
-    width:280,
-    right:0,
-    marginBottom:60
-  },
-  button: {
-    margin:'0px!important'
+    display: 'flex',
+    justifyContent: 'flex-end',
+    width:'800px',
+    marginBottom: '40px'
   }
 }));
 
@@ -170,7 +164,7 @@ export default function SingleOrder(props) {
         </AppBar>
         <Container fixed className={classes.marginForDetailBody}>
         <div className={classes.column}>
-         
+
           <OrderDetails order={props.order} />
           <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
           <SourcingTable 
@@ -179,12 +173,20 @@ export default function SingleOrder(props) {
             setSelectedItems={setSelectedItems}
             setCompleteReady={setCompleteReady} 
             setShowError={setShowError} />
-            <div className={classes.buttonContainer}>  
-              <div  className={classes.rightButtons} >
-                <CompleteOrderButton handleClose={handleClose} completeReady={completeReady} showError={showError} setShowError={setShowError} id={props.order.atgOrderId} />
-              </div>
-            </div>
 
+          <div className={classes.buttonContainer}> 
+            <div>
+              <CancelOrderButton handleClose={handleClose} />
+            </div>
+            <div>
+              <CompleteOrderButton
+                handleClose={handleClose}
+                completeReady={completeReady}
+                showError={showError}
+                setShowError={setShowError}
+                id={props.order.atgOrderId} />
+            </div>
+          </div>
         </div>
         </Container>
       </Dialog>
