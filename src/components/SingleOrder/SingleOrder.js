@@ -24,7 +24,7 @@ import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'fixed',
+    position: 'fixed'
   },
   box:{
     width: 225,
@@ -55,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     fontSize: "40px",
     fontWeight: 700,
-    background: "transparent"
+    background: "transparent",
+    marginTop:16
   },
   orderDialog: {
     marginBottom:40
