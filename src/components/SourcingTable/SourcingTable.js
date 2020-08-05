@@ -50,64 +50,56 @@ export default function SourcingTable(props) {
     } 
 
   const sourcingTableBody = props.order.sourcing.map(source => {
+    const localIsChecked = props.selectedItems.includes(source.shipFrom);
   
-  const localIsChecked = props.selectedItems.includes(source.shipFrom);
-  
-  const onChange = () => {
-    if (props.selectedItems.includes(source.shipFrom)) {
-      const copiedItems = [...props.selectedItems];
-      const index = copiedItems.indexOf(source.shipFrom);
-      copiedItems.splice(index, 1);
-      props.setSelectedItems(copiedItems);
-    } else {
-      props.setSelectedItems(props.selectedItems.concat(source.shipFrom));
-    }
-  }; 
+    const onChange = () => {
+      if (props.selectedItems.includes(source.shipFrom)) {
+        const copiedItems = [...props.selectedItems];
+        const index = copiedItems.indexOf(source.shipFrom);
+        copiedItems.splice(index, 1);
+        props.setSelectedItems(copiedItems);
+      } else {
+        props.setSelectedItems(props.selectedItems.concat(source.shipFrom));
+      }
+    }; 
 
- 
-  return (
-  <div className={classes.sourceContainer}>
-    <div className={classes.row}>
-      <span className={classes.upperCase}><strong>Source From ID:</strong>&nbsp;{source.shipFrom}<br /><strong>Ship From Logon:</strong>&nbsp;{source.shipFromLogon}</span>
-
-      <SourceCheckbox onChange={onChange} checked={localIsChecked} />
-    </div>
-    <TableContainer component={Paper}>
-    <Table className={classes.table} aria-label="simple table">
+    return (
+      <div className={classes.sourceContainer}>
+        <div className={classes.row}>
+          <span className={classes.upperCase}><strong>Source From ID:</strong>&nbsp;{source.shipFrom}<br /><strong>Ship From Logon:</strong>&nbsp;{source.shipFromLogon}</span>
+          <SourceCheckbox onChange={onChange} checked={localIsChecked} />
+        </div>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
             <TableBody>
-    {source.items.map((item, key) => {
-      checkForComplete()
+              {source.items.map((item, key) => {
+                checkForComplete()
 
-      return (  
-        <TableRow key={key}>
-          <TableCell className={classes.tablecell} scope="row">
-            <strong>MPID:</strong> {item.masterProdId}<br />
-            <strong>Description:</strong> {item.description}
-          </TableCell>
-          <TableCell className={classes.tablecell} align="left"><strong>Qty:</strong> {item.quantity}</TableCell>
-          <TableCell className={classes.tablecell} align="left"><strong>Sourcing Message:</strong><br />{item.sourcingMessage}</TableCell>
-        </TableRow>
-      )
-    })}
+                return (  
+                  <TableRow key={key}>
+                    <TableCell className={classes.tablecell} scope="row">
+                      <strong>MPID:</strong> {item.masterProdId}<br />
+                      <strong>Description:</strong> {item.description}
+                    </TableCell>
+                    <TableCell className={classes.tablecell} align="left"><strong>Qty:</strong> {item.quantity}</TableCell>
+                    <TableCell className={classes.tablecell} align="left"><strong>Sourcing Message:</strong><br />{item.sourcingMessage}</TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
-</TableBody>
-        </Table>
-      </TableContainer>
-
-  </div>
-  )})
-  
-  
+      </div>
+    )
+  })
 
   return (
     <>
-    <div className={classes.column}>
-      <h3 className={classes.upperCase}>Sourcing</h3>
-     
-        
-              {sourcingTableBody}
-                            
-    </div>
+      <div className={classes.column}>
+        <h3 className={classes.upperCase}>Sourcing</h3>
+        {sourcingTableBody}
+      </div>
     </>
   );
 }

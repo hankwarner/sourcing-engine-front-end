@@ -8,8 +8,7 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         alignItems: 'flex-end',
     }
-  }));
-
+}));
 
 export default function CancelOrderButton(props) {
     const classes = useStyles();
