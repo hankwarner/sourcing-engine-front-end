@@ -55,6 +55,10 @@ const useStyles = makeStyles(() => ({
         justifyContent: 'center',
         paddingTop: 30,
         marginBottom:40
+    },
+    tableHeaderCell:{
+      borderBottom:'2px solid #000',
+      paddingTop:10
     }
 }));
 
@@ -124,8 +128,22 @@ export default function OrderList(props) {
               >
                 Open Order
               </Button>
+            
             ),
-          }}
+            Header: props => (
+                  <thead>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>&nbsp;</th>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>Web Order #</th>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Name</th>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Account</th>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>Customer ID</th>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>Date<br />Submitted</th>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>Requested<br />Delivery</th>
+                      <th className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse ID</th>
+                  </thead>
+            )
+          }
+        }
         />
       </div>
 
