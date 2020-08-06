@@ -68,7 +68,6 @@ export default function OrderList(props) {
     const classes = useStyles();
 
     const openOrders = props.orderData.filter(order => order.claimed === false && order.orderComplete === false)
-    const fetchOrders = props.fetchOrders
 
     return (
         <>
