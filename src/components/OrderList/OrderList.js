@@ -1,9 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import SingleOrder from '../SingleOrder/SingleOrder'
-
 import MaterialTable from 'material-table'
-import Button from '@material-ui/core/Button';
 
 import { forwardRef } from 'react';
 
@@ -76,6 +74,7 @@ export default function OrderList(props) {
        <div style={{ maxWidth: '100%', padding:10 }}>
         <MaterialTable
           icons={tableIcons}
+
           columns={[
             { title: 'Web Order #', field: 'atgOrderId', filtering: false,
             cellStyle: {
@@ -89,6 +88,7 @@ export default function OrderList(props) {
             { title: 'Req Del Date', field: 'orderRequiredDate', filtering: false },
             { title: 'Sell Warehouse', field: 'sellWhse', filtering: false, search: false }
           ]}
+          onRowClick={(event, rowData, togglePanel) => togglePanel()}
           localization={{            
             header: {
                 actions: ''
@@ -106,30 +106,24 @@ export default function OrderList(props) {
             },
             pageSize:10,
             pageSizeOptions:[10,20,40],
-            showTitle:false
+            showTitle:false,
+            cellStyle: {
+               textAlign:'center'
+            }
           }}
-          data={openOrders}
-          title="Sourcing Data"
           actions={[
             {
-              icon:'save',
-              tooltip: 'Open Order',
+              icon: 'save',
+              tooltip: 'Save User',
               onClick: (event, rowData) => alert("You saved " + rowData.name)
             }
           ]}
-          components={{
+          data={openOrders}
+          title="Sourcing Data"
+          components={{       
             Action: props => (
-              <Button
-                onClick={(event) => props.action.onClick(event, props.data)}
-                color="primary"
-                variant="contained"
-                style={{textTransform: 'uppercase'}}
-                size="small"
-              >
-                Open Order
-              </Button>
-            
-            ),
+              <SingleOrder order={props.data} fetchOrders={props.fetchOrders} />
+            ),    
             Header: props => (
                   <thead>
                       <th className={classes.tableHeaderCell} tabIndex='-1'>&nbsp;</th>
@@ -150,7 +144,7 @@ export default function OrderList(props) {
         <div className={classes.orderList}>
             {openOrders.map(order => (
                 <div>
-                    <SingleOrder order={order} fetchOrders={props.fetchOrders} />
+                    
                 </div>
             ))}            
         </div>
