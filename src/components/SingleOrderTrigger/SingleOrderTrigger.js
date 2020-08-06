@@ -5,12 +5,11 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(() => ({
     triggerStyle: {
-        width: 800,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        margin: 10,
-        textTransform:"none"
+        backgroundColor:"#00446b",
+        color:'#fff',
+        textTransform:'uppercase',
+        fontWeight:700,
+        lineHeight:1.2
     },
     box:{
         width: 225,
@@ -39,7 +38,7 @@ export default function SingleOrderTrigger(props) {
     const classes = useStyles();
 
     return (
-        <Button variant="outlined" color="primary" onClick={props.handleClickOpen}>
+        <Button className={classes.triggerStyle} variant="outlined" color="primary" onClick={props.handleClickOpen}>
             Open Order
         </Button>
     )
