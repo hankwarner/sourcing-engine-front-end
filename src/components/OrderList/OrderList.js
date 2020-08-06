@@ -68,86 +68,78 @@ export default function OrderList(props) {
     const classes = useStyles();
 
     const openOrders = props.orderData.filter(order => order.claimed === false && order.orderComplete === false)
+    const fetchOrders = props.fetchOrders
 
     return (
         <>
-       <div style={{ maxWidth: '100%', padding:10 }}>
-        <MaterialTable
-          icons={tableIcons}
+          <div style={{ maxWidth: '100%', padding:10 }}>
+            <MaterialTable
+              openOrders={openOrders}
+              icons={tableIcons}
 
-          columns={[
-            { title: 'Web Order #', field: 'atgOrderId', filtering: false,
-            cellStyle: {
-              color: '#1c88c7',
-              fontWeight:'700'
-            } },
-            { title: 'Customer Name', field: 'customerName', filtering: false, search: false },
-            { title: 'Cust Acct ID', field: 'custAccountId', filtering: false, search: false },
-            { title: 'Cust ID', field: 'customerId', filtering: false, search: false },
-            { title: 'Date', field: 'orderSubmitDate', filtering: false, search: false },
-            { title: 'Req Del Date', field: 'orderRequiredDate', filtering: false },
-            { title: 'Sell Warehouse', field: 'sellWhse', filtering: false, search: false }
-          ]}
-          onRowClick={(event, rowData, togglePanel) => togglePanel()}
-          localization={{            
-            header: {
-                actions: ''
-            },
-            pagination: {
+              columns={[
+                { title: 'Web Order #', field: 'atgOrderId', filtering: false,
+                  cellStyle: {
+                    color: '#1c88c7',
+                    fontWeight:'700'
+                  } 
+                },
+                { title: 'Customer Name', field: 'customerName', filtering: false, search: false },
+                { title: 'Cust Acct ID', field: 'custAccountId', filtering: false, search: false },
+                { title: 'Cust ID', field: 'customerId', filtering: false, search: false },
+                { title: 'Date', field: 'orderSubmitDate', filtering: false, search: false },
+                { title: 'Req Del Date', field: 'orderRequiredDate', filtering: false },
+                { title: 'Sell Warehouse', field: 'sellWhse', filtering: false, search: false }
+              ]}
+              localization={{            
+                header: {
+                    actions: ''
+                },
+                pagination: {
 
+                }
+              }}
+              style={{ padding:10 }}
+              options={{
+                sorting: false,
+                headerStyle: {
+                  borderBottom: '1px solid black',
+                  fontWeight:'700'
+                },
+                pageSize:10,
+                pageSizeOptions:[10,20,40],
+                showTitle:false,
+                cellStyle: {
+                  textAlign:'center'
+                },
+                showDetail: false
+              }}
+              actions={[
+                {
+                }
+              ]}
+              data={openOrders}
+              title="Sourcing Data"
+              components={{ 
+                Action: thisData => (
+                  <SingleOrder order={thisData.data} fetchOrders={props.fetchOrders} />
+                ),    
+                Header: () => (
+                      <thead>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>&nbsp;</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Web Order #</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Name</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Account</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Customer ID</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Date<br />Submitted</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Requested<br />Delivery</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse ID</th>
+                      </thead>
+                )
+              }
             }
-          }}
-          style={{ padding:10 }}
-          options={{
-            sorting: false,
-            headerStyle: {
-              borderBottom: '1px solid black',
-              fontWeight:'700'
-            },
-            pageSize:10,
-            pageSizeOptions:[10,20,40],
-            showTitle:false,
-            cellStyle: {
-               textAlign:'center'
-            }
-          }}
-          actions={[
-            {
-              icon: 'save',
-              tooltip: 'Save User',
-              onClick: (event, rowData) => alert("You saved " + rowData.name)
-            }
-          ]}
-          data={openOrders}
-          title="Sourcing Data"
-          components={{       
-            Action: props => (
-              <SingleOrder order={props.data} fetchOrders={props.fetchOrders} />
-            ),    
-            Header: props => (
-                  <thead>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>&nbsp;</th>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>Web Order #</th>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Name</th>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Account</th>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>Customer ID</th>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>Date<br />Submitted</th>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>Requested<br />Delivery</th>
-                      <th className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse ID</th>
-                  </thead>
-            )
-          }
-        }
-        />
-      </div>
-
-        <div className={classes.orderList}>
-            {openOrders.map(order => (
-                <div>
-                    
-                </div>
-            ))}            
+          />
         </div>
-        </>
+      </>
     )
 }
