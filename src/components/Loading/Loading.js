@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
         justifyContent: 'center',
         marginTop: '150px'
     }
-  }));
+}));
 
 export default function Loading() {
     const classes = useStyles();

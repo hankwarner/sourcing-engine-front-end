@@ -35,7 +35,6 @@ export default function OrderDetails(props) {
               <span><strong>Sell Warehouse ID:</strong>&nbsp;{order.sellWhse}</span> 
               <span><strong>Requested Delivery:</strong>&nbsp;{order.orderRequiredDate}</span>
               <span><strong>Ship Via Code:</strong>&nbsp;{order.shipping.shipViaCode}</span> 
-             
               </div>
             </div>
         </div>
