@@ -68,7 +68,6 @@ export default function OrderList(props) {
     const classes = useStyles();
 
     const openOrders = props.orderData.filter(order => order.claimed === false && order.orderComplete === false)
-    const fetchOrders = props.fetchOrders
 
     return (
         <>
@@ -106,8 +105,8 @@ export default function OrderList(props) {
                   borderBottom: '1px solid black',
                   fontWeight:'700'
                 },
-                pageSize:10,
-                pageSizeOptions:[10,20,40],
+                pageSize:6,
+                pageSizeOptions:[6,12,24],
                 showTitle:false,
                 cellStyle: {
                   textAlign:'center'
