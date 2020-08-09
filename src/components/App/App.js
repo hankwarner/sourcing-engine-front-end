@@ -16,17 +16,6 @@ function App() {
       fetchOrders();
   }, []);
 
-  const oauth = require('axios-oauth-client');
-  const getClientCredentials = oauth.client(axios.create(), {
-    url: 'https://login.microsoftonline.com/709d83f1-791a-41c2-9419-e01e392dd57b/oauth2/v2.0/token',
-    grant_type: 'client_credentials',
-    client_id: '3672d596-f05d-4458-82ae-ca6048aab8c5',
-    client_secret: 'BNbnlL6y43c-39.MWe4_ChPP39llhh9d_b',
-    scope: 'https://fergusonsourcingengine.azurewebsites.net/.default'
-  });
- 
-const auth =  getClientCredentials();
-console.log(auth.token);
 
   async function fetchOrders() {
       setIsLoading(true)
