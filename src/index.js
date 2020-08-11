@@ -3,24 +3,35 @@ import ReactDOM from 'react-dom';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 
-import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
+import { ApolloProvider, ApolloClient } from '@apollo/client';
+
+const isDev = process.env.NODE_ENV === 'development';
+if (isDev) {
+  console.log('DEVELOPMENT');
+}
 
 const cache = new InMemoryCache();
+const graphqlEndpoint = isDev
+  ? 'http://localhost:4000'
+  : 'https://ferguson-sourcing-windows.azurewebsites.net';
 const link = new HttpLink({
-  uri: 'https://graphql-pokemon.now.sh/'
-})
+  uri: `${graphqlEndpoint}/graphql`,
+});
+// const link = new HttpLink({
+//   uri: 'https://graphql-pokemon.now.sh/',
+// });
 
 const client = new ApolloClient({
+  link,
   cache,
-  link
-})
+});
 
 ReactDOM.render(
-  <ApolloClient client={client}>
+  <ApolloProvider client={client}>
     <App />
-  </ApolloClient>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
