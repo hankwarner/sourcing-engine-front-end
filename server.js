@@ -20,10 +20,11 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });
 
 // Start express server
-const port = 4000; // if you change this, also change the port for 'proxy' in package.json
+// If you change the port number, also change the port for 'proxy' in package.json
+// The proxy setting in package.json only takes effect for the React app when it is running
+// in development mode (localhost:3000)
+// https://create-react-app.dev/docs/proxying-api-requests-in-development/
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`🚀 Graphql running at http://localhost:${port}/graphql`);
-  if (process.env.NODE_ENV === 'development') {
-    console.log('Running in development');
-  }
 });
