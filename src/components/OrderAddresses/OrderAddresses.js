@@ -24,7 +24,6 @@ const useStyles = makeStyles(() => ({
 export default function OrderAddresses(props) {
     const classes = useStyles();
     const shipTo = props.shipTo
-    const payment = props.payment
 
     return (
         <div className={classes.addressContainer}>

@@ -62,7 +62,6 @@ const useStyles = makeStyles(() => ({
 
 
 
-
 export default function OrderList(props) {
 
     const classes = useStyles();
@@ -98,6 +97,7 @@ export default function OrderList(props) {
 
                 }
               }}
+              onSelectionChange={handleSelectionChange}
               style={{ padding:10 }}
               options={{
                 sorting: false,
@@ -105,8 +105,8 @@ export default function OrderList(props) {
                   borderBottom: '1px solid black',
                   fontWeight:'700'
                 },
-                pageSize:6,
-                pageSizeOptions:[6,12,24],
+                pageSize:12,
+                pageSizeOptions:[12,24,48],
                 showTitle:false,
                 cellStyle: {
                   textAlign:'center'
