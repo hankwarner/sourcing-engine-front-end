@@ -97,7 +97,6 @@ export default function OrderList(props) {
 
                 }
               }}
-              onSelectionChange={handleSelectionChange}
               style={{ padding:10 }}
               options={{
                 sorting: false,
