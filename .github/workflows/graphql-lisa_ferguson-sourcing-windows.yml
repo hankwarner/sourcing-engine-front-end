@@ -2,6 +2,8 @@ name: Deploy graphql-lisa branch to ferguson-sourcing-windows
 
 on:
   workflow_dispatch:
+    branches:
+      - 'graphql-lisa'
 
 jobs:
   build-and-deploy:
