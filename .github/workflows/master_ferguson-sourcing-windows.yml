@@ -4,12 +4,9 @@
 name: Build and deploy Node.js app to Azure Web App - ferguson-sourcing-windows
 
 on:
-#  push:
-#    branches:
-#      - master
-  workflow_dispatch:
+  push:
     branches:
-      - 'master'
+      - master
 
 jobs:
   build-and-deploy:
