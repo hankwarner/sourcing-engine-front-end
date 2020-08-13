@@ -87,7 +87,7 @@ export default function OrderList(props) {
                 { title: 'Cust ID', field: 'customerId', filtering: false, search: false },
                 { title: 'Date', field: 'orderSubmitDate', filtering: false, search: false },
                 { title: 'Req Del Date', field: 'orderRequiredDate', filtering: false },
-                { title: 'Sell Warehouse', field: 'sellWhse', filtering: false, search: false }
+                { title: 'Sell Warehouse', field: 'sellWhse', filtering: false, search: false },
                 { title: 'Sell Logon', field: 'sellLogon', filtering: false, search: false }
               ]}
               localization={{            
