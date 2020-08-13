@@ -1,0 +1,35 @@
+name: Deploy graphql-lisa branch to ferguson-sourcing-windows
+
+on:
+  workflow_dispatch:
+    branches:
+      - 'graphql-lisa'
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: graphql-lisa
+      
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.13.0'
+
+    - name: npm install
+      run: npm install
+        
+    - name: npm build
+      run: npm build
+
+    - name: 'Deploy to Azure WebApp'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'ferguson-sourcing-windows'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a97930787d304a509c2c10a182b42333 }}
+        package: '.'
+        slot-name: production

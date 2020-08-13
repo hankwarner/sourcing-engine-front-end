@@ -24,7 +24,6 @@ const useStyles = makeStyles(() => ({
 export default function OrderAddresses(props) {
     const classes = useStyles();
     const shipTo = props.shipTo
-    const payment = props.payment
 
     return (
         <div className={classes.addressContainer}>
@@ -38,15 +37,6 @@ export default function OrderAddresses(props) {
                     <span>{shipTo.address2}</span>
                     <span>{shipTo.city}, {shipTo.state} {shipTo.zip}</span>
                     <span>({shipTo.shipInstructionsPhoneNumberAreaDialing}) {shipTo.shipInstructionsPhoneNumberDialNumber}</span>
-                </div>
-                </Grid>
-                <Grid item>
-                <h4 className={classes.upperCase}>Billing Address Information</h4>
-                <div className={classes.column}>                    
-                    <span>{payment.address1}</span>
-                    <span>{payment.address2}</span>
-                    <span>{payment.city}, {payment.state} {payment.zip}</span>
-                    <span>Card Type: {payment.cardType}</span>
                 </div>
                 </Grid>
                 </Grid>

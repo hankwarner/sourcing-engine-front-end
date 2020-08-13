@@ -28,10 +28,9 @@ export default function CompleteOrderButton(props) {
         method:'post',
         url: `https://fergusonsourcingengine.azurewebsites.net/api/order/complete/${props.id}`,
         headers: headers
-      });
+      }).then(() => props.handleClose());
     }
-    completeOrder();
-    props.handleClose()
+    completeOrder();    
   }
   
   const handleClick = () => props.completeReady ? handleComplete() : props.setShowError(true)
