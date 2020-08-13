@@ -70,7 +70,7 @@ export default function OrderList(props) {
 
     return (
         <>
-          <div style={{ maxWidth: '100%', padding:10 }}>
+          <div style={{ maxWidth: '100%', padding:10, fontSize:14 }}>
             <MaterialTable
               openOrders={openOrders}
               icons={tableIcons}
@@ -88,6 +88,7 @@ export default function OrderList(props) {
                 { title: 'Date', field: 'orderSubmitDate', filtering: false, search: false },
                 { title: 'Req Del Date', field: 'orderRequiredDate', filtering: false },
                 { title: 'Sell Warehouse', field: 'sellWhse', filtering: false, search: false }
+                { title: 'Sell Logon', field: 'sellLogon', filtering: false, search: false }
               ]}
               localization={{            
                 header: {
@@ -132,6 +133,7 @@ export default function OrderList(props) {
                           <th className={classes.tableHeaderCell} tabIndex='-1'>Date<br />Submitted</th>
                           <th className={classes.tableHeaderCell} tabIndex='-1'>Requested<br />Delivery</th>
                           <th className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse ID</th>
+                          <th className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse Logon</th>
                       </thead>
                 )
               }
