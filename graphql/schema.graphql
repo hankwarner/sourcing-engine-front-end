@@ -2,6 +2,13 @@ type Book {
   title: String
   author: String
 }
+
+type Order {
+  atgOrderId: String!
+  custAccountId: String!
+}
+
 type Query {
-  books: [Book]
+  getBooks: [Book]
+  getOrders: [Order]
 }

@@ -2,6 +2,8 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const fs = require('fs');
+const FergusonSourcingEngineAPI = require('./graphql/apis')
+  .FergusonSourcingEngineAPI;
 
 // Setup express server to serve files in production generated from `npm run build`
 const app = express();
@@ -19,6 +21,9 @@ const { resolvers } = require('./graphql/resolvers');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  dataSources: () => ({
+    FergusonSourcingEngineAPI: new FergusonSourcingEngineAPI(),
+  }),
   introspection: true,
   playground: true,
 });

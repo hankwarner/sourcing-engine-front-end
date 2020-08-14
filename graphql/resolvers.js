@@ -9,13 +9,17 @@ const books = [
   },
 ];
 
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
+const getBooks = () => books;
+const getOrders = async (root, args, { dataSources }) => {
+  return await dataSources.FergusonSourcingEngineAPI.getOrders();
 };
 
 module.exports = {
   books,
-  resolvers,
+  resolvers: {
+    Query: {
+      getBooks,
+      getOrders,
+    },
+  },
 };

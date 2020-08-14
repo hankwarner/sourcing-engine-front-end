@@ -2,17 +2,26 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from '@apollo/client';
 
-const testQuery = gql`
-  query Books {
-    books {
+export const testQuery = gql`
+  query GetBooks {
+    getBooks {
       title
       author
     }
   }
 `;
 
+const GET_ORDERS = gql`
+  query AllOrdersQuery {
+    getOrders {
+      atgOrderId
+      custAccountId
+    }
+  }
+`;
+
 export const TestGraphQL = () => {
-  const { data } = useQuery(testQuery);
+  const { data } = useQuery(GET_ORDERS);
   return (
     <div>
       Test query from graphql server: <pre>{JSON.stringify(data, null, 2)}</pre>
