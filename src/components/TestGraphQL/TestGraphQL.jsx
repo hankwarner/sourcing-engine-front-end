@@ -11,24 +11,6 @@ const testQuery = gql`
   }
 `;
 
-export const PRODUCT_SHIPPING_ESTIMATES = gql`
-  query ProductShippingEstimatesQuery($items: [Int!]!, $zipCode: String) {
-    productShippingEstimates(items: $items, zipCode: $zipCode) {
-      id
-      totalInStock
-      shippingMessage
-      preShippingMessage
-      isInStock
-      cutoffUTC
-      inventoryAvailability {
-        quantity
-        arrives
-        arrivalDate
-      }
-    }
-  }
-`;
-
 export const TestGraphQL = () => {
   const { data } = useQuery(testQuery);
   return (

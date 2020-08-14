@@ -19,9 +19,6 @@ const graphqlEndpoint = isDev
 const link = new HttpLink({
   uri: `${graphqlEndpoint}/graphql`,
 });
-// const link = new HttpLink({
-//   uri: 'https://graphql-pokemon.now.sh/',
-// });
 
 const client = new ApolloClient({
   link,

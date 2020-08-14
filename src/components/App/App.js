@@ -4,13 +4,11 @@ import MainContent from '../MainContent/MainContent';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
-// import axios from 'axios';
+import axios from 'axios';
 import Loading from '../Loading/Loading';
-import { TestGraphQL } from '../TestGraphQL/TestGraphQL';
 
 function App() {
-  // const [orderData, setOrderData] = useState([]);
-  const [orderData] = useState([]);
+  const [orderData, setOrderData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(function effectFunction() {
@@ -20,16 +18,16 @@ function App() {
 
   async function fetchOrders() {
     setIsLoading(true);
-    // const response = await axios({
-    //   params: {
-    //     code: 'mnYhnVWLaPFZk4WsoC1tCHqANea0XlCdisYa5roo0FZaC/jX6E72Cw==',
-    //   },
-    //   method: 'get',
-    //   url: 'https://fergusonsourcingengine.azurewebsites.net/api/manual-orders',
-    //   headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    // });
-    // setOrderData(response.data);
-    // setIsLoading(false);
+    const response = await axios({
+      params: {
+        code: 'mnYhnVWLaPFZk4WsoC1tCHqANea0XlCdisYa5roo0FZaC/jX6E72Cw==',
+      },
+      method: 'get',
+      url: 'https://fergusonsourcingengine.azurewebsites.net/api/manual-orders',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    });
+    setOrderData(response.data);
+    setIsLoading(false);
   }
 
   return (
@@ -40,7 +38,6 @@ function App() {
         {isLoading ? (
           <>
             <Loading />
-            <TestGraphQL />
           </>
         ) : (
           <MainContent orderData={orderData} fetchOrders={fetchOrders} />
