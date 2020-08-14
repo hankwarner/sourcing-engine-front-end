@@ -33,6 +33,7 @@ export default function OrderDetails(props) {
               <span><strong>Customer #</strong>&nbsp;{order.customerId}</span>
               <span><strong>Order Submitted On:</strong>&nbsp;{order.orderSubmitDate}</span>
               <span><strong>Sell Warehouse ID:</strong>&nbsp;{order.sellWhse}</span> 
+              <span><strong>Sell Warehouse Logon:</strong>&nbsp;{order.sellLogon}</span> 
               <span><strong>Requested Delivery:</strong>&nbsp;{order.orderRequiredDate}</span>
               <span><strong>Ship Via Code:</strong>&nbsp;{order.shipping.shipViaCode}</span> 
               </div>
