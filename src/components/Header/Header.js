@@ -14,44 +14,47 @@ import TableRow from '@material-ui/core/TableRow';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   logoImage: {
-    width: 250
+    width: 250,
   },
   navbar: {
     paddingTop: 10,
-    fontWeight: 700
+    fontWeight: 700,
   },
   refreshLink: {
     cursor: 'pointer',
     right: 0,
     display: 'block',
     padding: '5px 10px',
-    backgroundColor:'#fff',
-    width:'100%',
-    color:'#00446b',
-    textAlign:'center',
-    textTransform:"uppercase",
-    fontWeight:700,
+    backgroundColor: '#fff',
+    width: '100%',
+    color: '#00446b',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontWeight: 700,
     '&:hover': {
-      backgroundColor:'#222223',
-      color:'#fff'
-    }
+      backgroundColor: '#222223',
+      color: '#fff',
+    },
   },
   table: {
-    borderBottom:0,
-    color:'#fff'
+    borderBottom: 0,
+    color: '#fff',
   },
   buttonRight: {
-    borderBottom:0,
-    color:'#fff',
-    textAlign:'right',
-    width:170
-  }
+    borderBottom: 0,
+    color: '#fff',
+    textAlign: 'right',
+    width: 170,
+  },
+  version: {
+    display: 'none',
+  },
 }));
 
 export default function Header(props) {
@@ -59,20 +62,30 @@ export default function Header(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar className={classes.navbar} position="static">
-        <Toolbar variant="dense">
+      <AppBar className={classes.navbar} position='static'>
+        <Toolbar variant='dense'>
           <CssBaseline />
-          <Container maxwidth="lg">
-            <Typography variant="p" color="inherit">
+          <Container maxwidth='lg'>
+            <Typography variant='p' color='inherit'>
               <TableContainer className={classes.table}>
-                <Table aria-label="simple table">
-                  <TableBody >
-                    <TableRow >
+                <Table aria-label='simple table'>
+                  <TableBody>
+                    <TableRow>
                       <TableCell className={classes.table}>
-                        <img className={classes.logoImage} src={FergLogo} alt="Ferguson Logo" />&nbsp;Sourcing App
+                        <img
+                          className={classes.logoImage}
+                          src={FergLogo}
+                          alt='Ferguson Logo'
+                        />
+                        {` Sourcing App v. ${process.env.REACT_APP_VERSION}`}
                       </TableCell>
-                      <TableCell className={classes.buttonRight} align="right">
-                        <span className={classes.refreshLink} onClick={props.fetchOrders}>Refresh List</span>
+                      <TableCell className={classes.buttonRight} align='right'>
+                        <span
+                          className={classes.refreshLink}
+                          onClick={props.fetchOrders}
+                        >
+                          Refresh List
+                        </span>
                       </TableCell>
                     </TableRow>
                   </TableBody>
