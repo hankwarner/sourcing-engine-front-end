@@ -16,7 +16,12 @@ const typeDefs = fs.readFileSync(
   'utf8'
 );
 const { resolvers } = require('./graphql/resolvers');
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  playground: true,
+});
 server.applyMiddleware({ app });
 
 // Start express server
