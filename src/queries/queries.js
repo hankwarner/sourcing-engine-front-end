@@ -51,12 +51,22 @@ export const GET_ORDERS = gql`
           masterProdId
           itemComplete
           sourcingGuide
+          vendor
         }
       }     
       sourceSystem
+      sellLogon
     }
   }
 `;
+
+export const CHECK_CLAIM = gql`
+  query CheckClaimStatus {
+    checkClaim {
+      claimed
+    }
+  }
+`
 
 // export const CLAIM_ORDER = gql`
 //     mutation ClaimTicketQuery($input: atgOrderId!) {

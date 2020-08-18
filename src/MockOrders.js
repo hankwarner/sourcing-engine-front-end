@@ -48,7 +48,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "5123428", 
-                            "itemComplete": false               
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "3M COMPANY"               
                         },
                         {
                             "lineItemId": 2,
@@ -57,7 +59,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "321657",                            
-                            "itemComplete": false     
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "MERIT BRASS CO."     
                         }
                 ]
             }           
@@ -113,7 +117,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "5123428",
-                            "itemComplete": false  
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "MERIT BRASS CO."  
                         },
                         {
                             "lineItemId": 2,
@@ -122,7 +128,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "321657",                            
-                            "itemComplete": false  
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "MERIT BRASS CO."  
                         }
                 ]
             },
@@ -137,7 +145,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "886647",                            
-                            "itemComplete": false   
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "MERIT BRASS CO."   
                         },
                         {
                             "lineItemId": 2,
@@ -146,7 +156,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "99556687",                            
-                            "itemComplete": false     
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "MERIT BRASS CO."     
                         }
                 ]
             }
@@ -202,7 +214,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "884654673",                            
-                            "itemComplete": false     
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "MERIT BRASS CO."     
                         },
                         {
                             "lineItemId": 2,
@@ -211,7 +225,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "66524478962",                            
-                            "itemComplete": false     
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "3M COMPANY"     
                         }
                 ]
             }          
@@ -267,7 +283,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "22333255478",                            
-                            "itemComplete": false     
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "3M COMPANY"     
                         },
                         {
                             "lineItemId": 2,
@@ -276,7 +294,9 @@ export default [
                             "quantity": "1", 
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "233114556687",                            
-                            "itemComplete": false     
+                            "itemComplete": false,
+                            "sourcingGuide": "FEI",
+                            "vendor": "3M COMPANY"     
                         }
                 ]
             }  
