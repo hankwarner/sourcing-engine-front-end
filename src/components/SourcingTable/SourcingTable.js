@@ -62,6 +62,16 @@ export default function SourcingTable(props) {
         props.setSelectedItems(props.selectedItems.concat(source.shipFrom));
       }
     }; 
+     
+    const vendorMessage = (item) => {
+          if(item.sourcingGuide === "Vendor Direct") {
+              return (
+                <div>
+                    <strong>Vendor:</strong> {item.vendor}
+                </div>
+              )
+          }
+    }
 
     return (
       <div className={classes.sourceContainer}>
@@ -78,9 +88,14 @@ export default function SourcingTable(props) {
                 return (  
                   <TableRow key={key}>
                     <TableCell className={classes.tablecell} scope="row">
-                      <strong>MPID:</strong> {item.masterProdId}<br />
-                      <strong>Description:</strong> {item.description}
-                    </TableCell>
+                      <div>
+                        <strong>MPID:</strong> {item.masterProdId}
+                      </div>
+                      <div>
+                        <strong>Description:</strong> {item.description}
+                      </div>
+                      {vendorMessage(item)}                          
+                    </TableCell> 
                     <TableCell className={classes.tablecell} align="left"><strong>Qty:</strong> {item.quantity}</TableCell>
                     <TableCell className={classes.tablecell} align="left"><strong>Sourcing Message:</strong><br />{item.sourcingMessage}</TableCell>
                   </TableRow>
