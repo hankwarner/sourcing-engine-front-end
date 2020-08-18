@@ -56,7 +56,8 @@ const useStyles = makeStyles(() => ({
     },
     tableHeaderCell:{
       borderBottom:'2px solid #000',
-      paddingTop:10
+      paddingTop:10,
+      textAlign:'center'
     }
 }));
 

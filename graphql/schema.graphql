@@ -56,7 +56,7 @@ type ShipTo {
 type Sourcing {
     shipFrom: ID!
     sourceComplete: Boolean!
-    shipFromLogon: String!
+    shipFromLogon: String
     items: [Item!]!
 }
 
