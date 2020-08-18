@@ -66,9 +66,14 @@ type Item {
     sourcingMessage: String!
     masterProdId: String!
     itemComplete: Boolean!
+    sourcingGuide: String
 }
 
 type Query {
   getBooks: [Book]
   getOrders: [Order]
+}
+
+type Mutation {
+  claimOrder(atgOrderId: String!): Boolean!
 }

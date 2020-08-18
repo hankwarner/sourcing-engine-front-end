@@ -20,6 +20,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { useBeforeunload } from 'react-beforeunload';
 
 import axios from 'axios'
+// import { CLAIM_ORDER } from '../../queries/queries';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -97,7 +98,14 @@ export default function SingleOrder(props) {
         },
         method:'post',
         url: `https://fergusonsourcingengine.azurewebsites.net/api/order/claim/${order.atgOrderId}`
-      });        
+      });  
+      
+      // const claimResponse = await props.client.query({
+      //   query: CLAIM_ORDER,
+      // });
+
+      // console.log(claimResponse)
+
     }
     handleClaim();
     setOpen(true);

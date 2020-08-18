@@ -50,6 +50,7 @@ export const GET_ORDERS = gql`
           sourcingMessage
           masterProdId
           itemComplete
+          sourcingGuide
         }
       }     
       sourceSystem
@@ -57,15 +58,9 @@ export const GET_ORDERS = gql`
   }
 `;
 
-// export const CHECK_CLAIM_STATUS = gql`
-//     query CheckClaimStatusQuery {
-
-//     }
-// `;
-
-// export const CLAIM_TICKET = gql`
-//     query ClaimTicketQuery {
-
+// export const CLAIM_ORDER = gql`
+//     mutation ClaimTicketQuery($input: atgOrderId!) {
+//       claimOrder(atgOrderId: String!)
 //     }
 // `;
 
