@@ -94,18 +94,11 @@ export default function SingleOrder(props) {
     async function handleClaim() {
       await axios({
         params: {
-          code: 'hmYQxSz505g1dPCNFtaBPhhjeMFQRNxlYAh91owaJGVDcbnpQ4b4hw=='
+          code: 'R/AOz7Pkiw53dJ84G6SFJsIZ3UESLnaB6f4tbwWAjY0hAKMbaMTj3w=='
         },
         method:'post',
-        url: `https://fergusonsourcingengine.azurewebsites.net/api/order/claim/${order.atgOrderId}`
-      });  
-      
-      // const claimResponse = await props.client.query({
-      //   query: CLAIM_ORDER,
-      // });
-
-      // console.log(claimResponse)
-
+        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/claim/${order.atgOrderId}`
+      }); 
     }
     handleClaim();
     setOpen(true);
@@ -118,12 +111,19 @@ export default function SingleOrder(props) {
     async function checkClaim() {
       const response = await axios({
         params: {
-          code: 'akU/NdJzya8EPdFGYD/NJtJ/VJRYDgGGI/nco5ujNyDdcrCHQAhWWg=='
+          code: 'Szws0XpVR4qyfJs2R2awiIc16bMUsCydnuL7zFUtWqGJW7zr2o/Eqg=='
         },
         method:'get',
-        url: `https://fergusonsourcingengine.azurewebsites.net/api/order/is-claimed/${order.atgOrderId}`
+        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/is-claimed/${order.atgOrderId}`
       });        
       response.data ? props.fetchOrders() : handleClickOpen()
+
+      // const claimResponse = await props.client.query({
+      //   query: CLAIM_ORDER,
+      // });
+
+      // console.log(claimResponse)
+
     }
     checkClaim();
   }
@@ -137,10 +137,10 @@ export default function SingleOrder(props) {
     async function handleRelease() {
       await axios({
         params: {
-          code: 'O94pZJNzX07aaGJaAfLayaSPl96XF9qRaAajP41Az5wiofHFD4C7zw=='
+          code: 'HrBgDPSaFKa4FAjJgqdqaC6HunIkkFJgD/FQKocMHiIgvhHhNh8Piw=='
         },
         method:'post',
-        url: `https://fergusonsourcingengine.azurewebsites.net/api/order/release/${order.atgOrderId}`
+        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/release/${order.atgOrderId}`
       });        
     }
     handleRelease().then(() => props.fetchOrders());

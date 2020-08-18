@@ -18,15 +18,15 @@ export default function CompleteOrderButton(props) {
   const handleComplete = () => {
     const headers = {
       'Content-Type': 'charset=utf-8',
-      'code': '9cs9ToHl8eWGhKttxxosn0dLLIdqLZofJem1D4RASPW8o/7S9BIkeQ=='
+      'code': 'qxWYWsbaMWVFhCaGDUTlaH0Hjwg2fRKkDwTTySVg1SVfjSjbw07gQQ=='
     }
     async function completeOrder() {
       await axios({
         params: {
-          code: '9cs9ToHl8eWGhKttxxosn0dLLIdqLZofJem1D4RASPW8o/7S9BIkeQ=='
+          code: 'qxWYWsbaMWVFhCaGDUTlaH0Hjwg2fRKkDwTTySVg1SVfjSjbw07gQQ=='
         },
         method:'post',
-        url: `https://fergusonsourcingengine.azurewebsites.net/api/order/complete/${props.id}`,
+        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/complete/${props.id}`,
         headers: headers
       }).then(() => props.handleClose());
     }

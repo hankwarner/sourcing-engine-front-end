@@ -39,7 +39,11 @@ function App(props) {
             <Loading />
           </>
         ) : (
-          <MainContent orderData={orderData} fetchOrders={fetchOrders} />
+          <MainContent
+            orderData={orderData}
+            fetchOrders={fetchOrders}
+            // client={props.client}
+          />
         )}
       </div>
     </ThemeProvider>
