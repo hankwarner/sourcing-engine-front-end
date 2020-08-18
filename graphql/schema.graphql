@@ -19,6 +19,7 @@ type Order {
   shipping: Shipping!
   sourcing: [Sourcing!]!
   sourceSystem: String!
+  sellLogon: String
 }
 
 type AccountPayment {
@@ -67,11 +68,17 @@ type Item {
     masterProdId: String!
     itemComplete: Boolean!
     sourcingGuide: String
+    vendor: String
+}
+
+type CheckClaim {
+  claimed: Boolean!
 }
 
 type Query {
   getBooks: [Book]
   getOrders: [Order]
+  checkClaim: CheckClaim
 }
 
 type Mutation {
