@@ -5,19 +5,62 @@ export const GET_ORDERS = gql`
     getOrders {
       atgOrderId
       custAccountId
+      customerId
+      customerName
+      orderSubmitDate
+      orderRequiredDate
+      sellWhse
+      sourcingMessage
+      shipFrom
+      claimed
+      orderComplete
+      paymentOnAccount {
+        payment {
+          cardType
+          address1
+          address2
+          city
+          state
+          zip
+        }
+      }
+      shipping {
+        shipViaCode
+        price 
+        shipTo {
+          name
+          address1
+          address2
+          city
+          country
+          state
+          zip
+          shipInstructionsPhoneNumberAreaDialing
+          shipInstructionsPhoneNumberDialNumber
+        }
+      }
+      sourcing { 
+        shipFrom
+        sourceComplete
+        items {
+          lineItemId
+          unitPriceCode
+          description
+          quantity
+          sourcingMessage
+          masterProdId
+          itemComplete
+          sourcingGuide
+        }
+      }     
+      sourceSystem
     }
   }
 `;
 
-// export const CHECK_CLAIM_STATUS = gql`
-//     query CheckClaimStatusQuery {
-
-//     }
-// `;
-
-// export const CLAIM_TICKET = gql`
-//     query ClaimTicketQuery {
-
+// export const CLAIM_ORDER = gql`
+//     mutation ClaimTicketQuery($input: atgOrderId!) {
+//       claimOrder(atgOrderId: String!)
 //     }
 // `;
 
