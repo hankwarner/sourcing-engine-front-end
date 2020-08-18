@@ -125,15 +125,17 @@ export default function OrderList(props) {
                 ),    
                 Header: () => (
                       <thead>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>&nbsp;</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Web Order #</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Name</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Account</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Customer ID</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Date<br />Submitted</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Requested<br />Delivery</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse ID</th>
-                          <th className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse Logon</th>
+                          <tr>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>&nbsp;</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Web Order #</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Name</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Customer<br />Account</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Customer ID</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Date<br />Submitted</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Requested<br />Delivery</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse ID</td>
+                            <td className={classes.tableHeaderCell} tabIndex='-1'>Sell<br />Warehouse Logon</td>
+                          </tr>
                       </thead>
                 )
               }
