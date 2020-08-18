@@ -59,7 +59,7 @@ export const GET_ORDERS = gql`
       sellLogon
     }
   }
-`;
+`
 
 export const CHECK_CLAIM = gql`
   query CheckClaimStatus {
