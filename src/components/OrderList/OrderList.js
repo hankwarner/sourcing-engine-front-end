@@ -122,7 +122,11 @@ export default function OrderList(props) {
               title="Sourcing Data"
               components={{ 
                 Action: thisData => (
-                  <SingleOrder order={thisData.data} fetchOrders={props.fetchOrders} />
+                  <SingleOrder 
+                    order={thisData.data}
+                    fetchOrders={props.fetchOrders}
+                    // client={props.client} 
+                  />
                 ),    
                 Header: () => (
                       <thead>
