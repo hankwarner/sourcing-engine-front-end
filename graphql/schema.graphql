@@ -6,9 +6,74 @@ type Book {
 type Order {
   atgOrderId: String!
   custAccountId: String!
+  customerId: String! 
+  customerName: String! 
+  orderSubmitDate: String!
+  orderRequiredDate: String!
+  sellWhse: String!
+  sourcingMessage: String!
+  shipFrom: String
+  claimed: Boolean!
+  orderComplete: Boolean!
+  paymentOnAccount: AccountPayment
+  shipping: Shipping!
+  sourcing: [Sourcing!]!
+  sourceSystem: String!
+}
+
+type AccountPayment {
+  payment: Payment
+}
+
+type Payment {
+    cardType: String!
+    address1: String!
+    address2: String
+    city: String!
+    state: String!
+    zip: String!
+}
+
+type Shipping {
+    shipViaCode: String
+    price: String!
+    shipTo: ShipTo!
+}
+
+type ShipTo {
+    name: String!
+    address1: String!
+    address2: String
+    city: String!
+    country: String!
+    state: String! 
+    zip: String!
+    shipInstructionsPhoneNumberAreaDialing: String!
+    shipInstructionsPhoneNumberDialNumber: String!
+}
+
+type Sourcing {
+    shipFrom: ID!
+    sourceComplete: Boolean!
+    items: [Item!]!
+}
+
+type Item {
+    lineItemId: ID!
+    unitPriceCode: String!
+    description: String!
+    quantity: String!
+    sourcingMessage: String!
+    masterProdId: String!
+    itemComplete: Boolean!
+    sourcingGuide: String
 }
 
 type Query {
   getBooks: [Book]
   getOrders: [Order]
+}
+
+type Mutation {
+  claimOrder(atgOrderId: String!): Boolean!
 }

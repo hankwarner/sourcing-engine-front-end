@@ -18,9 +18,17 @@ class FergusonSourcingEngineAPI extends RESTDataSource {
     return this.get(`${this.baseURL}/manual-orders`);
   }
 
-  async orderComplete(id) {
-    return this.post(`${this.baseURL}/order/complete/${id}`);
-  }
+  // async claimOrder() {
+  //   return this.post(`${this.baseURL}/order/claim/${id}`);
+  // }
+
+  // async releaseOrder() {
+  //   return this.post(`${this.baseURL}/order/release/${id}`);
+  // }
+
+  // async orderComplete(id) {
+  //   return this.post(`${this.baseURL}/order/complete/${id}`);
+  // }
 }
 
 module.exports = {
