@@ -83,5 +83,7 @@ type Query {
 }
 
 type Mutation {
-  claimOrder(atgOrderId: String!): Boolean!
+  claimOrder(id: String): Boolean
+  releaseOrder(id: String): Boolean
+  completeOrder(id: String): Boolean
 }
