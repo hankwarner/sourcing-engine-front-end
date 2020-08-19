@@ -98,16 +98,15 @@ export default function SingleOrder(props) {
     queryVariable
   );
 
-  const [claimOrder] = useMutation(CLAIM_ORDER, queryVariable)
-  const [releaseOrder] = useMutation(RELEASE_ORDER, queryVariable,
-    {
+  const [claimOrder] = useMutation(CLAIM_ORDER)
+  const [releaseOrder] = useMutation(RELEASE_ORDER, {
       refetchQueries,
       awaitRefetchQueries: true
     }
   )
 
   const handleClickOpen = () => {
-    claimOrder()
+    claimOrder(queryVariable)
     setOpen(true);
 
     const title = 'Order # ' + orderNumber;
@@ -130,18 +129,7 @@ export default function SingleOrder(props) {
   });
 
   const handleClose = () => {
-    // async function handleRelease() {
-    //   await axios({
-    //     params: {
-    //       code: 'HrBgDPSaFKa4FAjJgqdqaC6HunIkkFJgD/FQKocMHiIgvhHhNh8Piw==',
-    //     },
-    //     method: 'post',
-    //     url: `https://sourcingenginedashboard.azurewebsites.net/api/order/release/${order.atgOrderId}`,
-    //   });
-    // }
-    // handleRelease().then(() => props.fetchOrders());
-
-    releaseOrder()
+    releaseOrder(queryVariable)
     setOpen(false);
     window.history.pushState('', 'List', '/');
   };

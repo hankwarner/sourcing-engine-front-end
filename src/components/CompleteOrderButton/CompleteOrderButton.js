@@ -19,15 +19,14 @@ export default function CompleteOrderButton(props) {
   const classes = useStyles();
   const refetchQueries = [{ query: GET_ORDERS }];
   const queryVariable = { variables: { id: props.id }};
-  const [completeOrder] = useMutation(COMPLETE_ORDER, queryVariable,
-    {
+  const [completeOrder] = useMutation(COMPLETE_ORDER, {
       refetchQueries,
       awaitRefetchQueries: true
     }
   )
 
   const handleComplete = () => {
-    completeOrder()
+    completeOrder(queryVariable)
     .then(() => props.handleClose());
   }
   
