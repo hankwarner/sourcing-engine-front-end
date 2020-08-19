@@ -14,12 +14,17 @@ const getOrders = async (root, args, { dataSources }) => {
   return await dataSources.FergusonSourcingEngineAPI.getOrders();
 };
 
+const checkClaim = async (root, { id }, { dataSources }) => {
+  return await dataSources.FergusonSourcingEngineAPI.checkClaim(id);
+};
+
 module.exports = {
   books,
   resolvers: {
     Query: {
       getBooks,
       getOrders,
+      checkClaim,
     },
   },
 };

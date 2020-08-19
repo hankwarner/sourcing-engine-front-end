@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
@@ -9,76 +10,76 @@ import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import Container from '@material-ui/core/Container';
 
-import SourcingTable from '../SourcingTable/SourcingTable'
+import SourcingTable from '../SourcingTable/SourcingTable';
 import OrderDetails from '../OrderDetails/OrderDetails';
-import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton'
+import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton';
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
-import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger'
-import CancelOrderButton from '../CancelOrderButton/CancelOrderButton'
+import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger';
+import CancelOrderButton from '../CancelOrderButton/CancelOrderButton';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useBeforeunload } from 'react-beforeunload';
 
-import axios from 'axios'
+import axios from 'axios';
 // import { CLAIM_ORDER } from '../../queries/queries';
-
+import { CHECK_CLAIM } from '../../queries/queries';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'fixed'
+    position: 'fixed',
   },
-  box:{
+  box: {
     width: 225,
-    maxWidth:225,
-    overflow:'hidden',
+    maxWidth: 225,
+    overflow: 'hidden',
     height: 170,
-    color:"#00446b",
-    borderRight:"1px solid #00446b",
-    marginRight:20,
-    paddingRight:20
+    color: '#00446b',
+    borderRight: '1px solid #00446b',
+    marginRight: 20,
+    paddingRight: 20,
   },
   title: {
     marginLeft: theme.spacing(2),
     flex: 1,
-    position:'relative'
+    position: 'relative',
   },
   column: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   marginForDetailBody: {
-    marginTop: "84px"
+    marginTop: '84px',
   },
   textField: {
     padding: 0,
     border: 0,
-    color: "#fff",
-    fontSize: "40px",
+    color: '#fff',
+    fontSize: '40px',
     fontWeight: 700,
-    background: "transparent",
-    marginTop:16
+    background: 'transparent',
+    marginTop: 16,
   },
   orderDialog: {
-    marginBottom:40
+    marginBottom: 40,
   },
   buttonContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
-    width:'800px',
-    marginBottom: '40px'
+    width: '800px',
+    marginBottom: '40px',
   },
   errorMessage: {
     display: 'flex',
     justifyContent: 'flex-end',
     color: '#FF0000',
     fontSize: '14px',
-    marginBottom: '5px'
-  }
+    marginBottom: '5px',
+  },
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} />;
+  return <Slide direction='down' ref={ref} {...props} />;
 });
 
 export default function SingleOrder(props) {
@@ -86,81 +87,96 @@ export default function SingleOrder(props) {
   const [open, setOpen] = React.useState(false);
   const [completeReady, setCompleteReady] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
-  const [selectedItems, setSelectedItems] = React.useState([])
-  const order = props.order
+  const [selectedItems, setSelectedItems] = React.useState([]);
+  const order = props.order;
   const orderNumber = order.atgOrderId;
+
+  const queryVariable = {
+    variables: { id: order.atgOrderId },
+  };
+
+  const [checkClaimStatus, { data: status }] = useLazyQuery(
+    CHECK_CLAIM,
+    queryVariable
+  );
 
   const handleClickOpen = () => {
     async function handleClaim() {
       await axios({
         params: {
-          code: 'R/AOz7Pkiw53dJ84G6SFJsIZ3UESLnaB6f4tbwWAjY0hAKMbaMTj3w=='
+          code: 'R/AOz7Pkiw53dJ84G6SFJsIZ3UESLnaB6f4tbwWAjY0hAKMbaMTj3w==',
         },
-        method:'post',
-        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/claim/${order.atgOrderId}`
-      }); 
+        method: 'post',
+        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/claim/${order.atgOrderId}`,
+      });
     }
     handleClaim();
     setOpen(true);
-    const title = "Order # " + orderNumber;
+    const title = 'Order # ' + orderNumber;
     const url = orderNumber;
-    window.history.pushState('',title,url);
+    window.history.pushState('', title, url);
   };
 
   const checkForClaim = () => {
-    async function checkClaim() {
-      const response = await axios({
-        params: {
-          code: 'Szws0XpVR4qyfJs2R2awiIc16bMUsCydnuL7zFUtWqGJW7zr2o/Eqg=='
-        },
-        method:'get',
-        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/is-claimed/${order.atgOrderId}`
-      });        
-      response.data ? props.fetchOrders() : handleClickOpen()
-
-      // const claimResponse = await props.client.query({
-      //   query: CLAIM_ORDER,
-      // });
-
-      // console.log(claimResponse)
-
+    checkClaimStatus();
+    if (!status) {
+      handleClickOpen();
+    } else {
+      // lazy query to get orders. was props.fetchOrders()
     }
-    checkClaim();
-  }
+  };
 
-  window.addEventListener('popstate', function(e) {
+  window.addEventListener('popstate', function (e) {
     e.preventDefault();
-      //handleClose();
+    //handleClose();
   });
-  
+
   const handleClose = () => {
     async function handleRelease() {
       await axios({
         params: {
-          code: 'HrBgDPSaFKa4FAjJgqdqaC6HunIkkFJgD/FQKocMHiIgvhHhNh8Piw=='
+          code: 'HrBgDPSaFKa4FAjJgqdqaC6HunIkkFJgD/FQKocMHiIgvhHhNh8Piw==',
         },
-        method:'post',
-        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/release/${order.atgOrderId}`
-      });        
+        method: 'post',
+        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/release/${order.atgOrderId}`,
+      });
     }
     handleRelease().then(() => props.fetchOrders());
     setOpen(false);
-    window.history.pushState('','List','/');
+    window.history.pushState('', 'List', '/');
   };
-  
-  useBeforeunload(() => {handleClose()});
+
+  useBeforeunload(() => {
+    handleClose();
+  });
 
   return (
-    <div >     
+    <div>
       <SingleOrderTrigger order={props.order} handleClickOpen={checkForClaim} />
-      <Dialog className={classes.orderDialog} fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-        <AppBar className={classes.appBar} position="fixed">
-          <Toolbar>       
-          <CssBaseline />
-            <Container maxwidth="lg"> 
+      <Dialog
+        className={classes.orderDialog}
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <AppBar className={classes.appBar} position='fixed'>
+          <Toolbar>
+            <CssBaseline />
+            <Container maxwidth='lg'>
               <Typography className={classes.title}>
-                <input type="text" className={classes.textField} value={order.atgOrderId} readOnly="true" /> 
-                <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                <input
+                  type='text'
+                  className={classes.textField}
+                  value={order.atgOrderId}
+                  readOnly='true'
+                />
+                <IconButton
+                  edge='start'
+                  color='inherit'
+                  onClick={handleClose}
+                  aria-label='close'
+                >
                   x cancel
                 </IconButton>
               </Typography>
@@ -170,14 +186,22 @@ export default function SingleOrder(props) {
         <Container fixed className={classes.marginForDetailBody}>
           <div className={classes.column}>
             <OrderDetails order={props.order} />
-            <OrderAddresses shipTo={props.order.shipping.shipTo} payment={props.order.paymentOnAccount.payment} />
-            <SourcingTable 
+            <OrderAddresses
+              shipTo={props.order.shipping.shipTo}
+              payment={props.order.paymentOnAccount.payment}
+            />
+            <SourcingTable
               order={props.order}
               selectedItems={selectedItems}
               setSelectedItems={setSelectedItems}
-              setCompleteReady={setCompleteReady} 
-              setShowError={setShowError} />
-            {showError ? <span className={classes.errorMessage}>You must complete each source before completing</span> : null}
+              setCompleteReady={setCompleteReady}
+              setShowError={setShowError}
+            />
+            {showError ? (
+              <span className={classes.errorMessage}>
+                You must complete each source before completing
+              </span>
+            ) : null}
             <div className={classes.buttonContainer}>
               <div>
                 <CancelOrderButton handleClose={handleClose} />
@@ -188,7 +212,8 @@ export default function SingleOrder(props) {
                   completeReady={completeReady}
                   showError={showError}
                   setShowError={setShowError}
-                  id={props.order.atgOrderId} />
+                  id={props.order.atgOrderId}
+                />
               </div>
             </div>
           </div>
