@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLazyQuery, useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
+import { useApolloClient } from '@apollo/client';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,9 +19,13 @@ import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger';
 import CancelOrderButton from '../CancelOrderButton/CancelOrderButton';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { useBeforeunload } from 'react-beforeunload';
 
-import { CHECK_CLAIM, CLAIM_ORDER, RELEASE_ORDER, GET_ORDERS } from '../../queries/queries';
+import {
+  CHECK_CLAIM,
+  CLAIM_ORDER,
+  RELEASE_ORDER,
+  GET_ORDERS,
+} from '../../queries/queries';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -89,24 +94,18 @@ export default function SingleOrder(props) {
   const order = props.order;
   const orderNumber = order.atgOrderId;
 
-  const queryVariable = { variables: { id: order.atgOrderId }};
+  const client = useApolloClient();
+  const queryVariable = { variables: { id: order.atgOrderId } };
+  const refetchQueries = [{ query: GET_ORDERS }];
 
-	const refetchQueries = [{ query: GET_ORDERS }];
-
-  const [checkClaimStatus, { data: status }] = useLazyQuery(
-    CHECK_CLAIM,
-    queryVariable
-  );
-
-  const [claimOrder] = useMutation(CLAIM_ORDER)
+  const [claimOrder] = useMutation(CLAIM_ORDER);
   const [releaseOrder] = useMutation(RELEASE_ORDER, {
-      refetchQueries,
-      awaitRefetchQueries: true
-    }
-  )
+    refetchQueries,
+    awaitRefetchQueries: true,
+  });
 
   const handleClickOpen = () => {
-    claimOrder(queryVariable)
+    claimOrder(queryVariable);
     setOpen(true);
 
     const title = 'Order # ' + orderNumber;
@@ -115,28 +114,27 @@ export default function SingleOrder(props) {
   };
 
   const checkForClaim = () => {
-    checkClaimStatus();
-    if (!status) {
-      handleClickOpen();
-    } else {
-      // lazy query to get orders. was props.fetchOrders()
-    }
+    client
+      .query({ query: CHECK_CLAIM, variables: queryVariable.variables })
+      .then((data) => {
+        if (!data.data.checkClaim.claimed) {
+          handleClickOpen();
+        } else {
+          window.location.reload();
+        }
+      });
   };
 
   window.addEventListener('popstate', function (e) {
     e.preventDefault();
-    //handleClose();
+    handleClose();
   });
 
   const handleClose = () => {
-    releaseOrder(queryVariable)
+    releaseOrder(queryVariable);
     setOpen(false);
     window.history.pushState('', 'List', '/');
   };
-
-  useBeforeunload(() => {
-    handleClose();
-  });
 
   return (
     <div>

@@ -26,7 +26,7 @@ export const GET_ORDERS = gql`
       }
       shipping {
         shipViaCode
-        price 
+        price
         shipTo {
           name
           address1
@@ -39,7 +39,7 @@ export const GET_ORDERS = gql`
           shipInstructionsPhoneNumberDialNumber
         }
       }
-      sourcing { 
+      sourcing {
         shipFrom
         sourceComplete
         shipFromLogon
@@ -54,12 +54,12 @@ export const GET_ORDERS = gql`
           sourcingGuide
           vendor
         }
-      }     
+      }
       sourceSystem
       sellLogon
     }
   }
-`
+`;
 
 export const CHECK_CLAIM = gql`
   query CheckClaimStatus($id: String) {
@@ -67,7 +67,7 @@ export const CHECK_CLAIM = gql`
       claimed
     }
   }
-`
+`;
 
 export const CLAIM_ORDER = gql`
   mutation ClaimOrderMutation($id: String) {
