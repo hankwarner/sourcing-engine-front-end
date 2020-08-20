@@ -82,7 +82,7 @@ export default function Header(props) {
                       <TableCell className={classes.buttonRight} align='right'>
                         <span
                           className={classes.refreshLink}
-                          onClick={props.fetchOrders}
+                          onClick={() => window.location.reload()}
                         >
                           Refresh List
                         </span>
