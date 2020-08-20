@@ -1,40 +1,41 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
+// import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../Header/Header';
 import MainContent from '../MainContent/MainContent';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
-import Loading from '../Loading/Loading';
-import { GET_ORDERS } from '../../queries/queries';
+// import Loading from '../Loading/Loading';
+// import { GET_ORDERS } from '../../queries/queries';
 
 function App(props) {
-  const [orderData, setOrderData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [orderData, setOrderData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  const fetchOrders = useCallback(async () => {
-    setIsLoading(true);
+  // const fetchOrders = useCallback(async () => {
+  //   setIsLoading(true);
 
-    const response2 = await props.client.query({
-      query: GET_ORDERS,
-    });
+  //   const response2 = await props.client.query({
+  //     query: GET_ORDERS,
+  //   });
 
-    setOrderData(response2.data.getOrders);
-    setIsLoading(false);
-  }, [props.client]);
+  //   setOrderData(response2.data.getOrders);
+  //   setIsLoading(false);
+  // }, [props.client]);
 
-  useEffect(
-    function effectFunction() {
-      fetchOrders();
-    },
-    [fetchOrders]
-  );
+  // useEffect(
+  //   function effectFunction() {
+  //     fetchOrders();
+  //   },
+  //   [fetchOrders]
+  // );
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className='App'>
-        <Header fetchOrders={fetchOrders} />
-        {isLoading ? (
+        <Header fetchOrders={() => {}} />
+        {/* {isLoading ? (
           <>
             <Loading />
           </>
@@ -44,7 +45,8 @@ function App(props) {
             fetchOrders={fetchOrders}
             // client={props.client}
           />
-        )}
+        )} */}
+        <MainContent />
       </div>
     </ThemeProvider>
   );

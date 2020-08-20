@@ -6,8 +6,8 @@ type Book {
 type Order {
   atgOrderId: String!
   custAccountId: String!
-  customerId: String! 
-  customerName: String! 
+  customerId: String!
+  customerName: String!
   orderSubmitDate: String!
   orderRequiredDate: String!
   sellWhse: String!
@@ -27,49 +27,49 @@ type AccountPayment {
 }
 
 type Payment {
-    cardType: String!
-    address1: String!
-    address2: String
-    city: String!
-    state: String!
-    zip: String!
+  cardType: String!
+  address1: String!
+  address2: String
+  city: String!
+  state: String!
+  zip: String!
 }
 
 type Shipping {
-    shipViaCode: String
-    price: String!
-    shipTo: ShipTo!
+  shipViaCode: String
+  price: String!
+  shipTo: ShipTo!
 }
 
 type ShipTo {
-    name: String!
-    address1: String!
-    address2: String
-    city: String!
-    country: String!
-    state: String! 
-    zip: String!
-    shipInstructionsPhoneNumberAreaDialing: String!
-    shipInstructionsPhoneNumberDialNumber: String!
+  name: String!
+  address1: String!
+  address2: String
+  city: String!
+  country: String!
+  state: String!
+  zip: String!
+  shipInstructionsPhoneNumberAreaDialing: String!
+  shipInstructionsPhoneNumberDialNumber: String!
 }
 
 type Sourcing {
-    shipFrom: ID!
-    sourceComplete: Boolean!
-    shipFromLogon: String
-    items: [Item!]!
+  shipFrom: ID!
+  sourceComplete: Boolean!
+  shipFromLogon: String
+  items: [Item!]!
 }
 
 type Item {
-    lineItemId: ID!
-    unitPriceCode: String!
-    description: String!
-    quantity: String!
-    sourcingMessage: String!
-    masterProdId: String!
-    itemComplete: Boolean!
-    sourcingGuide: String
-    vendor: String
+  lineItemId: ID!
+  unitPriceCode: String!
+  description: String!
+  quantity: String!
+  sourcingMessage: String!
+  masterProdId: String!
+  itemComplete: Boolean!
+  sourcingGuide: String
+  vendor: String
 }
 
 type CheckClaim {
@@ -79,9 +79,11 @@ type CheckClaim {
 type Query {
   getBooks: [Book]
   getOrders: [Order]
-  checkClaim: CheckClaim
+  checkClaim(id: String): CheckClaim
 }
 
 type Mutation {
-  claimOrder(atgOrderId: String!): Boolean!
+  claimOrder(id: String): Boolean
+  releaseOrder(id: String): Boolean
+  completeOrder(id: String): Boolean
 }

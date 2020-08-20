@@ -1,7 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import axios from 'axios'
+
+import { useMutation } from '@apollo/react-hooks';
+import { COMPLETE_ORDER, GET_ORDERS } from '../../queries/queries';
+
 
 const useStyles = makeStyles(() => ({
   button: {
@@ -14,23 +17,17 @@ const useStyles = makeStyles(() => ({
 
 export default function CompleteOrderButton(props) {
   const classes = useStyles();
+  const refetchQueries = [{ query: GET_ORDERS }];
+  const queryVariable = { variables: { id: props.id }};
+  const [completeOrder] = useMutation(COMPLETE_ORDER, {
+      refetchQueries,
+      awaitRefetchQueries: true
+    }
+  )
 
   const handleComplete = () => {
-    const headers = {
-      'Content-Type': 'charset=utf-8',
-      'code': 'qxWYWsbaMWVFhCaGDUTlaH0Hjwg2fRKkDwTTySVg1SVfjSjbw07gQQ=='
-    }
-    async function completeOrder() {
-      await axios({
-        params: {
-          code: 'qxWYWsbaMWVFhCaGDUTlaH0Hjwg2fRKkDwTTySVg1SVfjSjbw07gQQ=='
-        },
-        method:'post',
-        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/complete/${props.id}`,
-        headers: headers
-      }).then(() => props.handleClose());
-    }
-    completeOrder();    
+    completeOrder(queryVariable)
+    .then(() => props.handleClose());
   }
   
   const handleClick = () => props.completeReady ? handleComplete() : props.setShowError(true)
