@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useLazyQuery, useMutation } from '@apollo/react-hooks';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
@@ -20,9 +20,7 @@ import CancelOrderButton from '../CancelOrderButton/CancelOrderButton';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useBeforeunload } from 'react-beforeunload';
 
-import axios from 'axios';
-// import { CLAIM_ORDER } from '../../queries/queries';
-import { CHECK_CLAIM } from '../../queries/queries';
+import { CHECK_CLAIM, CLAIM_ORDER, RELEASE_ORDER, GET_ORDERS } from '../../queries/queries';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -91,27 +89,26 @@ export default function SingleOrder(props) {
   const order = props.order;
   const orderNumber = order.atgOrderId;
 
-  const queryVariable = {
-    variables: { id: order.atgOrderId },
-  };
+  const queryVariable = { variables: { id: order.atgOrderId }};
+
+	const refetchQueries = [{ query: GET_ORDERS }];
 
   const [checkClaimStatus, { data: status }] = useLazyQuery(
     CHECK_CLAIM,
     queryVariable
   );
 
-  const handleClickOpen = () => {
-    async function handleClaim() {
-      await axios({
-        params: {
-          code: 'R/AOz7Pkiw53dJ84G6SFJsIZ3UESLnaB6f4tbwWAjY0hAKMbaMTj3w==',
-        },
-        method: 'post',
-        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/claim/${order.atgOrderId}`,
-      });
+  const [claimOrder] = useMutation(CLAIM_ORDER)
+  const [releaseOrder] = useMutation(RELEASE_ORDER, {
+      refetchQueries,
+      awaitRefetchQueries: true
     }
-    handleClaim();
+  )
+
+  const handleClickOpen = () => {
+    claimOrder(queryVariable)
     setOpen(true);
+
     const title = 'Order # ' + orderNumber;
     const url = orderNumber;
     window.history.pushState('', title, url);
@@ -132,16 +129,7 @@ export default function SingleOrder(props) {
   });
 
   const handleClose = () => {
-    async function handleRelease() {
-      await axios({
-        params: {
-          code: 'HrBgDPSaFKa4FAjJgqdqaC6HunIkkFJgD/FQKocMHiIgvhHhNh8Piw==',
-        },
-        method: 'post',
-        url: `https://sourcingenginedashboard.azurewebsites.net/api/order/release/${order.atgOrderId}`,
-      });
-    }
-    handleRelease().then(() => props.fetchOrders());
+    releaseOrder(queryVariable)
     setOpen(false);
     window.history.pushState('', 'List', '/');
   };

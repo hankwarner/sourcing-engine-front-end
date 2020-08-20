@@ -62,21 +62,28 @@ export const GET_ORDERS = gql`
 `
 
 export const CHECK_CLAIM = gql`
-  query CheckClaimStatus {
-    checkClaim {
+  query CheckClaimStatus($id: String) {
+    checkClaim(id: $id) {
       claimed
     }
   }
 `
 
-// export const CLAIM_ORDER = gql`
-//     mutation ClaimTicketQuery($input: atgOrderId!) {
-//       claimOrder(atgOrderId: String!)
-//     }
-// `;
+export const CLAIM_ORDER = gql`
+  mutation ClaimOrderMutation($id: String) {
+    claimOrder(id: $id)
+  }
+`;
 
-// export const RELEASE_TICKET = gql`
-//     query ReleaseTicketQuery {
 
-//     }
-// `;
+export const RELEASE_ORDER = gql`
+    mutation ReleaseOrderMutation($id: String) {
+      releaseOrder(id: $id)
+    }
+`;
+
+export const COMPLETE_ORDER = gql`
+    mutation CompleteOrderMutation($id: String) {
+      completeOrder(id: $id)
+    }
+`;
