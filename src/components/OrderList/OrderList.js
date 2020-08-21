@@ -1,10 +1,11 @@
-import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_ORDERS } from '../../queries/queries';
+import React, { useContext, useEffect } from 'react';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { GET_ORDERS, RELEASE_ORDER } from '../../queries/queries';
 import { makeStyles } from '@material-ui/core/styles';
 import SingleOrder from '../SingleOrder/SingleOrder';
 import MaterialTable from 'material-table';
 import Loading from '../Loading/Loading';
+import { OrderContext } from '../../context/order.context';
 
 import { forwardRef } from 'react';
 
@@ -66,6 +67,34 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const UnClaimEffect = () => {
+  // This has to be its own component so changes in context don't trigger a re-render of the OrderList
+  const { currentClaimedOrder } = useContext(OrderContext);
+  const [releaseOrder] = useMutation(RELEASE_ORDER);
+
+  useEffect(() => {
+    const sleep = (milliseconds) => {
+      const date = Date.now();
+      let currentDate = null;
+      do {
+        currentDate = Date.now();
+      } while (currentDate - date < milliseconds);
+    };
+    const releaseOrderOnUnload = () => {
+      releaseOrder({ variables: { id: currentClaimedOrder } });
+      // We have to add a forced pause here to give time for the graphql call to succeed.
+      // The beforeunload event does not wait for asynchronous calls to finish
+      sleep(500);
+    };
+    window.addEventListener('beforeunload', releaseOrderOnUnload);
+    return () => {
+      window.removeEventListener('beforeunload', releaseOrderOnUnload);
+    };
+  }, [currentClaimedOrder, releaseOrder]);
+
+  return null;
+};
+
 export default function OrderList(props) {
   const classes = useStyles();
 
@@ -79,6 +108,7 @@ export default function OrderList(props) {
 
   return (
     <>
+      <UnClaimEffect />
       <div style={{ maxWidth: '100%', padding: 10, fontSize: 14 }}>
         <MaterialTable
           openOrders={openOrders}
@@ -156,7 +186,9 @@ export default function OrderList(props) {
             },
             showDetail: false,
           }}
-          actions={[{}]}
+          // actions was done like this to get around a console error
+          // https://github.com/mbrn/material-table/issues/657
+          actions={[() => ({})]}
           data={openOrders}
           title='Sourcing Data'
           components={{
@@ -164,7 +196,6 @@ export default function OrderList(props) {
               <SingleOrder
                 order={thisData.data}
                 fetchOrders={props.fetchOrders}
-                // client={props.client}
               />
             ),
             Header: () => (

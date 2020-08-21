@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import FergLogo from '../../img/ferguson-logo.svg';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -66,7 +65,6 @@ export default function Header(props) {
         <Toolbar variant='dense'>
           <CssBaseline />
           <Container maxwidth='lg'>
-            <Typography variant='p' color='inherit'>
               <TableContainer className={classes.table}>
                 <Table aria-label='simple table'>
                   <TableBody>
@@ -91,7 +89,6 @@ export default function Header(props) {
                   </TableBody>
                 </Table>
               </TableContainer>
-            </Typography>
           </Container>
         </Toolbar>
       </AppBar>

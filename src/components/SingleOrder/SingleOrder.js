@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { useApolloClient } from '@apollo/client';
+import { OrderContext } from '../../context/order.context';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
@@ -91,11 +92,12 @@ export default function SingleOrder(props) {
   const [completeReady, setCompleteReady] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState([]);
+  const { setCurrentClaimedOrder } = useContext(OrderContext);
   const order = props.order;
   const orderNumber = order.atgOrderId;
 
   const client = useApolloClient();
-  const queryVariable = { variables: { id: order.atgOrderId } };
+  const queryVariable = { variables: { id: orderNumber } };
   const refetchQueries = [{ query: GET_ORDERS }];
 
   const [claimOrder] = useMutation(CLAIM_ORDER);
@@ -107,6 +109,7 @@ export default function SingleOrder(props) {
   const handleClickOpen = () => {
     claimOrder(queryVariable);
     setOpen(true);
+    setCurrentClaimedOrder(orderNumber);
 
     const title = 'Order # ' + orderNumber;
     const url = orderNumber;
@@ -155,7 +158,7 @@ export default function SingleOrder(props) {
                   type='text'
                   className={classes.textField}
                   value={order.atgOrderId}
-                  readOnly='true'
+                  readOnly={true}
                 />
                 <IconButton
                   edge='start'
