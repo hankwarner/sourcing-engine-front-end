@@ -110,10 +110,9 @@ export default function SingleOrder(props) {
     claimOrder(queryVariable);
     setOpen(true);
     setCurrentClaimedOrder(orderNumber);
-
+    // Pushing to history makes it so the back button won't take them out of the app
     const title = 'Order # ' + orderNumber;
-    const url = orderNumber;
-    window.history.pushState('', title, url);
+    window.history.pushState('', title, '/');
   };
 
   const checkForClaim = () => {
