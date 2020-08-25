@@ -2,6 +2,9 @@ name: TEST versioning deployment
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - 'versioning'
 
 jobs:
   build-and-deploy:
