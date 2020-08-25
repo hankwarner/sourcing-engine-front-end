@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -39,6 +39,10 @@ const useStyles = makeStyles({
 
 export default function SourcingTable(props) {
   const classes = useStyles();
+
+  useEffect(() => {
+    checkForComplete()
+  })
 
   const checkForComplete = () => {
     if (props.selectedItems.length === props.order.sourcing.length) {
@@ -86,10 +90,7 @@ export default function SourcingTable(props) {
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label='simple table'>
             <TableBody>
-              {source.items.map((item, key) => {
-                // TODO: this isn't actually doing anything. It needs to be fixed to work
-                checkForComplete();
-
+              {source.items.map((item, key) => {                
                 return (
                   <TableRow key={key}>
                     <TableCell className={classes.tablecell} scope='row'>
