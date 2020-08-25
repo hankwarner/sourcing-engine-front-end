@@ -1,6 +1,6 @@
-# Deploy branch versioning on-demand to ferguson-sourcing-windows for testing
+name: TEST versioning deployment
 
-name: [TEST] versioning deployment
+# Deploy branch versioning on-demand to ferguson-sourcing-windows for testing
 
 on:
   workflow_dispatch:
