@@ -1,0 +1,44 @@
+name: TEST versioning deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'versioning'
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: versioning
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.13.0'
+          
+      - name: Configure git
+        run: |
+          git config user.name "Atlanta CICD"
+          git config user.email atlanta.cicd@supply.com
+      
+      - name: Bump version
+        run: npm version minor -m "Version bump to %s"
+
+      - name: npm install
+        run: npm ci
+
+      - name: npm build
+        run: npm run-script build
+
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'ferguson-sourcing-windows'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_a97930787d304a509c2c10a182b42333 }}
+          package: '.'
+          slot-name: production
