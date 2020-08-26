@@ -6,13 +6,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
 import { OrderProvider } from '../../context/order.context';
 
-function App(props) {
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <OrderProvider>
         <CssBaseline />
         <div className='App'>
-          <Header fetchOrders={() => {}} />
+          <Header />
           <MainContent />
         </div>
       </OrderProvider>
