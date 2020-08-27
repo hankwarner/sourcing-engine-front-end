@@ -2,9 +2,9 @@
 
 [Production Site](https://ferguson-sourcing-windows.azurewebsites.net/)
 
-## Backlog
+## Project Board
 
-[TODOS](TODOS.md)
+[TODOS](https://github.com/SUPPLYcom/sourcing-data-front-end/projects/1)
 
 ## Best Practices
 
