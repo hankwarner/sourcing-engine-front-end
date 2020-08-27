@@ -7,6 +7,33 @@ on:
       - 'versioning'
 
 jobs:
+  version-bump:
+    name: "Bump version in package.json"
+    runs-on: ubuntu-latest
+    
+    steps: 
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.13.0'
+
+      - name: "Configure git"
+        run: |
+          git config user.name "Atlanta CICD"
+          git config user.email atlanta.cicd@supply.com
+
+      - name: "Bump version"
+        run: npm version minor -m "Version bump to %s"
+
+      - name: "Push change to master"
+        run: git push --follow-tags origin master
+        
+        
   build-and-deploy:
     name: Build and Deploy
     runs-on: windows-latest
@@ -14,20 +41,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: versioning
+          ref: ${{ github.ref }}
 
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '12.13.0'
-          
-      - name: Configure git
-        run: |
-          git config user.name "Atlanta CICD"
-          git config user.email atlanta.cicd@supply.com
-      
-      - name: Bump version
-        run: npm version minor -m "Version bump to %s"
 
       - name: npm install
         run: npm ci
