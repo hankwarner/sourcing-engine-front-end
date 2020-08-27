@@ -30,8 +30,8 @@ jobs:
       - name: "Bump version"
         run: npm version minor -m "Version bump to %s"
 
-      - name: "Push change to master"
-        run: git push --follow-tags origin master
+      - name: "Push change back to repo"
+        run: git push --follow-tags origin ${{ github.ref }}
         
         
   build-and-deploy:
