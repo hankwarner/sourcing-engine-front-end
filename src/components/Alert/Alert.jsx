@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Alert = () => {
+export const Alert = ({ alertText, alertType = 'info' }) => {
+  // Alert types: error, warning, info, success
+  // https://material-ui.com/components/snackbars/#simple-snackbars
   const classes = useStyles();
   const { orderAlertOpen, setOrderAlertOpen } = useContext(OrderContext);
 
@@ -49,9 +51,9 @@ export const Alert = () => {
           elevation={6}
           variant='filled'
           onClose={handleClose}
-          severity='info'
+          severity={alertType}
         >
-          Order already claimed. Choose another.
+          {alertText}
         </MuiAlert>
       </Snackbar>
     </div>

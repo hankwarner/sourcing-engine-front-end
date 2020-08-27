@@ -11,7 +11,10 @@ export default function MainContent() {
       <CssBaseline />
       <Container maxwidth='sm'>
         <Typography component='div' style={{ height: '100vh' }}>
-          <Alert />
+          <Alert
+            alertText='Order already claimed. Choose another.'
+            alertType='info'
+          />
           <OrderList />
         </Typography>
       </Container>
