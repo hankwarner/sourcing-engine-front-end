@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 const initialState = {
   currentClaimedOrder: '',
   setCurrentClaimedOrder: () => {},
+  orderAlertOpen: false,
+  setOrderAlertOpen: () => {},
 };
 
 export const OrderContext = React.createContext(initialState);
@@ -13,6 +15,10 @@ export class OrderProvider extends Component {
     currentClaimedOrder: '',
     setCurrentClaimedOrder: (order) => {
       this.setState(() => ({ currentClaimedOrder: order }));
+    },
+    orderAlertOpen: false,
+    setOrderAlertOpen: (newValue) => {
+      this.setState(() => ({ orderAlertOpen: newValue }));
     },
   };
 
