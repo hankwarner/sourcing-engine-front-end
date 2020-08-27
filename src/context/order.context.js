@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 const initialState = {
   currentClaimedOrder: '',
   setCurrentClaimedOrder: () => {},
+  needsToBeReloaded: false,
+  setNeedsToBeReloaded: () => {},
+
 };
 
 export const OrderContext = React.createContext(initialState);
@@ -14,6 +17,10 @@ export class OrderProvider extends Component {
     setCurrentClaimedOrder: (order) => {
       this.setState(() => ({ currentClaimedOrder: order }));
     },
+    needsToBeReloaded: false,
+    setNeedsToBeReloaded: (reload) => {
+      this.setState(() => ({needsToBeReloaded: reload}))
+    }
   };
 
   render() {

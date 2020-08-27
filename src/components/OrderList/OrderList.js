@@ -95,8 +95,19 @@ const UnClaimEffect = () => {
   return null;
 };
 
+const ReloadEffect = () => {
+  const { needsToBeReloaded } = useContext(OrderContext)
+
+  useEffect(() => {
+    console.log("RELOAD")
+  }, [needsToBeReloaded])
+
+  return null;
+}
+
 export default function OrderList(props) {
   const classes = useStyles();
+
 
   const { data, loading } = useQuery(GET_ORDERS);
 
@@ -109,6 +120,7 @@ export default function OrderList(props) {
   return (
     <>
       <UnClaimEffect />
+      <ReloadEffect />
       <div style={{ maxWidth: '100%', padding: 10, fontSize: 14 }}>
         <MaterialTable
           openOrders={openOrders}

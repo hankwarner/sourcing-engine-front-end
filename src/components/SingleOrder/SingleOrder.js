@@ -92,7 +92,7 @@ export default function SingleOrder(props) {
   const [completeReady, setCompleteReady] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState([]);
-  const { setCurrentClaimedOrder } = useContext(OrderContext);
+  const { setCurrentClaimedOrder, setNeedsToBeReloaded } = useContext(OrderContext);
   const order = props.order;
   const orderNumber = order.atgOrderId;
 
@@ -109,6 +109,7 @@ export default function SingleOrder(props) {
   const handleClickOpen = () => {
     claimOrder(queryVariable);
     setOpen(true);
+    setNeedsToBeReloaded(true);
     setCurrentClaimedOrder(orderNumber);
     // Pushing to history makes it so the back button won't take them out of the app
     const title = 'Order # ' + orderNumber;
@@ -135,6 +136,7 @@ export default function SingleOrder(props) {
   const handleClose = () => {
     releaseOrder(queryVariable);
     setOpen(false);
+    setNeedsToBeReloaded(false);
     window.history.pushState('', 'List', '/');
   };
 
