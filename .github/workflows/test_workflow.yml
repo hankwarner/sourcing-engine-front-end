@@ -35,7 +35,8 @@ jobs:
         
         
   build-and-deploy:
-    name: Build and Deploy
+    name: "Build and Deploy"
+    needs: version-bump
     runs-on: windows-latest
 
     steps:
