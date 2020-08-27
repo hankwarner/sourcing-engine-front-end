@@ -96,10 +96,12 @@ const UnClaimEffect = () => {
 };
 
 const ReloadEffect = () => {
-  const { needsToBeReloaded } = useContext(OrderContext)
+  const { needsToBeReloaded, setOrderAlertOpen } = useContext(OrderContext)
 
   useEffect(() => {
+    const { data, loading } = useQuery(GET_ORDERS);
     console.log("RELOAD")
+    setOrderAlertOpen(true)
   }, [needsToBeReloaded])
 
   return null;
@@ -107,7 +109,6 @@ const ReloadEffect = () => {
 
 export default function OrderList(props) {
   const classes = useStyles();
-
 
   const { data, loading } = useQuery(GET_ORDERS);
 

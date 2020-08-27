@@ -19,8 +19,8 @@ export class OrderProvider extends Component {
       this.setState(() => ({ currentClaimedOrder: order }));
     },
     needsToBeReloaded: false,
-    setNeedsToBeReloaded: (reload) => {
-      this.setState(() => ({needsToBeReloaded: reload}))
+    setNeedsToBeReloaded: (newValue) => {
+      this.setState(() => ({needsToBeReloaded: newValue}))
     },
     orderAlertOpen: false,
     setOrderAlertOpen: (newValue) => {

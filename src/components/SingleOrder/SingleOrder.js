@@ -109,7 +109,6 @@ export default function SingleOrder(props) {
   const handleClickOpen = () => {
     claimOrder(queryVariable);
     setOpen(true);
-    setNeedsToBeReloaded(true);
     setCurrentClaimedOrder(orderNumber);
     // Pushing to history makes it so the back button won't take them out of the app
     const title = 'Order # ' + orderNumber;
@@ -123,7 +122,8 @@ export default function SingleOrder(props) {
         if (!data.data.checkClaim.claimed) {
           handleClickOpen();
         } else {
-          window.location.reload();
+          // window.location.reload();
+          setNeedsToBeReloaded(true);
         }
       });
   };
@@ -136,7 +136,6 @@ export default function SingleOrder(props) {
   const handleClose = () => {
     releaseOrder(queryVariable);
     setOpen(false);
-    setNeedsToBeReloaded(false);
     window.history.pushState('', 'List', '/');
   };
 
