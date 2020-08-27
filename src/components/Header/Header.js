@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,6 +10,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
+import { OrderContext } from '../../context/order.context';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const { setReloadTrigger } = useContext(OrderContext);
 
   return (
     <div className={classes.root}>
@@ -65,30 +67,30 @@ export default function Header() {
         <Toolbar variant='dense'>
           <CssBaseline />
           <Container maxwidth='lg'>
-              <TableContainer className={classes.table}>
-                <Table aria-label='simple table'>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell className={classes.table}>
-                        <img
-                          className={classes.logoImage}
-                          src={FergLogo}
-                          alt='Ferguson Logo'
-                        />
-                        {` Sourcing App v. ${process.env.REACT_APP_VERSION}`}
-                      </TableCell>
-                      <TableCell className={classes.buttonRight} align='right'>
-                        <span
-                          className={classes.refreshLink}
-                          onClick={() => window.location.reload()}
-                        >
-                          Refresh List
-                        </span>
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </TableContainer>
+            <TableContainer className={classes.table}>
+              <Table aria-label='simple table'>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className={classes.table}>
+                      <img
+                        className={classes.logoImage}
+                        src={FergLogo}
+                        alt='Ferguson Logo'
+                      />
+                      {` Sourcing App v. ${process.env.REACT_APP_VERSION}`}
+                    </TableCell>
+                    <TableCell className={classes.buttonRight} align='right'>
+                      <span
+                        className={classes.refreshLink}
+                        onClick={() => setReloadTrigger()}
+                      >
+                        Refresh List
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Container>
         </Toolbar>
       </AppBar>

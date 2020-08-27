@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 const initialState = {
   currentClaimedOrder: '',
   setCurrentClaimedOrder: () => {},
-  needsToBeReloaded: false,
-  setNeedsToBeReloaded: () => {},
+  reloadTrigger: false,
+  setReloadTrigger: () => {},
   orderAlertOpen: false,
   setOrderAlertOpen: () => {},
 };
@@ -18,9 +18,11 @@ export class OrderProvider extends Component {
     setCurrentClaimedOrder: (order) => {
       this.setState(() => ({ currentClaimedOrder: order }));
     },
-    needsToBeReloaded: false,
-    setNeedsToBeReloaded: (newValue) => {
-      this.setState(() => ({needsToBeReloaded: newValue}))
+    reloadTrigger: false,
+    setReloadTrigger: () => {
+      this.setState(() => ({
+        reloadTrigger: !this.state.reloadTrigger,
+      }));
     },
     orderAlertOpen: false,
     setOrderAlertOpen: (newValue) => {

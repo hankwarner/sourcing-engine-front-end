@@ -92,7 +92,11 @@ export default function SingleOrder(props) {
   const [completeReady, setCompleteReady] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState([]);
-  const { setCurrentClaimedOrder, setNeedsToBeReloaded } = useContext(OrderContext);
+  const {
+    setCurrentClaimedOrder,
+    setReloadTrigger,
+    setOrderAlertOpen,
+  } = useContext(OrderContext);
   const order = props.order;
   const orderNumber = order.atgOrderId;
 
@@ -122,8 +126,8 @@ export default function SingleOrder(props) {
         if (!data.data.checkClaim.claimed) {
           handleClickOpen();
         } else {
-          // window.location.reload();
-          setNeedsToBeReloaded(true);
+          setOrderAlertOpen(true);
+          setReloadTrigger();
         }
       });
   };

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_ORDERS, RELEASE_ORDER } from '../../queries/queries';
 import { makeStyles } from '@material-ui/core/styles';
@@ -95,24 +95,28 @@ const UnClaimEffect = () => {
   return null;
 };
 
-const ReloadEffect = () => {
-  const { needsToBeReloaded, setOrderAlertOpen } = useContext(OrderContext)
-
-  useEffect(() => {
-    const { data, loading } = useQuery(GET_ORDERS);
-    console.log("RELOAD")
-    setOrderAlertOpen(true)
-  }, [needsToBeReloaded])
-
-  return null;
-}
-
 export default function OrderList(props) {
   const classes = useStyles();
 
-  const { data, loading } = useQuery(GET_ORDERS);
+  const { data, loading, refetch } = useQuery(GET_ORDERS);
 
-  if (loading) {
+  const { reloadTrigger } = useContext(OrderContext);
+  const [fakeLoading, setFakeLoading] = useState(false);
+  useEffect(() => {
+    refetch();
+
+    // Doing this bit with the fakeLoading because refetch doesn't
+    // seem to update loading and we want to see the loading spinner
+    // for a bit to indicate that the order list is being updated
+    setFakeLoading(true);
+    const timer = setTimeout(() => setFakeLoading(false), 500);
+    // Making sure to cleanup timer on unload. Probably don't need to
+    // for this use case, but it's safer
+    return () => clearTimeout(timer);
+
+  }, [reloadTrigger, refetch, setFakeLoading]);
+
+  if (loading || fakeLoading) {
     return <Loading />;
   }
 
@@ -121,7 +125,6 @@ export default function OrderList(props) {
   return (
     <>
       <UnClaimEffect />
-      <ReloadEffect />
       <div style={{ maxWidth: '100%', padding: 10, fontSize: 14 }}>
         <MaterialTable
           openOrders={openOrders}
