@@ -5,7 +5,8 @@ const initialState = {
   setCurrentClaimedOrder: () => {},
   needsToBeReloaded: false,
   setNeedsToBeReloaded: () => {},
-
+  orderAlertOpen: false,
+  setOrderAlertOpen: () => {},
 };
 
 export const OrderContext = React.createContext(initialState);
@@ -20,7 +21,11 @@ export class OrderProvider extends Component {
     needsToBeReloaded: false,
     setNeedsToBeReloaded: (reload) => {
       this.setState(() => ({needsToBeReloaded: reload}))
-    }
+    },
+    orderAlertOpen: false,
+    setOrderAlertOpen: (newValue) => {
+      this.setState(() => ({ orderAlertOpen: newValue }));
+    },
   };
 
   render() {
