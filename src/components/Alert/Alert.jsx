@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     '& > * + *': {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(10),
     },
   },
 }));
@@ -30,7 +30,9 @@ export const Alert = () => {
       <Button variant='outlined' onClick={handleClick}>
         Trigger alert
       </Button>
-    ) : null;
+    ) : (
+      <div>{/* empty div so alert positions correctly */}</div>
+    );
   };
 
   return (
