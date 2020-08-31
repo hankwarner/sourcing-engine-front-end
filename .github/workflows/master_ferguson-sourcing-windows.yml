@@ -8,6 +8,9 @@ on:
     branches:
       - master
 
+env:
+  NODE_VERSION: '14.7.0'
+
 jobs:
   version-bump:
     name: 'Bump version in package.json'
@@ -22,7 +25,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.13.0'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: 'Configure git'
         run: |
@@ -51,7 +54,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.13.0'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: npm install
         run: npm ci
