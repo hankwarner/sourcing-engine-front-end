@@ -5,18 +5,21 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
 import { OrderProvider } from '../../context/order.context';
+import { RefreshProvider } from '../../context/refresh.context';
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <OrderProvider>
-        <CssBaseline />
-        <div className='App'>
-          <Header />
-          <MainContent />
-        </div>
-      </OrderProvider>
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			<OrderProvider>
+				<RefreshProvider>
+					<CssBaseline />
+					<div className="App">
+						<Header />
+						<MainContent />
+					</div>
+				</RefreshProvider>
+			</OrderProvider>
+		</ThemeProvider>
+	);
 }
 export default App;
