@@ -1,41 +1,48 @@
-name: TEST versioning deployment
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy Node.js app to Azure Web App - ferguson-sourcing-windows
 
 on:
-  workflow_dispatch:
   push:
     branches:
-      - 'versioning'
+      - header-issue
+
+env:
+  NODE_VERSION: '14.7.0'
 
 jobs:
   version-bump:
-    name: "Bump version in package.json"
+    name: 'Bump version in package.json'
     runs-on: ubuntu-latest
-    
-    steps: 
-      - name: "Checkout source code"
-        uses: "actions/checkout@v2"
+
+    steps:
+      - name: 'Checkout source code'
+        uses: 'actions/checkout@v2'
         with:
           ref: ${{ github.ref }}
 
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.13.0'
+          node-version: ${{ env.NODE_VERSION }}
 
-      - name: "Configure git"
+      - name: 'Configure git'
         run: |
           git config user.name "Atlanta CICD"
           git config user.email atlanta.cicd@supply.com
 
-      - name: "Bump version"
+      # This will always bump the minor version on a push to master. If you want
+      # to bump the major version, just change it in package.json. When you push
+      # that change, this will bump it one more time with a minor version bump
+      - name: 'Bump version'
         run: npm version minor -m "Version bump to %s"
 
-      - name: "Push change back to repo"
+      - name: 'Push change back to repo'
         run: git push --follow-tags origin ${{ github.ref }}
-        
-        
+
   build-and-deploy:
-    name: "Build and Deploy"
+    name: 'Build and Deploy'
     needs: version-bump
     runs-on: windows-latest
 
@@ -47,7 +54,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.13.0'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: npm install
         run: npm ci
