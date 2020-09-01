@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_ORDERS, RELEASE_ORDER } from '../../queries/queries';
 import { makeStyles } from '@material-ui/core/styles';
 import SingleOrder from '../SingleOrder/SingleOrder';
+import SingleOrderModal from '../SingleOrderModal/SingleOrderModal';
 import MaterialTable from 'material-table';
 import Loading from '../Loading/Loading';
 import { OrderContext } from '../../context/order.context';
@@ -214,10 +215,14 @@ export default function OrderList(props) {
 					title="Sourcing Data"
 					components={{
 						Action: (thisData) => (
-							<SingleOrder
-								order={thisData.data}
-								fetchOrders={props.fetchOrders}
-							/>
+              <div>
+                <SingleOrder
+                  order={thisData.data}
+                />
+                <SingleOrderModal 
+                  order={thisData.data}
+                />
+              </div>
 						),
 						Header: () => (
 							<thead>
