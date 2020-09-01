@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 	textField: {
 		padding: 0,
 		border: 0,
-		color: '#fff',
+		// color: '#fff',
 		fontSize: '40px',
 		fontWeight: 700,
 		background: 'transparent',
@@ -172,30 +172,30 @@ export default function SingleOrderModal(props) {
                 <p id="transition-modal-description">react-transition-group animates me.</p>
             </div> */}
             <div className={classes.paper}>
-            <AppBar>
-                <Toolbar>
-                    <CssBaseline />
-                    <Container maxwidth="lg">
-                        <Typography className={classes.title}>
-                            <input
-                                type="text"
-                                className={classes.textField}
-                                value={order.atgOrderId}
-                                readOnly={true}
-                            />
-                            <IconButton
-                                edge="start"
-                                color="inherit"
-                                onClick={handleClose}
-                                aria-label="close"
-                            >
-                                x cancel
-                            </IconButton>
-                        </Typography>
-                    </Container>
-                </Toolbar>
-            </AppBar>
             <Container fixed className={classes.marginForDetailBody}>
+                {/* <AppBar> */}
+                    <Toolbar>
+                        <CssBaseline />
+                        <Container maxwidth="lg">
+                            <Typography className={classes.title}>
+                                <input
+                                    type="text"
+                                    className={classes.textField}
+                                    value={order.atgOrderId}
+                                    readOnly={true}
+                                />
+                                <IconButton
+                                    edge="start"
+                                    color="inherit"
+                                    onClick={handleClose}
+                                    aria-label="close"
+                                >
+                                    x cancel
+                                </IconButton>
+                            </Typography>
+                        </Container>
+                    </Toolbar>
+                {/* </AppBar> */}
                 <div className={classes.column}>
                     <OrderDetails order={props.order} />
                     <OrderAddresses
