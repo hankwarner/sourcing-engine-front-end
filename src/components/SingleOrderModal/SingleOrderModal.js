@@ -48,22 +48,31 @@ const useStyles = makeStyles((theme) => ({
 		flex: 1,
 		position: 'relative',
 	},
+	newTitle: {
+		flex: 1,
+		position: 'relative',
+		padding:'2px 0px',
+		fontWeight: 700,
+		color: '#00446b',
+	},
 	column: {
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'flex-start',
 	},
 	marginForDetailBody: {
-		marginTop: '84px',
+		height: '85vh',
+		overflow: 'hidden',
+		overflowY: 'scroll'
 	},
 	textField: {
 		padding: 0,
 		border: 0,
-		// color: '#fff',
+		color: '#00446b',
 		fontSize: '40px',
 		fontWeight: 700,
 		background: 'transparent',
-		marginTop: 16,
+		paddingTop: 10
 	},
 	orderDialog: {
 		marginBottom: 40,
@@ -84,14 +93,14 @@ const useStyles = makeStyles((theme) => ({
     modal: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+		justifyContent: 'center',
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        border: '1px solid #000',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
+	},
+
 }));
 
 export default function SingleOrderModal(props) {
@@ -174,24 +183,16 @@ export default function SingleOrderModal(props) {
             <div className={classes.paper}>
             <Container fixed className={classes.marginForDetailBody}>
                 {/* <AppBar> */}
-                    <Toolbar>
+                    <Toolbar className={classes.newTitle}>
                         <CssBaseline />
-                        <Container maxwidth="lg">
-                            <Typography className={classes.title}>
+                        <Container maxwidth="lg" className={classes.newTitle}>
+                            <Typography>
                                 <input
                                     type="text"
                                     className={classes.textField}
                                     value={order.atgOrderId}
                                     readOnly={true}
                                 />
-                                <IconButton
-                                    edge="start"
-                                    color="inherit"
-                                    onClick={handleClose}
-                                    aria-label="close"
-                                >
-                                    x cancel
-                                </IconButton>
                             </Typography>
                         </Container>
                     </Toolbar>
