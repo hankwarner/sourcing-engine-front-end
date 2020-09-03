@@ -8,9 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -21,6 +19,7 @@ import CompleteOrderButton from '../CompleteOrderButton/CompleteOrderButton';
 import OrderAddresses from '../OrderAddresses/OrderAddresses';
 import SingleOrderTrigger from '../SingleOrderTrigger/SingleOrderTrigger';
 import CancelOrderButton from '../CancelOrderButton/CancelOrderButton';
+import OrderNotes from '../OrderNotes/OrderNotes';
 
 import {
 	CHECK_CLAIM,
@@ -30,9 +29,6 @@ import {
 } from '../../queries/queries';
 
 const useStyles = makeStyles((theme) => ({
-    // appBar: {
-	// 	position: 'fixed',
-	// },
 	box: {
 		width: 225,
 		maxWidth: 225,
@@ -59,6 +55,12 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'flex-start',
+	},
+	orderNotesRow: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		width: '100%'
 	},
 	marginForDetailBody: {
 		height: '85vh',
@@ -176,33 +178,32 @@ export default function SingleOrderModal(props) {
             }}
         >
         <Fade in={open}>
-            {/* <div className={classes.paper}>
-                <h2 id="transition-modal-title">Transition modal</h2>
-                <p id="transition-modal-description">react-transition-group animates me.</p>
-            </div> */}
             <div className={classes.paper}>
             <Container fixed className={classes.marginForDetailBody}>
-                {/* <AppBar> */}
-                    <Toolbar className={classes.newTitle}>
-                        <CssBaseline />
-                        <Container maxwidth="lg" className={classes.newTitle}>
-                            <Typography>
-                                <input
-                                    type="text"
-                                    className={classes.textField}
-                                    value={order.atgOrderId}
-                                    readOnly={true}
-                                />
-                            </Typography>
-                        </Container>
-                    </Toolbar>
-                {/* </AppBar> */}
+				<Toolbar className={classes.newTitle}>
+					<CssBaseline />
+					<Container maxwidth="lg" className={classes.newTitle}>
+						<Typography>
+							<input
+								type="text"
+								className={classes.textField}
+								value={order.atgOrderId}
+								readOnly={true}
+							/>
+						</Typography>
+					</Container>
+				</Toolbar>
                 <div className={classes.column}>
-                    <OrderDetails order={props.order} />
-                    <OrderAddresses
-                        shipTo={props.order.shipping.shipTo}
-                        payment={props.order.paymentOnAccount.payment}
-                    />
+					<div className={classes.orderNotesRow}>
+						<div className={classes.column}>
+							<OrderDetails order={props.order} />
+							<OrderAddresses
+								shipTo={props.order.shipping.shipTo}
+								payment={props.order.paymentOnAccount.payment}
+							/>
+						</div>
+						<OrderNotes />
+					</div>
                     <SourcingTable
                         order={props.order}
                         selectedItems={selectedItems}
