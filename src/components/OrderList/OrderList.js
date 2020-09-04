@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_ORDERS, RELEASE_ORDER } from '../../queries/queries';
 import { makeStyles } from '@material-ui/core/styles';
-import SingleOrder from '../SingleOrder/SingleOrder';
+// import SingleOrder from '../SingleOrder/SingleOrder';
 import SingleOrderModal from '../SingleOrderModal/SingleOrderModal';
 import MaterialTable from 'material-table';
 import Loading from '../Loading/Loading';
@@ -216,9 +216,9 @@ export default function OrderList(props) {
 					components={{
 						Action: (thisData) => (
               <div>
-                <SingleOrder
+                {/* <SingleOrder
                   order={thisData.data}
-                />
+                /> */}
                 <SingleOrderModal 
                   order={thisData.data}
                 />
