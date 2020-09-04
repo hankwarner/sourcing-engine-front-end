@@ -6,11 +6,8 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
         margin: theme.spacing(1),
-        width: '25ch',
+        width: '350px'
         },
-    },
-    textarea: {
-        width: '250px'
     }
 }));
 
@@ -24,7 +21,6 @@ export default function OrderNotes() {
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
-            <div className={classes.textarea}>
                 <TextField
                     label="Order Notes"
                     fullWidth
@@ -34,7 +30,6 @@ export default function OrderNotes() {
                     value={note}
                     variant="outlined"
                 />
-            </div>
         </form>
     );
 }
