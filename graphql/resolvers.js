@@ -1,47 +1,38 @@
-const books = [
-  {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-];
-
-const getBooks = () => books;
 const getOrders = async (root, args, { dataSources }) => {
-  return await dataSources.FergusonSourcingEngineAPI.getOrders();
+	return await dataSources.FergusonSourcingEngineAPI.getOrders();
 };
 
 const checkClaim = async (root, { id }, { dataSources }) => {
-  return await dataSources.FergusonSourcingEngineAPI.checkClaim(id);
+	return await dataSources.FergusonSourcingEngineAPI.checkClaim(id);
 };
 
 const claimOrder = async (root, { id }, { dataSources }) => {
-  return await dataSources.FergusonSourcingEngineAPI.claimOrder(id);
-}
+	return await dataSources.FergusonSourcingEngineAPI.claimOrder(id);
+};
 
 const releaseOrder = async (root, { id }, { dataSources }) => {
-  return await dataSources.FergusonSourcingEngineAPI.releaseOrder(id);
-}
+	return await dataSources.FergusonSourcingEngineAPI.releaseOrder(id);
+};
 
 const completeOrder = async (root, { id }, { dataSources }) => {
-  return await dataSources.FergusonSourcingEngineAPI.completeOrder(id);
-}
+	return await dataSources.FergusonSourcingEngineAPI.completeOrder(id);
+};
+
+const saveOrderNote = async (root, { id, note }, { dataSources }) => {
+	return await dataSources.FergusonSourcingEngineAPI.saveOrderNote(id, note);
+};
 
 module.exports = {
-  books,
-  resolvers: {
-    Query: {
-      getBooks,
-      getOrders,
-      checkClaim
-    },
-    Mutation: {
-      claimOrder,
-      releaseOrder,
-      completeOrder
-    }
-  },
+	resolvers: {
+		Query: {
+			getOrders,
+			checkClaim,
+		},
+		Mutation: {
+			claimOrder,
+			releaseOrder,
+			completeOrder,
+			saveOrderNote,
+		},
+	},
 };
