@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function OrderNotes() {
     const classes = useStyles();
-    const [note, setNote] = React.useState('Controlled');
+    const [note, setNote] = React.useState('');
 
     const handleChange = (event) => {
         setNote(event.target.value);
@@ -27,8 +27,10 @@ export default function OrderNotes() {
                     multiline
                     rows={15}
                     onChange={handleChange}
+                    placeholder="Type Notes Here"
                     value={note}
                     variant="outlined"
+                    maxlength="1000"
                 />
         </form>
     );
