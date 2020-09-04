@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function OrderNotes() {
+export default function OrderNotes(props) {
     const classes = useStyles();
     const [note, setNote] = React.useState('');
 
@@ -29,8 +29,10 @@ export default function OrderNotes() {
     };
 
     const handleClick = () => {
-        console.log("CLICKED")
+        // console.log({props.orderNotes})
     }
+
+
 
     return (
         <form className={classes.root} noValidate autoComplete="off">

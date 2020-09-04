@@ -202,7 +202,9 @@ export default function SingleOrderModal(props) {
 								payment={props.order.paymentOnAccount.payment}
 							/>
 						</div>
-						<OrderNotes />
+						<OrderNotes 
+							orderNotes={props.order.notes}
+						/>
 					</div>
                     <SourcingTable
                         order={props.order}
