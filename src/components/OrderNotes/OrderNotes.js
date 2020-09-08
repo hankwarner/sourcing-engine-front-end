@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import { SAVE_NOTE } from '../../queries/queries';
+import { useMutation } from '@apollo/client';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,14 +24,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function OrderNotes(props) {
     const classes = useStyles();
-    const [note, setNote] = React.useState('');
+    const noteData = props.OrderNotes === null ? '' : props.orderNotes;
+    const [note, setNote] = React.useState(noteData);
+    const queryVariable = { variables: { id: props.id, note: note }};
+    const [saveNote] = useMutation(SAVE_NOTE)
+
+
 
     const handleChange = (event) => {
         setNote(event.target.value);
     };
 
     const handleClick = () => {
-        // console.log({props.orderNotes})
+        saveNote(queryVariable);
     }
 
 

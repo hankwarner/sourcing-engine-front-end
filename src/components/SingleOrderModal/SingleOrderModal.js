@@ -204,6 +204,7 @@ export default function SingleOrderModal(props) {
 						</div>
 						<OrderNotes 
 							orderNotes={props.order.notes}
+							id={props.order.atgOrderId}
 						/>
 					</div>
                     <SourcingTable
