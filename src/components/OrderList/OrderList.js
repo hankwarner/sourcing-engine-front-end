@@ -101,7 +101,7 @@ const UnClaimEffect = () => {
 	return null;
 };
 
-export default function OrderList(props) {
+export default function OrderList() {
 	const classes = useStyles();
 
 	const { data, loading, refetch } = useQuery(GET_ORDERS);

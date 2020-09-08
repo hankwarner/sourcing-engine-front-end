@@ -29,17 +29,14 @@ export default function OrderNotes(props) {
     const queryVariable = { variables: { id: props.id, note: note }};
     const [saveNote] = useMutation(SAVE_NOTE)
 
-
-
     const handleChange = (event) => {
         setNote(event.target.value);
     };
 
     const handleClick = () => {
         saveNote(queryVariable);
+
     }
-
-
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
@@ -52,7 +49,8 @@ export default function OrderNotes(props) {
                 placeholder="Type Notes Here"
                 value={note}
                 variant="outlined"
-                maxLength={1000}
+                // maxLength="1000"
+                inputProps={{maxLength: 1000}}
             />
             <Button 
                 className={classes.button}
