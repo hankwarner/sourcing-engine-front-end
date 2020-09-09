@@ -5,6 +5,9 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import { SAVE_NOTE } from '../../queries/queries';
 import { useMutation } from '@apollo/client';
+import Loading from '../Loading/Loading';
+import sourcingAppLoader from '../../svg/sourcingAppLoader.svg'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,10 +27,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function OrderNotes(props) {
     const classes = useStyles();
-    const noteData = props.OrderNotes === null ? '' : props.orderNotes;
+    const noteData = props.rderNotes === null ? '' : props.orderNotes;
     const [note, setNote] = React.useState(noteData);
+    const [savedNote, setSavedNote] = React.useState(noteData)
     const queryVariable = { variables: { id: props.id, note: note }};
-    const [saveNote] = useMutation(SAVE_NOTE)
+    const [saveNote, { loading }] = useMutation(SAVE_NOTE)
 
     const handleChange = (event) => {
         setNote(event.target.value);
@@ -35,7 +39,7 @@ export default function OrderNotes(props) {
 
     const handleClick = () => {
         saveNote(queryVariable);
-
+        setSavedNote(note)
     }
 
     return (
@@ -49,18 +53,17 @@ export default function OrderNotes(props) {
                 placeholder="Type Notes Here"
                 value={note}
                 variant="outlined"
-                // maxLength="1000"
                 inputProps={{maxLength: 1000}}
             />
             <Button 
                 className={classes.button}
                 variant="outlined"
                 size="small"
-                color={"primary"}
-                onClick={handleClick}
-                startIcon={<SaveIcon />}
+                color={savedNote === note ? "default" : "primary"}
+                onClick={savedNote === note ? null : handleClick}
+                startIcon={loading ? null : <SaveIcon />}
                 >
-                Save Notes
+                {loading ? "Saving Note" : (savedNote === note ? 'Note Saved' : 'Save Notes')}
             </Button>
         </form>
     );
