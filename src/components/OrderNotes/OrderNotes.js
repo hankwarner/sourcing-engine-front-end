@@ -3,11 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import CachedIcon from '@material-ui/icons/Cached';
 import { SAVE_NOTE } from '../../queries/queries';
 import { useMutation } from '@apollo/client';
-import Loading from '../Loading/Loading';
-import sourcingAppLoader from '../../svg/sourcingAppLoader.svg'
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,12 +24,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function OrderNotes(props) {
-    const classes = useStyles();
     const noteData = props.rderNotes === null ? '' : props.orderNotes;
+
+    const classes = useStyles();
     const [note, setNote] = React.useState(noteData);
     const [savedNote, setSavedNote] = React.useState(noteData)
-    const queryVariable = { variables: { id: props.id, note: note }};
     const [saveNote, { loading }] = useMutation(SAVE_NOTE)
+
+    const queryVariable = { variables: { id: props.id, note: note }};
 
     const handleChange = (event) => {
         setNote(event.target.value);
@@ -61,7 +61,7 @@ export default function OrderNotes(props) {
                 size="small"
                 color={savedNote === note ? "default" : "primary"}
                 onClick={savedNote === note ? null : handleClick}
-                startIcon={loading ? null : <SaveIcon />}
+                startIcon={loading ? <CachedIcon /> : <SaveIcon />}
                 >
                 {loading ? "Saving Note" : (savedNote === note ? 'Note Saved' : 'Save Notes')}
             </Button>
