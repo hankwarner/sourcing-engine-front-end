@@ -5,31 +5,32 @@ import * as serviceWorker from './serviceWorker';
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
-import { ApolloProvider, ApolloClient } from '@apollo/client';
+import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 const isDev = process.env.NODE_ENV === 'development';
 if (isDev) {
-  console.log('DEVELOPMENT');
+	console.log('DEVELOPMENT');
 }
 
 const cache = new InMemoryCache();
 const graphqlEndpoint = isDev
-  ? 'http://localhost:4000'
-  : 'https://ferguson-sourcing-windows.azurewebsites.net';
+	? 'http://localhost:4000'
+	: 'https://ferguson-sourcing-windows.azurewebsites.net';
 const link = new HttpLink({
-  uri: `${graphqlEndpoint}/graphql`,
+	uri: `${graphqlEndpoint}/graphql`,
 });
 
 const client = new ApolloClient({
-  link,
-  cache,
+	link,
+	cache,
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
-  document.getElementById('root')
+	<ApolloProvider client={client}>
+		<App />
+	</ApolloProvider>,
+	document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

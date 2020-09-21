@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { useMutation } from '@apollo/react-hooks';
-import { useApolloClient } from '@apollo/client';
+import { useMutation, useApolloClient } from '@apollo/react-hooks';
 import { OrderContext } from '../../context/order.context';
 import { RefreshContext } from '../../context/refresh.context';
 
@@ -47,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 	newTitle: {
 		flex: 1,
 		position: 'relative',
-		padding:'2px 0px',
+		padding: '2px 0px',
 		fontWeight: 700,
 		color: '#00446b',
 	},
@@ -60,12 +59,12 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		width: '100%'
+		width: '100%',
 	},
 	marginForDetailBody: {
 		height: '85vh',
 		overflow: 'hidden',
-		overflowY: 'scroll'
+		overflowY: 'scroll',
 	},
 	textField: {
 		padding: 0,
@@ -74,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: '40px',
 		fontWeight: 700,
 		background: 'transparent',
-		paddingTop: 10
+		paddingTop: 10,
 	},
 	orderDialog: {
 		marginBottom: 40,
@@ -92,21 +91,20 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: '14px',
 		marginBottom: '5px',
 	},
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
+	modal: {
+		display: 'flex',
+		alignItems: 'center',
 		justifyContent: 'center',
-    },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '1px solid #000',
-        boxShadow: theme.shadows[5],
 	},
-
+	paper: {
+		backgroundColor: theme.palette.background.paper,
+		border: '1px solid #000',
+		boxShadow: theme.shadows[5],
+	},
 }));
 
 export default function SingleOrderModal(props) {
-    const classes = useStyles();
+	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const [completeReady, setCompleteReady] = React.useState(false);
 	const [showError, setShowError] = React.useState(false);
@@ -159,85 +157,97 @@ export default function SingleOrderModal(props) {
 		window.history.pushState('', 'List', '/');
 	};
 
-  return (
-    <div>
-        <SingleOrderTrigger
-            order={props.order}
-            handleClickOpen={checkForClaim}
-        />
-        <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className={classes.modal}
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-                timeout: 500,
-            }}
-        >
-        <Fade in={open}>
-            <div className={classes.paper}>
-            <Container fixed className={classes.marginForDetailBody}>
-				<Toolbar className={classes.newTitle}>
-					<CssBaseline />
-					<Container maxwidth="lg" className={classes.newTitle}>
-						<Typography>
-							<input
-								type="text"
-								className={classes.textField}
-								value={order.atgOrderId}
-								readOnly={true}
-							/>
-						</Typography>
-					</Container>
-				</Toolbar>
-                <div className={classes.column}>
-					<div className={classes.orderNotesRow}>
-						<div className={classes.column}>
-							<OrderDetails order={props.order} />
-							<OrderAddresses
-								shipTo={props.order.shipping.shipTo}
-								payment={props.order.paymentOnAccount.payment}
-							/>
-						</div>
-						<OrderNotes 
-							orderNotes={props.order.notes}
-							id={props.order.atgOrderId}
-						/>
+	return (
+		<div>
+			<SingleOrderTrigger
+				order={props.order}
+				handleClickOpen={checkForClaim}
+			/>
+			<Modal
+				aria-labelledby="transition-modal-title"
+				aria-describedby="transition-modal-description"
+				className={classes.modal}
+				open={open}
+				onClose={handleClose}
+				closeAfterTransition
+				BackdropComponent={Backdrop}
+				BackdropProps={{
+					timeout: 500,
+				}}
+			>
+				<Fade in={open}>
+					<div className={classes.paper}>
+						<Container
+							fixed
+							className={classes.marginForDetailBody}
+						>
+							<Toolbar className={classes.newTitle}>
+								<CssBaseline />
+								<Container
+									maxwidth="lg"
+									className={classes.newTitle}
+								>
+									<Typography>
+										<input
+											type="text"
+											className={classes.textField}
+											value={order.atgOrderId}
+											readOnly={true}
+										/>
+									</Typography>
+								</Container>
+							</Toolbar>
+							<div className={classes.column}>
+								<div className={classes.orderNotesRow}>
+									<div className={classes.column}>
+										<OrderDetails order={props.order} />
+										<OrderAddresses
+											shipTo={props.order.shipping.shipTo}
+											payment={
+												props.order.paymentOnAccount
+													.payment
+											}
+										/>
+									</div>
+									<OrderNotes
+										orderNotes={props.order.notes}
+										id={props.order.atgOrderId}
+									/>
+								</div>
+								<SourcingTable
+									order={props.order}
+									selectedItems={selectedItems}
+									setSelectedItems={setSelectedItems}
+									setCompleteReady={setCompleteReady}
+									setShowError={setShowError}
+								/>
+								{showError ? (
+									<span className={classes.errorMessage}>
+										You must complete each source before
+										completing
+									</span>
+								) : null}
+								<div className={classes.buttonContainer}>
+									<div>
+										<CancelOrderButton
+											handleClose={handleClose}
+										/>
+									</div>
+									<div>
+										<CompleteOrderButton
+											handleClose={handleClose}
+											completeReady={completeReady}
+											showError={showError}
+											setShowError={setShowError}
+											id={props.order.atgOrderId}
+										/>
+									</div>
+								</div>
+							</div>
+						</Container>
 					</div>
-                    <SourcingTable
-                        order={props.order}
-                        selectedItems={selectedItems}
-                        setSelectedItems={setSelectedItems}
-                        setCompleteReady={setCompleteReady}
-                        setShowError={setShowError}
-                    />
-                    {showError ? (
-                        <span className={classes.errorMessage}>
-                            You must complete each source before completing
-                        </span>
-                    ) : null}
-                    <div className={classes.buttonContainer}>
-                        <div>
-                            <CancelOrderButton handleClose={handleClose} />
-                        </div>
-                        <div>
-                            <CompleteOrderButton
-                                handleClose={handleClose}
-                                completeReady={completeReady}
-                                showError={showError}
-                                setShowError={setShowError}
-                                id={props.order.atgOrderId}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </Container>
-            </div>
-        </Fade>
-      </Modal>
-    </div>
-  );
+				</Fade>
+			</Modal>
+		</div>
+	);
 }
