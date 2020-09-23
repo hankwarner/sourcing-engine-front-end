@@ -7,9 +7,12 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    branches:
+      - master
 
 env:
-  NODE_VERSION: '14.7.0'
+  NODE_VERSION: '12.13.0'
 
 jobs:
   version-bump:
