@@ -128,7 +128,7 @@ const UnClaimEffect = () => {
 	return null;
 };
 
-export default function OrderList() {
+export default function OrderList({ mockedWorkAround = false }) {
 	const classes = useStyles();
 
 	const { data, loading, refetch } = useQuery(GET_ORDERS);
@@ -151,7 +151,15 @@ export default function OrderList() {
 	if (loading || fakeLoading) {
 		return <Loading />;
 	}
-	const openOrders = data.getOrders;
+
+	// This gets around the fact that MockedProvider returns frozen, immutable
+	// data and material-table requires the data to be mutable. If we were using
+	// Apollo client v3 with the cache included in that client (instead of from
+	// apollo-cache-inmemory), we would have to do this for real intead of just
+	// fixing it for MockedProvider
+	const openOrders = mockedWorkAround
+		? JSON.parse(JSON.stringify(data.getOrders))
+		: data.getOrders;
 
 	const header = () => (
 		<thead>

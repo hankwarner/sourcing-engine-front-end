@@ -32,7 +32,7 @@ const Template = (args) => {
 	];
 	return (
 		<MockedProvider mocks={mocks} addTypename={false}>
-			<OrderList />
+			<OrderList mockedWorkAround={true} />
 		</MockedProvider>
 	);
 };
