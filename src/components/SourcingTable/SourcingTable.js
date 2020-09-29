@@ -36,7 +36,8 @@ const useStyles = makeStyles({
     paddingBottom: '15px',
   },
   noWrap: {
-
+    display: 'flex',
+    flexWrap: 'noWrap'
   }
 });
 
@@ -111,9 +112,9 @@ export default function SourcingTable(props) {
                     </TableCell>
                     <TableCell className={classes.tablecell} align='left'>
                       <div className={classes.column}>
-                        <span><strong>Unit Price:</strong> ${unitPrice} ({unitPriceCode.toUpperCase()})</span>
-                        <span><strong>Qty:</strong> {item.quantity}</span>
-                        <span><strong>Total:</strong> ${extendedPrice}</span>
+                        <span className={classes.noWrap}><strong>Unit Price: </strong> ${unitPrice} ({unitPriceCode.toUpperCase()})</span>
+                        <span className={classes.noWrap}><strong>Qty: </strong> {item.quantity}</span>
+                        <span className={classes.noWrap}><strong>Total: </strong> ${extendedPrice}</span>
                       </div>
                     </TableCell>
                     <TableCell className={classes.tablecell} align='left'>
