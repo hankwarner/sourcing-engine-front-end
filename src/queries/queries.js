@@ -45,7 +45,9 @@ export const GET_ORDERS = gql`
 				shipFromLogon
 				items {
 					lineItemId
+					unitPrice
 					unitPriceCode
+					extendedPrice
 					description
 					quantity
 					sourcingMessage

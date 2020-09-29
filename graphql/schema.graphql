@@ -58,7 +58,9 @@ type Sourcing {
 
 type Item {
 	lineItemId: ID
+	unitPrice: String
 	unitPriceCode: String
+	extendedPrice: String
 	description: String
 	quantity: String
 	sourcingMessage: String
