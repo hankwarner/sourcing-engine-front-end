@@ -37,7 +37,7 @@ withoutPhoneNumber.args = { ...mockDataWithoutPhoneNumber };
 export const withoutAnyAddressParts = (args) => {
 	return (
 		<div>
-			<OrderAddresses shipTo={{ ...args }} />
+			<OrderAddresses shipTo={{ ...args }} phone={''} />
 			<span role="img" aria-label="info" style={{ paddingRight: '1em' }}>
 				ℹ️
 			</span>
@@ -55,5 +55,4 @@ withoutAnyAddressParts.args = {
 	city: '',
 	state: '',
 	zip: '',
-	phone: ''
 };
