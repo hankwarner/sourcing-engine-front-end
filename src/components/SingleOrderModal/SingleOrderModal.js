@@ -203,7 +203,7 @@ export default function SingleOrderModal(props) {
 										<OrderDetails order={props.order} />
 										<OrderAddresses
 											shipTo={props.order.shipping.shipTo}
-											payment={props.order.paymentOnAccount.payment}
+											phone={props.order.paymentOnAccount.payment.phone}
 										/>
 									</div>
 									<OrderNotes

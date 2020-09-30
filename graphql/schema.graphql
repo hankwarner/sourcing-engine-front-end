@@ -46,8 +46,6 @@ type ShipTo {
 	country: String
 	state: String
 	zip: String
-	shipInstructionsPhoneNumberAreaDialing: String
-	shipInstructionsPhoneNumberDialNumber: String
 }
 
 type Sourcing {

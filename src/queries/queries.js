@@ -36,8 +36,6 @@ export const GET_ORDERS = gql`
 					country
 					state
 					zip
-					shipInstructionsPhoneNumberAreaDialing
-					shipInstructionsPhoneNumberDialNumber
 				}
 			}
 			sourcing {

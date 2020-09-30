@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-export default function OrderAddresses({ shipTo, payment }) {
+export default function OrderAddresses({ shipTo, phone }) {
 	const classes = useStyles();
 	const {
 		name,
@@ -30,7 +30,6 @@ export default function OrderAddresses({ shipTo, payment }) {
 		state,
 		zip
 	} = shipTo;
-	const { phone } = payment;
 	const showAddressSection =
 		name ||
 		address1 ||

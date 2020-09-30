@@ -8,21 +8,12 @@ const mockData = {
 	city: 'Atlanta',
 	state: 'GA',
 	zip: '30303',
-	shipInstructionsPhoneNumberAreaDialing: '404',
-	shipInstructionsPhoneNumberDialNumber: '123-4567',
+	phone: '(315)7295356',
+
 };
 const { state, ...mockDataWithoutState } = mockData;
 const {
-	shipInstructionsPhoneNumberAreaDialing,
-	...mockDataWithoutAreaCode
-} = mockData;
-const {
-	shipInstructionsPhoneNumberDialNumber,
-	...mockDataWithoutDialNumber
-} = mockData;
-const {
-	shipInstructionsPhoneNumberAreaDialing: shipInstructionsPhoneNumberAreaDialing2,
-	shipInstructionsPhoneNumberDialNumber: shipInstructionsPhoneNumberDialNumber2,
+	phone: phone2,
 	...mockDataWithoutPhoneNumber
 } = mockData;
 
@@ -39,12 +30,6 @@ defaultComponent.args = { ...mockData };
 
 export const withoutState = Template.bind({});
 withoutState.args = { ...mockDataWithoutState };
-
-export const withoutAreaCode = Template.bind({});
-withoutAreaCode.args = { ...mockDataWithoutAreaCode };
-
-export const withAreaCodeButNoNumber = Template.bind({});
-withAreaCodeButNoNumber.args = { ...mockDataWithoutDialNumber };
 
 export const withoutPhoneNumber = Template.bind({});
 withoutPhoneNumber.args = { ...mockDataWithoutPhoneNumber };
@@ -70,6 +55,5 @@ withoutAnyAddressParts.args = {
 	city: '',
 	state: '',
 	zip: '',
-	shipInstructionsPhoneNumberAreaDialing: '',
-	shipInstructionsPhoneNumberDialNumber: '',
+	phone: ''
 };
