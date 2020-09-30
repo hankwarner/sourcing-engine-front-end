@@ -19,6 +19,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -31,9 +32,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [
@@ -88,6 +87,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -100,9 +100,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [
@@ -185,6 +183,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -197,9 +196,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [
@@ -254,6 +251,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -266,9 +264,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [

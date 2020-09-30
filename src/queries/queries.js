@@ -22,6 +22,7 @@ export const GET_ORDERS = gql`
 					city
 					state
 					zip
+					phone
 				}
 			}
 			shipping {

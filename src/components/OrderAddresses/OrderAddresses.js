@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-export default function OrderAddresses({ shipTo }) {
+export default function OrderAddresses({ shipTo, payment }) {
 	const classes = useStyles();
 	const {
 		name,
@@ -28,10 +28,9 @@ export default function OrderAddresses({ shipTo }) {
 		address2,
 		city,
 		state,
-		zip,
-		shipInstructionsPhoneNumberAreaDialing,
-		shipInstructionsPhoneNumberDialNumber,
+		zip
 	} = shipTo;
+	const { phone } = payment;
 	const showAddressSection =
 		name ||
 		address1 ||
@@ -39,8 +38,7 @@ export default function OrderAddresses({ shipTo }) {
 		city ||
 		state ||
 		zip ||
-		shipInstructionsPhoneNumberAreaDialing ||
-		shipInstructionsPhoneNumberDialNumber;
+		phone;
 
 	return (
 		showAddressSection && (
@@ -61,9 +59,7 @@ export default function OrderAddresses({ shipTo }) {
 									{zip}
 								</span>
 								<span>
-									{shipInstructionsPhoneNumberAreaDialing &&
-										`(${shipInstructionsPhoneNumberAreaDialing}) `}
-									{shipInstructionsPhoneNumberDialNumber}
+									{phone}
 								</span>
 							</div>
 						</Grid>

@@ -29,6 +29,7 @@ type Payment {
 	city: String
 	state: String
 	zip: String
+	phone: String
 }
 
 type Shipping {
