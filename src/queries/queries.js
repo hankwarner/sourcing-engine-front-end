@@ -22,6 +22,7 @@ export const GET_ORDERS = gql`
 					city
 					state
 					zip
+					phone
 				}
 			}
 			shipping {
@@ -35,8 +36,6 @@ export const GET_ORDERS = gql`
 					country
 					state
 					zip
-					shipInstructionsPhoneNumberAreaDialing
-					shipInstructionsPhoneNumberDialNumber
 				}
 			}
 			sourcing {
@@ -45,7 +44,9 @@ export const GET_ORDERS = gql`
 				shipFromLogon
 				items {
 					lineItemId
+					unitPrice
 					unitPriceCode
+					extendedPrice
 					description
 					quantity
 					sourcingMessage

@@ -35,6 +35,10 @@ const useStyles = makeStyles({
     marginBottom: '15px',
     paddingBottom: '15px',
   },
+  noWrap: {
+    display: 'flex',
+    flexWrap: 'noWrap'
+  }
 });
 
 export default function SourcingTable(props) {
@@ -90,7 +94,11 @@ export default function SourcingTable(props) {
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label='simple table'>
             <TableBody>
-              {source.items.map((item, key) => {                
+              {source.items.map((item, key) => {   
+                const unitPrice = parseFloat(item.unitPrice).toFixed(2)
+                const extendedPrice = parseFloat(item.extendedPrice).toFixed(2)
+                const unitPriceCode = item.unitPriceCode
+
                 return (
                   <TableRow key={key}>
                     <TableCell className={classes.tablecell} scope='row'>
@@ -103,7 +111,11 @@ export default function SourcingTable(props) {
                       {vendorMessage(item)}
                     </TableCell>
                     <TableCell className={classes.tablecell} align='left'>
-                      <strong>Qty:</strong> {item.quantity}
+                      <div className={classes.column}>
+                        <span className={classes.noWrap}><strong>Unit Price: </strong> ${unitPrice} ({unitPriceCode.toUpperCase()})</span>
+                        <span className={classes.noWrap}><strong>Qty: </strong> {item.quantity}</span>
+                        <span className={classes.noWrap}><strong>Total: </strong> ${extendedPrice}</span>
+                      </div>
                     </TableCell>
                     <TableCell className={classes.tablecell} align='left'>
                       <strong>Sourcing Message:</strong>

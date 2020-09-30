@@ -21,6 +21,7 @@ export const mockResponseData = {
 						city: null,
 						state: null,
 						zip: null,
+						phone: null,
 						__typename: 'Payment',
 					},
 					__typename: 'AccountPayment',
@@ -36,8 +37,6 @@ export const mockResponseData = {
 						country: 'US',
 						state: 'TX',
 						zip: '752203311',
-						shipInstructionsPhoneNumberAreaDialing: '',
-						shipInstructionsPhoneNumberDialNumber: '',
 						__typename: 'ShipTo',
 					},
 					__typename: 'Shipping',
@@ -50,9 +49,11 @@ export const mockResponseData = {
 						items: [
 							{
 								lineItemId: '0',
+								unitPrice: "8.85",
 								unitPriceCode: 'PR',
-								description: 'ci9290014165',
 								quantity: '1',
+								extendedPrice: "8.85",
+								description: 'ci9290014165',
 								sourcingMessage: 'In Stock.',
 								masterProdId: '272655',
 								itemComplete: false,
@@ -62,9 +63,11 @@ export const mockResponseData = {
 							},
 							{
 								lineItemId: '1',
+								unitPrice: "8.85",
 								unitPriceCode: 'EA',
 								description: 'ci9290014166',
 								quantity: '1',
+								extendedPrice: "8.85",
 								sourcingMessage: 'In Stock.',
 								masterProdId: '3519954',
 								itemComplete: false,
@@ -82,9 +85,11 @@ export const mockResponseData = {
 						items: [
 							{
 								lineItemId: '3',
+								unitPrice: "8.85",
 								unitPriceCode: 'EA',
 								description: 'ci9290014163',
 								quantity: '1',
+								extendedPrice: "8.85",
 								sourcingMessage:
 									'This item has no location to source from. ',
 								masterProdId: '4783476',
@@ -122,6 +127,7 @@ export const mockResponseData = {
 						city: null,
 						state: null,
 						zip: null,
+						phone: null,
 						__typename: 'Payment',
 					},
 					__typename: 'AccountPayment',
@@ -137,8 +143,6 @@ export const mockResponseData = {
 						country: null,
 						state: null,
 						zip: null,
-						shipInstructionsPhoneNumberAreaDialing: null,
-						shipInstructionsPhoneNumberDialNumber: '',
 						__typename: 'ShipTo',
 					},
 					__typename: 'Shipping',
@@ -151,9 +155,11 @@ export const mockResponseData = {
 						items: [
 							{
 								lineItemId: '0',
+								unitPrice: "8.85",
 								unitPriceCode: 'EA',
 								description: 'ci9304000202',
 								quantity: '1',
+								extendedPrice: "8.85",
 								sourcingMessage:
 									'Process payment and print order.',
 								masterProdId: '4065574',
@@ -164,9 +170,11 @@ export const mockResponseData = {
 							},
 							{
 								lineItemId: '1',
+								unitPrice: "8.85",
 								unitPriceCode: 'EA',
 								description: 'ci9304000200',
 								quantity: '2',
+								extendedPrice: "17.7",
 								sourcingMessage:
 									'Process payment and print order.',
 								masterProdId: '4065573',

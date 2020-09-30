@@ -19,6 +19,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -31,9 +32,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [
@@ -43,9 +42,11 @@ export default [
                     "items" : [
                         {
                             "lineItemId": 1,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "ci8318000259",
-                            "quantity": "1", 
+                            "quantity": "1",
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "5123428", 
                             "itemComplete": false,
@@ -54,9 +55,11 @@ export default [
                         },
                         {
                             "lineItemId": 2,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "jlka;ljafjlk;fadsl;j",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "321657",                            
                             "itemComplete": false,
@@ -88,6 +91,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -100,9 +104,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [
@@ -112,9 +114,11 @@ export default [
                     "items" : [
                         {
                             "lineItemId": 1,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "ci8318000259",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "5123428",
                             "itemComplete": false,
@@ -123,9 +127,11 @@ export default [
                         },
                         {
                             "lineItemId": 2,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "jlka;ljafjlk;fadsl;j",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "321657",                            
                             "itemComplete": false,
@@ -140,9 +146,11 @@ export default [
                     "items" : [
                         {
                             "lineItemId": 1,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "Mikeower",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "886647",                            
                             "itemComplete": false,
@@ -151,9 +159,11 @@ export default [
                         },
                         {
                             "lineItemId": 2,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "jlka;ljafjlk;fadsl;j",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "99556687",                            
                             "itemComplete": false,
@@ -185,6 +195,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -197,9 +208,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [
@@ -209,9 +218,11 @@ export default [
                     "items" : [
                         {
                             "lineItemId": 1,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": ";lakdfja;sdfjie",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "884654673",                            
                             "itemComplete": false,
@@ -220,9 +231,11 @@ export default [
                         },
                         {
                             "lineItemId": 2,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "jlka;ljafjlk;fadsl;j",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "66524478962",                            
                             "itemComplete": false,
@@ -254,6 +267,7 @@ export default [
                 "city": "Aurora",
                 "state": "NY",
                 "zip": "13026",
+                "phone": "(315)7295356"
             }
         },
         "shipping": {
@@ -266,9 +280,7 @@ export default [
                 "city": "Aurora", 
                 "country": "US", 
                 "state": "NY", 
-                "zip": "130269718", 
-                "shipInstructionsPhoneNumberAreaDialing": "315",
-                "shipInstructionsPhoneNumberDialNumber": "7295356"
+                "zip": "130269718"
             }
         },
         "sourcing" : [
@@ -278,9 +290,11 @@ export default [
                     "items" : [
                         {
                             "lineItemId": 1,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "ci831800;laksdfjas;dlkfjasd;flka0259",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "22333255478",                            
                             "itemComplete": false,
@@ -289,9 +303,11 @@ export default [
                         },
                         {
                             "lineItemId": 2,
+                            "unitPrice": "8.85",
                             "unitPriceCode": "EA",
                             "description": "jlka;ljafjlk;fadsl;j",
                             "quantity": "1", 
+                            "extendedPrice": "8.85",
                             "sourcingMessage": "THIS LINE IS SOURCED, YO", 
                             "masterProdId": "233114556687",                            
                             "itemComplete": false,
