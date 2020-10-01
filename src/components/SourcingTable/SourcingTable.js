@@ -38,6 +38,9 @@ const useStyles = makeStyles({
   noWrap: {
     display: 'flex',
     flexWrap: 'noWrap'
+  },
+  description: {
+    width: '55%'
   }
 });
 
@@ -101,7 +104,7 @@ export default function SourcingTable(props) {
 
                 return (
                   <TableRow key={key}>
-                    <TableCell className={classes.tablecell} scope='row'>
+                    <TableCell className={`${classes.tablecell} ${classes.description}`} scope='row'>
                       <div>
                         <strong>MPID:</strong> {item.masterProdId}
                       </div>
