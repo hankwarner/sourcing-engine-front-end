@@ -26,7 +26,7 @@ export const GET_ORDERS = gql`
 				}
 			}
 			shipping {
-				shipViaCode
+				shipVia
 				price
 				shipTo {
 					name
@@ -54,6 +54,7 @@ export const GET_ORDERS = gql`
 					itemComplete
 					sourcingGuide
 					vendor
+					preferredShipVia
 				}
 			}
 			sourceSystem

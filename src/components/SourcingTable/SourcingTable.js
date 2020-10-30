@@ -111,6 +111,9 @@ export default function SourcingTable(props) {
                       <div>
                         <strong>Description:</strong> {item.description}
                       </div>
+                      <div>
+                        <strong>Preferred Shipping Method:</strong> {item.preferredShipVia}
+                      </div>
                       {vendorMessage(item)}
                     </TableCell>
                     <TableCell className={classes.tablecell} align='left'>
