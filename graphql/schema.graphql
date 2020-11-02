@@ -33,7 +33,7 @@ type Payment {
 }
 
 type Shipping {
-	shipViaCode: String
+	shipVia: String
 	price: String
 	shipTo: ShipTo
 }
@@ -67,6 +67,7 @@ type Item {
 	itemComplete: Boolean
 	sourcingGuide: String
 	vendor: String
+	preferredShipVia: String
 }
 
 type CheckClaim {

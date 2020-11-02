@@ -27,7 +27,7 @@ export const mockResponseData = {
 					__typename: 'AccountPayment',
 				},
 				shipping: {
-					shipViaCode: 'UPS',
+					shipVia: 'UPS',
 					price: '13.0',
 					shipTo: {
 						name: 'Jorge Martinez',
@@ -59,6 +59,7 @@ export const mockResponseData = {
 								itemComplete: false,
 								sourcingGuide: 'FEI',
 								vendor: 'PROFLO',
+								preferredShipVia: "UPS",
 								__typename: 'Item',
 							},
 							{
@@ -73,6 +74,7 @@ export const mockResponseData = {
 								itemComplete: false,
 								sourcingGuide: 'FEI',
 								vendor: 'PROFLO',
+								preferredShipVia: "UPS",
 								__typename: 'Item',
 							}
 						],
@@ -96,6 +98,7 @@ export const mockResponseData = {
 								itemComplete: false,
 								sourcingGuide: 'No Source',
 								vendor: 'NIAGARA CONSERVATION',
+								preferredShipVia: "UPS",
 								__typename: 'Item',
 							},
 						],
@@ -133,7 +136,7 @@ export const mockResponseData = {
 					__typename: 'AccountPayment',
 				},
 				shipping: {
-					shipViaCode: 'WCL',
+					shipVia: 'WCL',
 					price: '0.0',
 					shipTo: {
 						name: null,
@@ -166,6 +169,7 @@ export const mockResponseData = {
 								itemComplete: false,
 								sourcingGuide: 'FEI',
 								vendor: 'FNW VALVE',
+								preferredShipVia: "UPS",
 								__typename: 'Item',
 							},
 							{
@@ -181,6 +185,7 @@ export const mockResponseData = {
 								itemComplete: false,
 								sourcingGuide: 'FEI',
 								vendor: 'FNW VALVE',
+								preferredShipVia: "UPS",
 								__typename: 'Item',
 							},
 						],

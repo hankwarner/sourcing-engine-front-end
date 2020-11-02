@@ -50,7 +50,7 @@ export default function OrderDetails(props) {
 					</span>
 					<span>
 						<strong>Ship Via Code:</strong>&nbsp;
-						{order.shipping.shipViaCode}
+						{order.shipping.shipVia}
 					</span>
 				</div>
 			</div>

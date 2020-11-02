@@ -1,29 +1,5 @@
-const convertShippingCode = (originalCode) => {
-	switch (originalCode.toLowerCase()) {
-		case 'standard':
-			return 'UPS';
-		case 'next_day':
-			return 'UNN';
-		case 'second_day':
-			return 'UP2';
-		case 'cpu':
-			return 'WCL';
-		default:
-			return originalCode;
-	}
-};
-
 const getOrders = async (root, args, { dataSources }) => {
-	const orders = await dataSources.FergusonSourcingEngineAPI.getOrders();
-	return orders.map((order) => {
-		return {
-			...order,
-			shipping: {
-				...order.shipping,
-				shipViaCode: convertShippingCode(order.shipping.shipViaCode),
-			},
-		};
-	});
+	return await dataSources.FergusonSourcingEngineAPI.getOrders()
 };
 
 const checkClaim = async (root, { id }, { dataSources }) => {
