@@ -94,7 +94,7 @@ const columnConfig = [
 	{
 		title: 'Ship Via Code',
 		dipslayTitle: 'Ship<br />Via Code',
-		field: 'shipping.shipViaCode',
+		field: 'shipping.shipVia',
 		filtering: false,
 		search: false,
 	},
