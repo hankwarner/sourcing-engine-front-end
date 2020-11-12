@@ -72,7 +72,7 @@ jobs:
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ AZURE_DEPLOY_PROFILE }}
-          slot-name: ${{ AZURE_WEBAPP_SLOT_NAME}}
-          package: ${{ AZURE_WEBAPP_PACKAGE_PATH }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ env.AZURE_DEPLOY_PROFILE }}
+          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME}}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
