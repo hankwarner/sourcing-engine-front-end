@@ -13,7 +13,7 @@ on:
 
 env:
   NODE_VERSION: '12.13.0'
-  AZURE_DEPLOY_PROFILE: '<publishData><publishProfile profileName="ferguson-sourcing-windows-staging - Web Deploy" publishMethod="MSDeploy" publishUrl="ferguson-sourcing-windows-staging.scm.azurewebsites.net:443" msdeploySite="ferguson-sourcing-windows__staging" userName="$ferguson-sourcing-windows__staging" userPWD="1alfqtaKYs26L3noZbTCEspRa3wDza9kfgBb4yZqDvyvjCidFTmEyKcLPWCy" destinationAppUrl="http://ferguson-sourcing-windows-staging.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="ferguson-sourcing-windows-staging - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-blu-101.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="ferguson-sourcing-windows__staging\$ferguson-sourcing-windows__staging" userPWD="1alfqtaKYs26L3noZbTCEspRa3wDza9kfgBb4yZqDvyvjCidFTmEyKcLPWCy" destinationAppUrl="http://ferguson-sourcing-windows-staging.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="ferguson-sourcing-windows-staging - ReadOnly - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-blu-101dr.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="ferguson-sourcing-windows__staging\$ferguson-sourcing-windows__staging" userPWD="1alfqtaKYs26L3noZbTCEspRa3wDza9kfgBb4yZqDvyvjCidFTmEyKcLPWCy" destinationAppUrl="http://ferguson-sourcing-windows-staging.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>'
+  AZURE_DEPLOY_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_STAGING }}
   AZURE_WEBAPP_NAME: 'ferguson-sourcing-windows'
   AZURE_WEBAPP_SLOT_NAME: 'staging'
   AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
@@ -74,6 +74,5 @@ jobs:
         with:
           app-name: ${{ AZURE_WEBAPP_NAME }}
           publish-profile: ${{ AZURE_DEPLOY_PROFILE }}
-          # publish-profile: ${{ secrets.AzureAppService_PublishProfile_a97930787d304a509c2c10a182b42333 }}
           slot-name: ${{ AZURE_WEBAPP_SLOT_NAME}}
           package: ${{ AZURE_WEBAPP_PACKAGE_PATH }}
