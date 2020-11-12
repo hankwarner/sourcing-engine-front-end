@@ -16,7 +16,7 @@ if (isDev) {
 const cache = new InMemoryCache();
 const graphqlEndpoint = isDev
 	? 'http://localhost:4000'
-	: 'https://ferguson-sourcing-windows.azurewebsites.net';
+	: 'https://ferguson-sourcing-windows-staging.azurewebsites.net';
 const link = new HttpLink({
 	uri: `${graphqlEndpoint}/graphql`,
 });

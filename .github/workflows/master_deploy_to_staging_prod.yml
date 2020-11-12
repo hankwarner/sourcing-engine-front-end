@@ -1,0 +1,79 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy Node.js app to Azure Web App - ferguson-sourcing-windows
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    branches:
+      - master
+
+env:
+  NODE_VERSION: '12.13.0'
+  AZURE_DEPLOY_PROFILE: '<publishData><publishProfile profileName="ferguson-sourcing-windows-staging - Web Deploy" publishMethod="MSDeploy" publishUrl="ferguson-sourcing-windows-staging.scm.azurewebsites.net:443" msdeploySite="ferguson-sourcing-windows__staging" userName="$ferguson-sourcing-windows__staging" userPWD="1alfqtaKYs26L3noZbTCEspRa3wDza9kfgBb4yZqDvyvjCidFTmEyKcLPWCy" destinationAppUrl="http://ferguson-sourcing-windows-staging.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="ferguson-sourcing-windows-staging - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-blu-101.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="ferguson-sourcing-windows__staging\$ferguson-sourcing-windows__staging" userPWD="1alfqtaKYs26L3noZbTCEspRa3wDza9kfgBb4yZqDvyvjCidFTmEyKcLPWCy" destinationAppUrl="http://ferguson-sourcing-windows-staging.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="ferguson-sourcing-windows-staging - ReadOnly - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-blu-101dr.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="ferguson-sourcing-windows__staging\$ferguson-sourcing-windows__staging" userPWD="1alfqtaKYs26L3noZbTCEspRa3wDza9kfgBb4yZqDvyvjCidFTmEyKcLPWCy" destinationAppUrl="http://ferguson-sourcing-windows-staging.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>'
+  AZURE_WEBAPP_NAME: 'ferguson-sourcing-windows'
+  AZURE_WEBAPP_SLOT_NAME: 'staging'
+  AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+
+jobs:
+  version-bump:
+    name: 'Bump version in package.json'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout source code'
+        uses: 'actions/checkout@v2'
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 'Configure git'
+        run: |
+          git config user.name "Atlanta CICD"
+          git config user.email atlanta.cicd@supply.com
+
+      # This will always bump the minor version on a push to master. If you want
+      # to bump the major version, just change it in package.json. When you push
+      # that change, this will bump it one more time with a minor version bump
+      - name: 'Bump version'
+        run: npm version minor -m "Version bump to %s"
+
+      - name: 'Push change back to repo'
+        run: git push --follow-tags origin ${{ github.ref }}
+
+  build-and-deploy:
+    name: 'Build and Deploy'
+    needs: version-bump
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: npm install
+        run: npm ci
+
+      - name: npm build
+        run: npm run-script build
+
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ AZURE_DEPLOY_PROFILE }}
+          # publish-profile: ${{ secrets.AzureAppService_PublishProfile_a97930787d304a509c2c10a182b42333 }}
+          slot-name: ${{ AZURE_WEBAPP_SLOT_NAME}}
+          package: ${{ AZURE_WEBAPP_PACKAGE_PATH }}
