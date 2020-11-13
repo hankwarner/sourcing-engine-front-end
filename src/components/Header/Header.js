@@ -11,6 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import { RefreshContext } from '../../context/refresh.context';
+import { isTest } from '../../helpers';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -77,7 +78,19 @@ export default function Header() {
 												src={FergLogo}
 												alt="Ferguson Logo"
 											/>
-											{` Sourcing App v. ${process.env.REACT_APP_VERSION}`}
+											{` Sourcing App v. ${
+												process.env.REACT_APP_VERSION
+											} ${
+												isTest
+													? `branch: ${
+															process.env
+																.REACT_APP_BRANCH_NAME
+													  } commit: ${process.env.REACT_APP_LAST_COMMIT.substring(
+															0,
+															6
+													  )}`
+													: ''
+											}`}
 										</TableCell>
 										<TableCell
 											className={classes.buttonRight}

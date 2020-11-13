@@ -1,0 +1,58 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: TEST Build and deploy to ferguson-sourcing-windows/test
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    branches:
+      - '*'
+      - '!master'
+
+env:
+  NODE_VERSION: '12.13.0'
+  AZURE_DEPLOY_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_TEST }}
+  AZURE_WEBAPP_NAME: 'ferguson-sourcing-windows'
+  AZURE_WEBAPP_SLOT_NAME: 'test'
+  AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+  LAST_COMMIT: ${{ github.event.pull_request.head.sha }}
+  BRANCH: ${{ github.event.pull_request.head.ref }}
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: windows-latest
+
+    steps:
+      - name: Check variables
+        run: |
+          echo azure_slot: $env:AZURE_WEBAPP_SLOT_NAME
+          echo GITHUB_REF: $env:GITHUB_REF
+          echo branch_name: $env:BRANCH
+          echo LAST_COMMIT: $env:LAST_COMMIT
+
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install node modules
+        run: npm ci
+
+      - name: Build app
+        run: npm run-script build
+
+      - name: Deploy to Azure WebApp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ env.AZURE_DEPLOY_PROFILE }}
+          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME}}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
