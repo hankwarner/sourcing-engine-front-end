@@ -3,29 +3,29 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const fs = require('fs');
 const FergusonSourcingEngineAPI = require('./graphql/apis')
-  .FergusonSourcingEngineAPI;
+	.FergusonSourcingEngineAPI;
 
 // Setup express server to serve files in production generated from `npm run build`
 const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+	res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // GraphQL setup
 const typeDefs = fs.readFileSync(
-  path.join(__dirname, 'graphql', 'schema.graphql'),
-  'utf8'
+	path.join(__dirname, 'graphql', 'schema.graphql'),
+	'utf8'
 );
 const { resolvers } = require('./graphql/resolvers');
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  dataSources: () => ({
-    FergusonSourcingEngineAPI: new FergusonSourcingEngineAPI(),
-  }),
-  introspection: true,
-  playground: true,
+	typeDefs,
+	resolvers,
+	dataSources: () => ({
+		FergusonSourcingEngineAPI: new FergusonSourcingEngineAPI(),
+	}),
+	introspection: true,
+	playground: true,
 });
 server.applyMiddleware({ app });
 
@@ -36,5 +36,6 @@ server.applyMiddleware({ app });
 // https://create-react-app.dev/docs/proxying-api-requests-in-development/
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
-  console.log(`🚀 Graphql running at http://localhost:${port}/graphql`);
+	console.log(`🚀 Graphql running at http://localhost:${port}/graphql`);
+	console.log(`Azure host name: ${process.env.WEBSITE_HOSTNAME}`);
 });

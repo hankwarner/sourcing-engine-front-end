@@ -6,10 +6,6 @@ name: TEST Build and deploy to ferguson-sourcing-windows/test
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  workflow_dispatch:
-    branches:
-      - '*'
-      - '!master'
 
 env:
   NODE_VERSION: '12.13.0'

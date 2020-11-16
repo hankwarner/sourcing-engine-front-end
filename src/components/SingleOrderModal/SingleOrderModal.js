@@ -135,7 +135,11 @@ export default function SingleOrderModal(props) {
 
 	const checkForClaim = () => {
 		client
-			.query({ query: CHECK_CLAIM, variables: queryVariable.variables })
+			.query({
+				query: CHECK_CLAIM,
+				variables: queryVariable.variables,
+				fetchPolicy: 'network-only',
+			})
 			.then((data) => {
 				if (!data.data.checkClaim.claimed) {
 					handleClickOpen();
@@ -203,7 +207,10 @@ export default function SingleOrderModal(props) {
 										<OrderDetails order={props.order} />
 										<OrderAddresses
 											shipTo={props.order.shipping.shipTo}
-											phone={props.order.paymentOnAccount.payment.phone}
+											phone={
+												props.order.paymentOnAccount
+													.payment.phone
+											}
 										/>
 									</div>
 									<OrderNotes
