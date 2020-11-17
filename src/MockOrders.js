@@ -52,7 +52,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "3M COMPANY",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     },
                     {
                         "lineItemId": 2,
@@ -66,7 +67,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "MERIT BRASS CO.",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     }
                 ]
             }
@@ -126,7 +128,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "MERIT BRASS CO.",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     },
                     {
                         "lineItemId": 2,
@@ -140,7 +143,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "MERIT BRASS CO.",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     }
                 ]
             },
@@ -160,7 +164,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "MERIT BRASS CO.",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     },
                     {
                         "lineItemId": 2,
@@ -174,7 +179,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "MERIT BRASS CO.",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     }
                 ]
             }
@@ -234,7 +240,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "MERIT BRASS CO.",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     },
                     {
                         "lineItemId": 2,
@@ -248,7 +255,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "3M COMPANY",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     }
                 ]
             }
@@ -308,7 +316,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "3M COMPANY",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     },
                     {
                         "lineItemId": 2,
@@ -322,7 +331,8 @@ export default [
                         "itemComplete": false,
                         "sourcingGuide": "FEI",
                         "vendor": "3M COMPANY",
-                        "preferredShipVia": "UPS"
+                        "preferredShipVia": "UPS",
+                        "alt1Code": "MYB8099OWB"
                     }
                 ]
             }

@@ -68,6 +68,7 @@ type Item {
 	sourcingGuide: String
 	vendor: String
 	preferredShipVia: String
+	alt1Code: String
 }
 
 type CheckClaim {

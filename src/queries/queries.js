@@ -55,6 +55,7 @@ export const GET_ORDERS = gql`
 					sourcingGuide
 					vendor
 					preferredShipVia
+					alt1Code
 				}
 			}
 			sourceSystem
