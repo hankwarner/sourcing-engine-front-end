@@ -109,6 +109,9 @@ export default function SourcingTable(props) {
                         <strong>MPID:</strong> {item.masterProdId}
                       </div>
                       <div>
+                        <strong>ALT1 Code:</strong> {item.alt1Code}
+                      </div>
+                      <div>
                         <strong>Description:</strong> {item.description}
                       </div>
                       <div>

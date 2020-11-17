@@ -60,6 +60,7 @@ export const mockResponseData = {
 								sourcingGuide: 'FEI',
 								vendor: 'PROFLO',
 								preferredShipVia: "UPS",
+								alt1Code: "MYB8099OWB",
 								__typename: 'Item',
 							},
 							{
@@ -75,6 +76,7 @@ export const mockResponseData = {
 								sourcingGuide: 'FEI',
 								vendor: 'PROFLO',
 								preferredShipVia: "UPS",
+								alt1Code: "MYB8099OWB",
 								__typename: 'Item',
 							}
 						],
@@ -99,6 +101,7 @@ export const mockResponseData = {
 								sourcingGuide: 'No Source',
 								vendor: 'NIAGARA CONSERVATION',
 								preferredShipVia: "UPS",
+								alt1Code: "MYB8099OWB",
 								__typename: 'Item',
 							},
 						],
@@ -170,6 +173,7 @@ export const mockResponseData = {
 								sourcingGuide: 'FEI',
 								vendor: 'FNW VALVE',
 								preferredShipVia: "UPS",
+								alt1Code: "MYB8099OWB",
 								__typename: 'Item',
 							},
 							{
@@ -186,6 +190,7 @@ export const mockResponseData = {
 								sourcingGuide: 'FEI',
 								vendor: 'FNW VALVE',
 								preferredShipVia: "UPS",
+								alt1Code: "MYB8099OWB",
 								__typename: 'Item',
 							},
 						],
