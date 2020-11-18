@@ -58,6 +58,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const headerDetail = isTest
+	? ` Sourcing App TEST branch: ${
+			process.env.REACT_APP_BRANCH_NAME
+	  } commit: ${process.env.REACT_APP_LAST_COMMIT.substring(0, 7)}`
+	: ` Sourcing App v. ${process.env.REACT_APP_VERSION}`;
+
 export default function Header() {
 	const classes = useStyles();
 	const { setReloadTrigger } = useContext(RefreshContext);
@@ -78,19 +84,7 @@ export default function Header() {
 												src={FergLogo}
 												alt="Ferguson Logo"
 											/>
-											{` Sourcing App v. ${
-												process.env.REACT_APP_VERSION
-											} ${
-												isTest
-													? `branch: ${
-															process.env
-																.REACT_APP_BRANCH_NAME
-													  } commit: ${process.env.REACT_APP_LAST_COMMIT.substring(
-															0,
-															6
-													  )}`
-													: ''
-											}`}
+											{headerDetail}
 										</TableCell>
 										<TableCell
 											className={classes.buttonRight}

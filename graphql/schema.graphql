@@ -84,5 +84,6 @@ type Mutation {
 	claimOrder(id: String): Boolean
 	releaseOrder(id: String): Boolean
 	completeOrder(id: String): Boolean
+	unCompleteOrder(id: String): Boolean
 	saveOrderNote(id: String, note: String): Boolean
 }

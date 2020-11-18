@@ -1,22 +1,21 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
-const inTest =
+const isProd =
 	process.env.WEBSITE_HOSTNAME &&
-	process.env.WEBSITE_HOSTNAME.includes('test');
-const inDev = process.env.NODE_ENV === 'development';
+	!process.env.WEBSITE_HOSTNAME.includes('test');
 
 class FergusonSourcingEngineAPI extends RESTDataSource {
 	constructor() {
 		super();
-		if (inTest | inDev) {
-			this.baseURL =
-				'https://sourcingdashboard-dev.azurewebsites.net/api/';
-			this.authCode =
-				'hv2ajpauLkVEDDcgbnkmPTW5ryHqHnXBftIRm3CKioByFSutRafB0w==';
-		} else {
+		if (isProd) {
 			this.baseURL =
 				'https://sourcingenginedashboard.azurewebsites.net/api';
 			this.authCode =
 				'4a9/Fq8Komxwk5/3x/XwkvdhQpXlWg37IUn9vF6tD3apaxWGOU91qg==';
+		} else {
+			this.baseURL =
+				'https://sourcingdashboard-dev.azurewebsites.net/api/';
+			this.authCode =
+				'hv2ajpauLkVEDDcgbnkmPTW5ryHqHnXBftIRm3CKioByFSutRafB0w==';
 		}
 	}
 
@@ -50,6 +49,12 @@ class FergusonSourcingEngineAPI extends RESTDataSource {
 	async completeOrder(id) {
 		return this.post(
 			`${this.baseURL}/order/complete/${encodeURI(id)}`
+		).then(() => true);
+	}
+
+	async unCompleteOrder(id) {
+		return this.post(
+			`${this.baseURL}/order/uncomplete/${encodeURI(id)}`
 		).then(() => true);
 	}
 

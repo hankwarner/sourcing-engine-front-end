@@ -1,5 +1,5 @@
 const getOrders = async (root, args, { dataSources }) => {
-	return await dataSources.FergusonSourcingEngineAPI.getOrders()
+	return await dataSources.FergusonSourcingEngineAPI.getOrders();
 };
 
 const checkClaim = async (root, { id }, { dataSources }) => {
@@ -18,6 +18,10 @@ const completeOrder = async (root, { id }, { dataSources }) => {
 	return await dataSources.FergusonSourcingEngineAPI.completeOrder(id);
 };
 
+const unCompleteOrder = async (root, { id }, { dataSources }) => {
+	return await dataSources.FergusonSourcingEngineAPI.unCompleteOrder(id);
+};
+
 const saveOrderNote = async (root, { id, note }, { dataSources }) => {
 	return await dataSources.FergusonSourcingEngineAPI.saveOrderNote(id, note);
 };
@@ -32,6 +36,7 @@ module.exports = {
 			claimOrder,
 			releaseOrder,
 			completeOrder,
+			unCompleteOrder,
 			saveOrderNote,
 		},
 	},

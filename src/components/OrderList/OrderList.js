@@ -159,7 +159,7 @@ export default function OrderList({ mockedWorkAround = false }) {
 	// fixing it for MockedProvider
 	const openOrders = mockedWorkAround
 		? JSON.parse(JSON.stringify(data.getOrders))
-		: data.getOrders;
+		: data?.getOrders;
 
 	const header = () => (
 		<thead>
@@ -192,40 +192,44 @@ export default function OrderList({ mockedWorkAround = false }) {
 		<>
 			<UnClaimEffect />
 			<div style={{ maxWidth: '100%', padding: 10, fontSize: 14 }}>
-				<MaterialTable
-					icons={tableIcons}
-					columns={columnConfig.slice(1)}
-					localization={{
-						header: {
-							actions: '',
-						},
-						pagination: {},
-					}}
-					style={{ padding: 10 }}
-					options={{
-						sorting: false,
-						headerStyle: {
-							borderBottom: '1px solid black',
-							fontWeight: '700',
-						},
-						pageSize: 12,
-						pageSizeOptions: [12, 24, 48],
-						showTitle: false,
-						cellStyle: {
-							textAlign: 'center',
-						},
-						showDetail: false,
-					}}
-					// actions was done like this to get around a console error
-					// https://github.com/mbrn/material-table/issues/657
-					actions={[() => ({})]}
-					data={openOrders}
-					title="Sourcing Data"
-					components={{
-						Header: header,
-						Action: openOrderButton,
-					}}
-				/>
+				{openOrders ? (
+					<MaterialTable
+						icons={tableIcons}
+						columns={columnConfig.slice(1)}
+						localization={{
+							header: {
+								actions: '',
+							},
+							pagination: {},
+						}}
+						style={{ padding: 10 }}
+						options={{
+							sorting: false,
+							headerStyle: {
+								borderBottom: '1px solid black',
+								fontWeight: '700',
+							},
+							pageSize: 12,
+							pageSizeOptions: [12, 24, 48],
+							showTitle: false,
+							cellStyle: {
+								textAlign: 'center',
+							},
+							showDetail: false,
+						}}
+						// actions was done like this to get around a console error
+						// https://github.com/mbrn/material-table/issues/657
+						actions={[() => ({})]}
+						data={openOrders}
+						title="Sourcing Data"
+						components={{
+							Header: header,
+							Action: openOrderButton,
+						}}
+					/>
+				) : (
+					<div>Unable to pull orders</div>
+				)}
 			</div>
 		</>
 	);
