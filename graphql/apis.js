@@ -1,5 +1,7 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
-const inTest = process.env.WEBSITE_HOSTNAME.includes('test');
+const inTest =
+	process.env.WEBSITE_HOSTNAME &&
+	process.env.WEBSITE_HOSTNAME.includes('test');
 const inDev = process.env.NODE_ENV === 'development';
 
 class FergusonSourcingEngineAPI extends RESTDataSource {
