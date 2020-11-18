@@ -228,7 +228,7 @@ export default function OrderList({ mockedWorkAround = false }) {
 						}}
 					/>
 				) : (
-					<div>Unable to pull orders</div>
+					<div>Unable to pull orders. Please try again momentarily.</div>
 				)}
 			</div>
 		</>
