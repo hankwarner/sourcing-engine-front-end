@@ -7,15 +7,11 @@ class FergusonSourcingEngineAPI extends RESTDataSource {
 	constructor() {
 		super();
 		if (isProd) {
-			this.baseURL =
-				'https://sourcingenginedashboard.azurewebsites.net/api';
-			this.authCode =
-				'4a9/Fq8Komxwk5/3x/XwkvdhQpXlWg37IUn9vF6tD3apaxWGOU91qg==';
+			this.baseURL = process.env.API_URL_PROD;
+			this.authCode = process.env.API_KEY_PROD;
 		} else {
-			this.baseURL =
-				'https://sourcingdashboard-dev.azurewebsites.net/api/';
-			this.authCode =
-				'hv2ajpauLkVEDDcgbnkmPTW5ryHqHnXBftIRm3CKioByFSutRafB0w==';
+			this.baseURL = process.env.API_URL_DEV;
+			this.authCode = process.env.API_KEY_DEV;
 		}
 	}
 

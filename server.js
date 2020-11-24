@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
@@ -37,5 +38,9 @@ server.applyMiddleware({ app });
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
 	console.log(`🚀 Graphql running at http://localhost:${port}/graphql`);
-	console.log(`Azure host name: ${process.env.WEBSITE_HOSTNAME}`);
+	console.log(
+		`🚀 App running at ${
+			process.env.WEBSITE_HOSTNAME || 'http://localhost:3000'
+		}`
+	);
 });

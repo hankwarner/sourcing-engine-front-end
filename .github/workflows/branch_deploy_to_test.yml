@@ -12,6 +12,7 @@ env:
   AZURE_DEPLOY_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_TEST }}
   AZURE_WEBAPP_NAME: 'ferguson-sourcing-windows'
   AZURE_WEBAPP_SLOT_NAME: 'test'
+  WEBSITE_HOSTNAME: 'https://ferguson-sourcing-windows-test.azurewebsites.net'
   AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   LAST_COMMIT: ${{ github.event.pull_request.head.sha }}
   BRANCH: ${{ github.event.pull_request.head.ref }}
@@ -25,6 +26,7 @@ jobs:
       - name: Check variables
         run: |
           echo azure_slot: $env:AZURE_WEBAPP_SLOT_NAME
+          echo WEBSITE_HOSTNAME: $env:WEBSITE_HOSTNAME
           echo GITHUB_REF: $env:GITHUB_REF
           echo branch_name: $env:BRANCH
           echo LAST_COMMIT: $env:LAST_COMMIT

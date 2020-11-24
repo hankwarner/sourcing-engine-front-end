@@ -11,7 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import { RefreshContext } from '../../context/refresh.context';
-import { isTest } from '../../helpers';
+const isTest = process.env.REACT_APP_PATH.includes('test');
 
 const useStyles = makeStyles((theme) => ({
 	root: {

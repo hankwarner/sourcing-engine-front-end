@@ -7,24 +7,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from '@apollo/react-hooks';
-import { isDev, isTest } from './helpers';
 
-if (isDev) {
-	console.log('DEVELOPMENT');
-}
-if (isTest) {
-	console.log('TEST');
-}
-
-const cache = new InMemoryCache();
-const graphqlEndpoint = isDev
-	? 'http://localhost:4000'
-	: isTest
-	? 'https://ferguson-sourcing-windows-test.azurewebsites.net'
-	: 'https://ferguson-sourcing-windows.azurewebsites.net';
+const appPath = process.env.REACT_APP_PATH || 'http://localhost:4000';
 const link = new HttpLink({
-	uri: `${graphqlEndpoint}/graphql`,
+	uri: `${appPath}/graphql`,
 });
+const cache = new InMemoryCache();
 
 const client = new ApolloClient({
 	link,

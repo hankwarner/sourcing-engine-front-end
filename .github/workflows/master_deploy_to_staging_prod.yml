@@ -16,6 +16,7 @@ env:
   AZURE_DEPLOY_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_STAGING }}
   AZURE_WEBAPP_NAME: 'ferguson-sourcing-windows'
   AZURE_WEBAPP_SLOT_NAME: 'staging'
+  WEBSITE_HOSTNAME: 'https://ferguson-sourcing-windows.azurewebsites.net'
   AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
 
 jobs:
