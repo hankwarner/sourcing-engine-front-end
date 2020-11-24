@@ -23,7 +23,7 @@ jobs:
       - name: print envvars
         run: |
           echo "github sha: $GITHUB_SHA"
-          echo "github sha: ${GITHUB_REF##*/}
+          echo "github ref: ${GITHUB_REF##*/}"
 #  build-and-deploy:
 #    name: Build and Deploy
 #    runs-on: windows-latest
