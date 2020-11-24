@@ -7,51 +7,51 @@ on:
       - master
 env:
   NODE_VERSION: '12.13.0'
-  AZURE_DEPLOY_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_TEST }}
-  AZURE_WEBAPP_NAME: 'ferguson-sourcing-windows'
+  AZURE_DEPLOY_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FERG_DEV }}
+  AZURE_WEBAPP_NAME: 'ferguson-sourcing-app-dev'
   AZURE_WEBAPP_SLOT_NAME: 'ferguson-sourcing-app-dev-slot'
   WEBSITE_HOSTNAME: 'https://ferguson-sourcing-app-dev.azurewebsites.net'
   AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
-  LAST_COMMIT: ${{ github.event.pull_request.head.sha }}
-  BRANCH: ${{ github.event.pull_request.head.ref }}
+  LAST_COMMIT: $GITHUB_SHA
+  BRANCH: ${GITHUB_REF##*/}"
 jobs:
-  debug:
-    name: debug
-    runs-on: ubuntu-latest
+#  debug:
+#    name: debug
+#    runs-on: ubuntu-latest
+#    if: "!contains(github.event.head_commit.message, 'ci skip')"
+#    steps:
+#      - name: print envvars
+#        run: |
+#          echo "github sha: $GITHUB_SHA"
+#          echo "github ref: ${GITHUB_REF##*/}"
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: windows-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     steps:
-      - name: print envvars
+      - name: Check variables
         run: |
-          echo "github sha: $GITHUB_SHA"
-          echo "github ref: ${GITHUB_REF##*/}"
-          echo "githubref: ${{ github.ref }}"
-#  build-and-deploy:
-#    name: Build and Deploy
-#    runs-on: windows-latest
-#    steps:
-#      - name: Check variables
-#        run: |
-#          echo azure_slot: $env:AZURE_WEBAPP_SLOT_NAME
-#          echo WEBSITE_HOSTNAME: $env:WEBSITE_HOSTNAME
-#          echo GITHUB_REF: $env:GITHUB_REF
-#          echo branch_name: $env:BRANCH
-#          echo LAST_COMMIT: $env:LAST_COMMIT
-#      - name: Checkout source code
-#        uses: actions/checkout@v2
-#        with:
-#          ref: ${{ github.ref }}
-#      - name: Setup node
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: ${{ env.NODE_VERSION }}
-#      - name: Install node modules
-#        run: npm ci
-#      - name: Build app
-#        run: npm run-script build
-#      - name: Deploy to Azure WebApp
-#        uses: azure/webapps-deploy@v2
-#        with:
-#          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-#          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FERG_DEV }}
-#          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME}}
-#          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          echo azure_slot: $env:AZURE_WEBAPP_SLOT_NAME
+          echo WEBSITE_HOSTNAME: $env:WEBSITE_HOSTNAME
+          echo GITHUB_REF: $env:GITHUB_REF
+          echo branch_name: $env:BRANCH
+          echo LAST_COMMIT: $env:LAST_COMMIT
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install node modules
+        run: npm ci
+      - name: Build app
+        run: npm run-script build
+      - name: Deploy to Azure WebApp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FERG_DEV }}
+          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME}}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
