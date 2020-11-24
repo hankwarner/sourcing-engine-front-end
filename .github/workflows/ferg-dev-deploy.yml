@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: print envvars
         run: |
-          echo "github sha: ${{ github.GITHUB_SHA }}"
+          echo "github sha: $GITHUB_SHA
 #  build-and-deploy:
 #    name: Build and Deploy
 #    runs-on: windows-latest
