@@ -9,3 +9,18 @@ variable azure-test-subscription-id {
 variable azure-prod-subscription-id {
 	default = "1f864241-e4d1-4891-8d32-549becc4c6ad"
 }
+
+variable common-tags {
+	default = {
+		"ClassOfService"  = "DEV",
+		"CostCenter"      = "3377",
+		"Criticality"     = "Bronze",
+		"Description"     = "FEI-Supply-Sourcing Engine-DEV",
+		"ProjectID"       = "NA",
+		"Reference"       = "RITM2326724",
+		"SecurityProfile" = "STD",
+		"Service"         = "Supply",
+		"System"          = "Supply-Sourcing Engine",
+		"group"           = "supplyteam",
+	}
+}
