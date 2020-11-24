@@ -14,41 +14,42 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   LAST_COMMIT: ${{ github.event.pull_request.head.sha }}
   BRANCH: ${{ github.event.pull_request.head.ref }}
-
 jobs:
-  build-and-deploy:
-    name: Build and Deploy
-    runs-on: windows-latest
-
+  debug:
+    name: debug
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
     steps:
-      - name: Check variables
-        run: |
-          echo azure_slot: $env:AZURE_WEBAPP_SLOT_NAME
-          echo WEBSITE_HOSTNAME: $env:WEBSITE_HOSTNAME
-          echo GITHUB_REF: $env:GITHUB_REF
-          echo branch_name: $env:BRANCH
-          echo LAST_COMMIT: $env:LAST_COMMIT
-
-      - name: Checkout source code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref }}
-
-      - name: Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install node modules
-        run: npm ci
-
-      - name: Build app
-        run: npm run-script build
-
-      - name: Deploy to Azure WebApp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FERG_DEV }}
-          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME}}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      name: print envvars
+      run: |
+        echo ${{ github.GITHUB_SHA }}
+#  build-and-deploy:
+#    name: Build and Deploy
+#    runs-on: windows-latest
+#    steps:
+#      - name: Check variables
+#        run: |
+#          echo azure_slot: $env:AZURE_WEBAPP_SLOT_NAME
+#          echo WEBSITE_HOSTNAME: $env:WEBSITE_HOSTNAME
+#          echo GITHUB_REF: $env:GITHUB_REF
+#          echo branch_name: $env:BRANCH
+#          echo LAST_COMMIT: $env:LAST_COMMIT
+#      - name: Checkout source code
+#        uses: actions/checkout@v2
+#        with:
+#          ref: ${{ github.ref }}
+#      - name: Setup node
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ env.NODE_VERSION }}
+#      - name: Install node modules
+#        run: npm ci
+#      - name: Build app
+#        run: npm run-script build
+#      - name: Deploy to Azure WebApp
+#        uses: azure/webapps-deploy@v2
+#        with:
+#          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+#          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FERG_DEV }}
+#          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME}}
+#          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
