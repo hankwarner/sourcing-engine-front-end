@@ -1,0 +1,23 @@
+<publishData>
+	<publishProfile profileName="ferguson-sourcing-app-dev - Web Deploy" publishMethod="MSDeploy"
+					publishUrl="ferguson-sourcing-app-dev.scm.azurewebsites.net:443"
+					msdeploySite="ferguson-sourcing-app-dev" userName="$ferguson-sourcing-app-dev"
+					userPWD="jqsjiuf1FDKJoEonnpb6QwwB4sPo5KoqdQnwMXXMzfnBBaCW83jkpNzuZJ2j"
+					destinationAppUrl="http://ferguson-sourcing-app-dev.azurewebsites.net"
+					SQLServerDBConnectionString="" mySQLDBConnectionString=""
+					hostingProviderForumLink="" controlPanelLink="http://windows.azure.com"
+					webSystem="WebSites">
+		<databases/>
+	</publishProfile>
+	<publishProfile profileName="ferguson-sourcing-app-dev - FTP" publishMethod="FTP"
+					publishUrl="ftp://waws-prod-blu-193.ftp.azurewebsites.windows.net/site/wwwroot"
+					ftpPassiveMode="True"
+					userName="ferguson-sourcing-app-dev\$ferguson-sourcing-app-dev"
+					userPWD="jqsjiuf1FDKJoEonnpb6QwwB4sPo5KoqdQnwMXXMzfnBBaCW83jkpNzuZJ2j"
+					destinationAppUrl="http://ferguson-sourcing-app-dev.azurewebsites.net"
+					SQLServerDBConnectionString="" mySQLDBConnectionString=""
+					hostingProviderForumLink="" controlPanelLink="http://windows.azure.com"
+					webSystem="WebSites">
+		<databases/>
+	</publishProfile>
+</publishData>
