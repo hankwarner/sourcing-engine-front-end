@@ -24,6 +24,7 @@ jobs:
         run: |
           echo "github sha: $GITHUB_SHA"
           echo "github ref: ${GITHUB_REF##*/}"
+          echo "githubref: ${{ github.ref }}"
 #  build-and-deploy:
 #    name: Build and Deploy
 #    runs-on: windows-latest
