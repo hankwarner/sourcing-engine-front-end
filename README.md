@@ -1,10 +1,11 @@
 # Ferguson Order Sourcing
 
-[Production Site](https://ferguson-sourcing-windows.azurewebsites.net/)
+[Production Site](https://ferguson-sourcing-windows.azurewebsites.net/)  
 [Test Site](https://ferguson-sourcing-windows-test.azurewebsites.net/)
 
-![PROD Build and deploy to ferguson-sourcing-windows/staging (which will then be swapped with prod)](<https://github.com/SUPPLYcom/sourcing-data-front-end/workflows/PROD%20Build%20and%20deploy%20to%20ferguson-sourcing-windows/staging%20(which%20will%20then%20be%20swapped%20with%20prod)/badge.svg>)
-![TEST Build and deploy to ferguson-sourcing-windows/test](https://github.com/SUPPLYcom/sourcing-data-front-end/workflows/TEST%20Build%20and%20deploy%20to%20ferguson-sourcing-windows/test/badge.svg?branch=master)
+## Project Overview
+
+[Recorded Teams Meeting going over basic React and GraphQL structure](https://mydigitalspace-my.sharepoint.com/:v:/r/personal/lisa_dean_supply_com/Documents/Recordings/StandUp%20Meeting-20201230_091232-Meeting%20Recording.mp4?csf=1&web=1&e=tJt5mP)
 
 ## Project Board
 
